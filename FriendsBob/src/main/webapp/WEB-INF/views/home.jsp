@@ -83,7 +83,7 @@
 	<body>
 		<div id="top">
 			<div id="logo">
-				<img src="${pageContext.request.contextPath}/resources/imgaes/logo.jpg"/>
+				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 			</div>
 			<div id="talk" style="padding:18px;">
 				<div class="middle">혼자 밥먹지 마세요.</div>
