@@ -76,7 +76,6 @@ public class MatjibCommentDao {
 			public Matjib mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Matjib matjib = new Matjib();
 				matjib.setNo(rs.getInt("matjib_no"));
-				matjib.setTitle(rs.getString("matjib_title"));
 				matjib.setName(rs.getString("matjib_name"));
 				matjib.setContent(rs.getString("matjib_content"));
 				matjib.setDate(rs.getDate("matjib_date"));
