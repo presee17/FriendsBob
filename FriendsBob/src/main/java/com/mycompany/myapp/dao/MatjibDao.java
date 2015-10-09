@@ -25,7 +25,7 @@ public class MatjibDao {
 
 	public Integer insert(Matjib matjib, Member member) {
 		Integer pk = null;
-		String sql = "insert into final_matjibs (matjib_name, matjib_content, matjib_date, members_member_id) value (?,?,now(),?)";
+		String sql = "insert into final_matjibs (matjib_name, matjib_content, matjib_date, members_member_id, matjib_food, matjib_address) value (?,?,now(),?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -34,6 +34,8 @@ public class MatjibDao {
 				pstmt.setString(1, matjib.getName());
 				pstmt.setString(2, matjib.getContent());
 				pstmt.setString(3, member.getId());
+				pstmt.setString(4, matjib.getFood());
+				pstmt.setString(5, matjib.getAddress());
 				return pstmt;
 			}
 		}, keyHolder);
@@ -44,13 +46,15 @@ public class MatjibDao {
 
 	public List<Matjib> selectByPage(int pageNo, int rowsPerPage) {
 
-		String sql = " ";
-		sql += "select (matjib_name, matjib_date,members_member_id) ";
-		sql += "from final_matjibs";
-		sql += "order by matjib_no dec ";
+		String sql = " " ;
+		sql += "select matjib_no, matjib_name, matjib_date, members_member_id, matjib_food, matjib_address, matjib_hitCount ";
+		sql += "from final_matjibs ";
+		sql += "order by matjib_no desc ";
 		sql += "limit ?,? ";
 
-		List<Matjib> list = jdbcTemplate.query(sql, new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage },
+		List<Matjib> list = jdbcTemplate.query(
+				sql, 
+				new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage },
 				new RowMapper<Matjib>() {
 					@Override
 					public Matjib mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -59,9 +63,13 @@ public class MatjibDao {
 						matjib.setName(rs.getString("matjib_name"));
 						matjib.setDate(rs.getDate("matjib_date"));
 						matjib.setId(rs.getString("members_member_id"));
+						matjib.setFood(rs.getString("matjib_food"));
+						matjib.setAddress(rs.getString("matjib_address"));
+						matjib.setHitCount(rs.getInt("matjib_hitCount"));
 						return matjib;
 					}
-				});
+				}
+			);
 		return list;
 	}
 
@@ -76,6 +84,9 @@ public class MatjibDao {
 				matjib.setContent(rs.getString("matjib_content"));
 				matjib.setDate(rs.getDate("matjib_date"));
 				matjib.setId(rs.getString("members_member_id"));
+				matjib.setFood(rs.getString("matjib_food"));
+				matjib.setAddress(rs.getString("matjib_address"));
+				matjib.setAddress(rs.getString("matjib_address"));
 				return matjib;
 			}
 		});
@@ -83,8 +94,8 @@ public class MatjibDao {
 	}
 
 	public int update(Matjib matjib) {
-		String sql = "update final_matjibs set matjib_title=?, matjib_name=?, matjib_content=? ";
-		int rows = jdbcTemplate.update(sql, matjib.getName(), matjib.getNo());
+		String sql = "update final_matjibs set matjib_name=?, matjib_content=?, matjib_food, matjib_address ";
+		int rows = jdbcTemplate.update(sql, matjib.getName(), matjib.getContent(), matjib.getFood(), matjib.getAddress());
 		return rows;
 	}
 	

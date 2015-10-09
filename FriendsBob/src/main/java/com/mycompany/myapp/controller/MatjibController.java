@@ -104,19 +104,19 @@ public class MatjibController {
 	}
 	
 	@RequestMapping("/Matjib/matjibUpdateForm") 
-	public String updateForm (@RequestParam("MatjibNo") int matjibNo, Model model) {
+	public String updateForm (@RequestParam("matjibNo") int matjibNo, Model model) {
 		Matjib matjib =matjibService.getMatjib(matjibNo);
 		model.addAttribute("Matjib",matjib);
 		return "Matjib/matjibUpdateForm";
 	}
 	
-	@RequestMapping("/Matjib/update")
+	@RequestMapping("/Matjib/matjibUpdate")
 	public String update (Matjib matjib) {
 		matjibService.modify(matjib);
 		return "redirect:/Matjib/matjibDetatil?matjibNo="+matjib.getNo();
 	}
 	
-	@RequestMapping("/Matjib/delete/{matjibNo}")
+	@RequestMapping("/Matjib/matjibDelete/{matjibNo}")
 	public String delete (@PathVariable int matjibNo) {
 		matjibService.remove(matjibNo);
 		return "redirect:/Matjib/lsit";

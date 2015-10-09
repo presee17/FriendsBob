@@ -9,8 +9,22 @@ public class Matjib {
 	private Date date;
 	private String id;
 	private String address;
+	private String food;
+	private int hitCount;
 
 	
+	public int getHitCount() {
+		return hitCount;
+	}
+	public void setHitCount(int hitCount) {
+		this.hitCount = hitCount;
+	}
+	public String getFood() {
+		return food;
+	}
+	public void setFood(String food) {
+		this.food = food;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -48,6 +62,7 @@ public class Matjib {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 	
 	
 }

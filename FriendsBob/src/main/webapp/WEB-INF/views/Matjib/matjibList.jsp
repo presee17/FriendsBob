@@ -12,17 +12,21 @@
 			<table>
 				<tr>
 						<th style="width:50px"> 게시물 번호 </th>
+						<th style="width:50px"> 종류 </th>
 						<th style="width:50px"> 맛집 이름 </th>
 						<th style="width:40px"> 글쓴이 </th>
 						<th style="width:40px"> 날짜 </th>
+						<th style="width:40px"> 조회수 </th>
 				</tr>
 			
 				<c:forEach var="matjib" items="${list}">
 					<tr>
 						<td>${matjib.no}</td>
+						<td>${matjib.food}</td>
 						<td><a class="name" href=matjibDetail?matjibNo=${matjib.no}">${matjib.name}</a></td>
 						<td>${matjib.id}</td>
 						<td>${matjib.date}</td>
+						<td>${matjib.hitCount}</td>
 					</tr>
 				</c:forEach>
 			</table>
