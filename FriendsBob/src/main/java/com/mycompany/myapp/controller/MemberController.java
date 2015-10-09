@@ -22,12 +22,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("member/joinForm")
+	@RequestMapping("Member/joinForm")
 	public String joinForm(Member member) {
 		return "Member/joinForm";
 	}
 	
-	@RequestMapping("member/join")
+	@RequestMapping("Member/join")
 	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
 			new MemberValidator().validate(member, bindingResult);
@@ -44,48 +44,48 @@ public class MemberController {
 		}
 	}
 
-	@RequestMapping("member/loginForm")
+	@RequestMapping("Member/loginForm")
 	public String loginForm(Login login) {
 		return "Member/loginForm";
 	}
 
-	@RequestMapping("member/login")
-	public String login(Member member, BindingResult bindingResult, HttpSession session) {
-		new LoginValidator().validate(member, bindingResult);
-		memberService.login(member);
+	@RequestMapping("Member/login")
+	public String login(Login login, BindingResult bindingResult, HttpSession session) {
+		new LoginValidator().validate(login, bindingResult);
+		memberService.login(login);
 		if (bindingResult.hasErrors()) {
 			return "Member/loginForm";
 		} else {
-			session.setAttribute("id",member.getId());
+			session.setAttribute("id",login.getId());
 			session.setAttribute("login", true);
 			return "redirect:/Member/main";
 		}
 	}
 
-	@RequestMapping("member/dropOutForm")
+	@RequestMapping("Member/dropOutForm")
 	public String dropOutForm() {
 		return "Member/dropOutForm";
 	}
 
-	@RequestMapping("member/dropOut")
+	@RequestMapping("Member/dropOut")
 	public String dropOut(String id) {
 		memberService.dropOut(id);
 		return "redirect:/Member/home";// 리다이렉트
 	}
 
-	@RequestMapping("member/logOut")
+	@RequestMapping("Member/logOut")
 	public String logOut(HttpSession session) {
 		session.removeAttribute("id");
 		session.setAttribute("login", false);
 		return "redirect:/Member/home";// 리다이렉트
 	}
 	
-	@RequestMapping("member/findPwForm")
+	@RequestMapping("Member/findPwForm")
 	public String findPw(String id) {
 		if(memberService.findPw(id)==null){
-			//존재하는 아이디가 없는 경우 코드해야함
+			//존재하는 아이디가 없는 경우
 		}else{
-			//존재하는 경우 코드해야함
+			//존재하는 경우
 		};
 		return "Member/findPwForm";
 	}

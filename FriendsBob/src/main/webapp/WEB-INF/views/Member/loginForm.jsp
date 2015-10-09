@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -15,12 +17,12 @@
 		<h4>로그인</h4>
 		<hr/>
 		<form:form commandName="login">
-			memberId:
-			<form:input path="memberId" size="20"/>
-			<form:errors path="memberId"/><br/>
-			memberPassword:
-			<form:password path="memberPassword" size="20"/>
-			<form:errors path="memberPassword"/><br/>
+			id:
+			<form:input path="id" size="20"/>
+			<form:errors path="id"/><br/>
+			password:
+			<form:password path="password" size="20"/>
+			<form:errors path="password"/><br/>
 			<input type="submit" value="로그인"/>
 		</form:form>	
         </form>

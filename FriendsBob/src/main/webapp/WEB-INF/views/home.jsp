@@ -83,14 +83,13 @@
 		
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
     	<script type="application/javascript">
-    
-    
-    	function clickLBtn() {
-    		window.open("Member/loginForm.jsp","newuser","titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=300,height=600");
- 		}
     	
     	function clickJBtn() {
-    		window.open("Member/joinForm.jsp","newuser","titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=300,height=600");
+    		window.open("Member/joinForm","join","width=400,height=600");
+ 		}
+    	
+    	function clickLBtn() {
+    		window.open("Member/loginForm","login","width=400,height=600");
  		}
     	
 	</script> 
