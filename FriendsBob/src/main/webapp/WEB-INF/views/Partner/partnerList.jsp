@@ -62,10 +62,10 @@
 		<h4>제휴사 목록</h4>
 		<table>
 			<tr style="height:40px">
-				<th style="width:20px">제휴사번호</th>
-				<th style="width:40px">이름</th>
-				<th>위치</th>
-				<th style="width:20px">음식분류</th>
+				<th style="width:120px">제휴사번호</th>
+				<th style="width:200px">이름</th>
+				<th style="width:350px">위치</th>
+				<th style="width:100px">음식분류</th>
 			</tr>
 		
 			<c:forEach var="partner" items="${list}">
