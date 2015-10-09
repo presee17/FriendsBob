@@ -98,6 +98,7 @@ public class MatjibController {
 
 	@RequestMapping("/Matjib/matjibDetail")
 	public String detail(int matjibNo, Model model) {
+		matjibService.addHitcount(matjibNo);
 		Matjib matjib = matjibService.getMatjib(matjibNo);
 		model.addAttribute("matjib", matjib);
 		return "Matjib/matjibDetail";

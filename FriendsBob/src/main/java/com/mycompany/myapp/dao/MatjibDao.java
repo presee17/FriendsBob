@@ -99,13 +99,19 @@ public class MatjibDao {
 		return rows;
 	}
 	
-	public int delete(int matjibNo) {
+	public int delete(long matjibNo) {
 		String sql = "delete from final_matjibs where matjib_no=? ";
 		int rows = jdbcTemplate.update(
 				sql,
 				matjibNo);
 		return rows;
 	}
+	
+	public int updateHitcount(long matjibNo) {
+		String sql = "update final_matjibs set matjib_hitcount=matjib_hitcount+1 where matjib_no=?";
+		int rows = jdbcTemplate.update(sql, matjibNo);
+		return rows;
+	}	
 	
 	public int selectCount () {
 		String sql = "select count(*) from final_matjibs ";

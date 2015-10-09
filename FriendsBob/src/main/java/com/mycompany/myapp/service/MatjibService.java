@@ -34,9 +34,13 @@ public class MatjibService {
 		matjibDao.update(matjib);
 	}
 	
-	public void remove (int matjibNo) {
+	public void remove (long matjibNo) {
 		matjibDao.delete(matjibNo);
 	}
+	
+	public void addHitcount(long matjibNo) {
+		matjibDao.updateHitcount(matjibNo);
+	}	
 	
 	public int getTotalMatjibNo() {
 		int rows = matjibDao.selectCount();
