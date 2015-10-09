@@ -6,14 +6,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		
-		<script> 
-		object.onload=function(){window.resizeTo(500, 700)};
-		</script>
-		
 	</head>
 	
 	<body>
+		
 		<h4>회원가입</h4>
 		<hr/>
 		<form:form commandName="member">

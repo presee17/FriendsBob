@@ -81,6 +81,10 @@
 		</style>
 	</head>
 	<body>
+	function newUser(){
+	window.open("joinForm.jsp","newuser","titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=300,height=600");
+	}
+	
 		<div id="top">
 			<div id="logo">
 				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
@@ -90,8 +94,8 @@
 				<div class="middle">함께 먹어요...♥</div>
 			</div>
 			<div id="join">
-				<form action="member/login" method="get"><button class="i">밥친구닷컴 들어가기</button></form>
-				<form action="member/join" method="get"><button class="i">회원가입</button></form>
+				<button class="i" onclick="newUser()">밥친구닷컴 들어가기</button>
+				<button class="i">회원가입</button>
 			</div>
 		</div><hr>
 		<div id="main">
