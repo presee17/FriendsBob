@@ -59,13 +59,15 @@ public class PartnerDao {
 
 	public List<Partner> selectByPage(int pageNo, int rowsPerPage, String kinds) {
 		String sql = "";
-		sql += "select partner_no, partner_name, partner_location partner_kind";
+		sql += "select partner_no, partner_name, partner_location, partner_kind ";
 		sql += "from final_partners ";
-		sql += "where partner_kind like %?% ";
+		sql += "where partner_kind like '%";
+		sql += "?";
+		sql += "%' ";
 		sql += "order by partner_no desc ";
-		sql += "list ?,?";
+		sql += "limit ?,?";
 
-		List<Partner> list = jdbcTemplate.query(sql, new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage, kinds },
+		List<Partner> list = jdbcTemplate.query(sql, new Object[] { kinds, (pageNo - 1) * rowsPerPage, rowsPerPage },
 				new RowMapper<Partner>() {
 					@Override
 					public Partner mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -26,12 +26,12 @@ public class PartnerController {
 	@Autowired
 	private PartnerService partnerService;
 	
-	@RequestMapping(value="/board/write",method=RequestMethod.GET)
+	@RequestMapping(value="/Parter/write",method=RequestMethod.GET)
 	public String writeForm(){
-		return "board/writeFrom";
+		return "Partner/writeFrom";
 	}
 	
-	@RequestMapping(value="/board/write",method=RequestMethod.POST)
+	@RequestMapping(value="/Partner/write",method=RequestMethod.POST)
 	public String write(Partner partner, HttpSession session){
 		logger.info("write()");
 		ServletContext application = session.getServletContext();
@@ -50,7 +50,7 @@ public class PartnerController {
 			partner.setContentType(contentType);
 		}
 		partnerService.add(partner);
-		return "redirect:/partner/partnerList";
+		return "redirect:/Partner/partnerList";
 	}
 	
 	@RequestMapping("Partner/partnerList")
@@ -60,7 +60,7 @@ public class PartnerController {
 		session.setAttribute("pageNo", pageNo);
 		int rowsPerPage=10;
 		int pagesPerGroup=5;
-		
+		String kinds="한식";
 		int totalPartnerNo=partnerService.getTotalPartnerNo();
 		
 		int totalPageNo=totalPartnerNo/rowsPerPage;
@@ -74,7 +74,7 @@ public class PartnerController {
 		int endPageNo=startPageNo+pagesPerGroup-1;
 		if(groupNo==totalGroupNo){endPageNo=totalPageNo;}
 		
-		List<Partner> list = partnerService.getPage(pageNo,rowsPerPage);
+		List<Partner> list = partnerService.getPage(pageNo,rowsPerPage,kinds);
 		
 		model.addAttribute("pagesPerGroup",pagesPerGroup);
 		model.addAttribute("totalPageNo",totalPageNo);
