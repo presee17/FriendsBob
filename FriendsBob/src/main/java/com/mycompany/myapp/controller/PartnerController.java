@@ -53,7 +53,7 @@ public class PartnerController {
 		return "redirect:/partner/partnerList";
 	}
 	
-	@RequestMapping("partner/partnerList")
+	@RequestMapping("Partner/partnerList")
 	public String list(
 			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
 		logger.info("pageNo: "+pageNo);
@@ -85,7 +85,12 @@ public class PartnerController {
 		model.addAttribute("pageNo",pageNo);
 		model.addAttribute("list",list);
 		
-		return "partner/partnerList";	
+		return "Partner/partnerList";	
+	}
+	
+	@RequestMapping("/Partner/partnerMain")
+	public String main(){
+		return "Partner/partnerMain";
 	}
 	
 	@RequestMapping("/partner/partnerDetail")

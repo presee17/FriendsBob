@@ -10,7 +10,7 @@ public class Partner {
 	private String content;
 	private String location;
 	private String tel;
-	private String ad;
+	private String kind;
 	private String originalFileName;
 	private String contentType;
 	private String filesystemName;
@@ -46,11 +46,11 @@ public class Partner {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getAd() {
-		return ad;
+	public String getKind() {
+		return kind;
 	}
-	public void setAd(String ad) {
-		this.ad = ad;
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	public String getOriginalFileName() {
 		return originalFileName;
