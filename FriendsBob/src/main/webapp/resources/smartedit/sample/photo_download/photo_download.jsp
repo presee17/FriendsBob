@@ -4,7 +4,7 @@
 <%
 String fileName = request.getParameter("fileName");
 fileName = URLDecoder.decode(fileName, "UTF-8");
-String realPath = application.getRealPath("/resources/image/" + fileName);
+String realPath = application.getRealPath("/resources/images/" + fileName);
 FileInputStream fis = new FileInputStream(realPath);
 
 out.clear();
