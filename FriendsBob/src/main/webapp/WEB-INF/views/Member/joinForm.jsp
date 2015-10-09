@@ -6,17 +6,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<style type="text/css">
-			body {
-				font-size: small;
-				color:white;
-			}
-		</style>
 		
-		<script language='JavaScript'> 
-		window.resizeTo(500, 700);
-		window.moveTo(0, 0);
+		<script> 
+		object.onload=function(){window.resizeTo(500, 700)};
 		</script>
+		
 	</head>
 	
 	<body>
