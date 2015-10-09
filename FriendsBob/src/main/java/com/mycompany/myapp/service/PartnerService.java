@@ -17,8 +17,8 @@ public class PartnerService {
 		partnerDao.insert(partner);
 	}
 	
-	public List<Partner> getPage(int pageNo, int rowsPerPage){
-		List<Partner> list=partnerDao.selectByPage(pageNo, rowsPerPage);
+	public List<Partner> getPage(int pageNo, int rowsPerPage, String kinds){
+		List<Partner> list=partnerDao.selectByPage(pageNo, rowsPerPage,kinds);
 		return list;
 	}
 	
