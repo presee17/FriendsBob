@@ -9,7 +9,7 @@ String fileSize = request.getHeader("file-size");
 String fileType = request.getHeader("file-Type");
 ServletInputStream sis = request.getInputStream();
 
-String urlPath = "../resources/image/" + savefileName;
+String urlPath = "/resources/images/" + savefileName;
 String saveFilePath = application.getRealPath(urlPath);
 FileOutputStream fos = new FileOutputStream(saveFilePath);
 

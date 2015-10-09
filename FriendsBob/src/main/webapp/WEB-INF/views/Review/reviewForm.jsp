@@ -21,7 +21,7 @@
 	<body>
 		<h4>후기작성</h4>
 		<form method="post" action="write">
-			<table>
+			<table width="100%">
 				<tr>
 					<td>제목</td>
 					<td><input type="text" name="title"/></td>
@@ -53,7 +53,7 @@
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef: oEditors,
 				elPlaceHolder: "content",
-				sSkinURI: "SmartEditor2Skin.html",	
+				sSkinURI: "./resources/smartedit/SmartEditor2Skin.html",	
 				htParams : {
 					bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 					bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
