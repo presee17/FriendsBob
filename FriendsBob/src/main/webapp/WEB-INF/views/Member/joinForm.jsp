@@ -16,7 +16,7 @@
 	<body>
 		<h4>회원가입</h4>
 		<hr/>
-		<form:form commandName="Join">
+		<form:form commandName="member">
 			아이디:
 			<form:input path="id" size="20"/>
 			<form:errors path="id"/> <br/>
