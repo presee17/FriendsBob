@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.myapp.dto.JoinValidator;
+import com.mycompany.myapp.dto.MemberValidator;
 import com.mycompany.myapp.dto.LoginValidator;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.service.MemberService;
@@ -31,7 +31,7 @@ public class MemberController {
 	public String join(Member member, BindingResult bindingResult, Errors errors) {
 		if (memberService.joinCheck(member)) {
 			// 가입 가능 코드
-			new JoinValidator().validate(member, bindingResult);
+			new MemberValidator().validate(member, bindingResult);
 			if (bindingResult.hasErrors()) {
 				return "Member/joinForm";
 			} else {
