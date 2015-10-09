@@ -12,10 +12,12 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dto.Matjib;
 import com.mycompany.myapp.dto.Member;
 
+@Component
 public class MatjibDao {
 
 	@Autowired
