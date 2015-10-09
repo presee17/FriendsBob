@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>후기 작성 페이지</title>
-		<script type="text/javascript" src="./resources/smartedit/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smartedit/js/HuskyEZCreator.js" charset="utf-8"></script>
 		<style type="text/css">
 			body {
 				font-size: small;
@@ -21,18 +21,18 @@
 	<body>
 		<h4>후기작성</h4>
 		<form method="post" action="write">
-			<table>
+			<table width="100%">
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="title"/></td>
+					<td><input type="text" name="reviewTitle"/></td>
 				</tr>
 				<tr>
 					<td>글쓴이</td>
-					<td><input type="text" name="writer"/></td>
+					<td><input type="text" name="reviewWriter"/></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea name="content" id="content" rows="5" cols="50"></textarea></td>
+					<td><textarea name="reviewContent" id="reviewContent" rows="5" cols="50">ss</textarea></td>
 				</tr>
 				
 				<tr>
@@ -45,6 +45,8 @@
 			</table>
 		</form>
  		<script type="text/javascript">
+
+ 		
 			var oEditors = [];
 			
 			// 추가 글꼴 목록
@@ -52,8 +54,8 @@
 			
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef: oEditors,
-				elPlaceHolder: "content",
-				sSkinURI: "SmartEditor2Skin.html",	
+				elPlaceHolder: "reviewContent",
+				sSkinURI: "${pageContext.request.contextPath}/resources/smartedit/SmartEditor2Skin.html",	
 				htParams : {
 					bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 					bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -70,7 +72,7 @@
 				fCreator: "createSEditor2"
 			});
 			function submitContents(elClickedObj) {
-				oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+				oEditors.getById["reviewContent"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 				
 				// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 				
