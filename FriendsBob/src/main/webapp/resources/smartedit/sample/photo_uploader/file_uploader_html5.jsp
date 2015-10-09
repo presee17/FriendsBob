@@ -9,8 +9,9 @@ String fileSize = request.getHeader("file-size");
 String fileType = request.getHeader("file-Type");
 ServletInputStream sis = request.getInputStream();
 
-String urlPath = "../resources/image/" + savefileName;
+String urlPath = "/resources/images/" + savefileName;
 String saveFilePath = application.getRealPath(urlPath);
+System.out.println(saveFilePath);
 FileOutputStream fos = new FileOutputStream(saveFilePath);
 
 byte[] data = new byte[1024];
