@@ -95,7 +95,7 @@
 			</div>
 		</div><hr>
 		<div id="main">
-			<img id="main" src="${pageContext.request.contextPath}/resources/imgaes/main.jpg"/>
+			<img id="main" src="${pageContext.request.contextPath}/resources/images/main.jpg"/>
 			<div id="comment1">밥 친구, 쉽고 편리하게 찾을 수 있습니다.</div>
 			<button id="btn">밥친구 찾기⊙⊙</button>
 			<a href="review/reiv">밥친구 찾기⊙⊙</button>
