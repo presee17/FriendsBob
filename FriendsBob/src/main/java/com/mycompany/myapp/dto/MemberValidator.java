@@ -14,7 +14,6 @@ public class MemberValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		Member member=(Member) target;
-		String memberId=member.getId();
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id","required","필수 항목입니다.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password","required","필수 항목입니다.");
