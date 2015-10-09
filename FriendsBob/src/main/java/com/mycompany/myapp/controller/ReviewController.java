@@ -21,7 +21,6 @@ import com.mycompany.myapp.service.ReviewService;
 @Controller
 public class ReviewController {
 
-	
 		@Autowired
 		private ReviewService reviewService;
 		
