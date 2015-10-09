@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Matjib {
 	private int no;
-	private String title;
 	private String name;
 	private String content;
 	private Date date;
@@ -22,12 +21,7 @@ public class Matjib {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	
 	public String getName() {
 		return name;
 	}

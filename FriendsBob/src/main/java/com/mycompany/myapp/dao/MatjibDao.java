@@ -25,16 +25,15 @@ public class MatjibDao {
 
 	public Integer insert(Matjib matjib, Member member) {
 		Integer pk = null;
-		String sql = "insert into final_matjibs (matjib_title, matjib_name, matjib_content, matjib_date, members_member_id) value (?,?,?,now(),?)";
+		String sql = "insert into final_matjibs (matjib_name, matjib_content, matjib_date, members_member_id) value (?,?,now(),?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 				PreparedStatement pstmt = conn.prepareStatement(sql, new String[] { "matjib_no" });
-				pstmt.setString(1, matjib.getTitle());
-				pstmt.setString(2, matjib.getName());
-				pstmt.setString(3, matjib.getContent());
-				pstmt.setString(4, member.getId());
+				pstmt.setString(1, matjib.getName());
+				pstmt.setString(2, matjib.getContent());
+				pstmt.setString(3, member.getId());
 				return pstmt;
 			}
 		}, keyHolder);
@@ -46,7 +45,7 @@ public class MatjibDao {
 	public List<Matjib> selectByPage(int pageNo, int rowsPerPage) {
 
 		String sql = " ";
-		sql += "select (matjib_no,matjib_title, matjib_name, matjib_date,members_member_id) ";
+		sql += "select (matjib_name, matjib_date,members_member_id) ";
 		sql += "from final_matjibs";
 		sql += "order by matjib_no dec ";
 		sql += "limit ?,? ";
@@ -57,7 +56,6 @@ public class MatjibDao {
 					public Matjib mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Matjib matjib = new Matjib();
 						matjib.setNo(rs.getInt("matjib_no"));
-						matjib.setTitle(rs.getString("matjib_title"));
 						matjib.setName(rs.getString("matjib_name"));
 						matjib.setDate(rs.getDate("matjib_date"));
 						matjib.setId(rs.getString("members_member_id"));
@@ -74,7 +72,6 @@ public class MatjibDao {
 			public Matjib mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Matjib matjib = new Matjib();
 				matjib.setNo(rs.getInt("matjib_no"));
-				matjib.setTitle(rs.getString("matjib_title"));
 				matjib.setName(rs.getString("matjib_name"));
 				matjib.setContent(rs.getString("matjib_content"));
 				matjib.setDate(rs.getDate("matjib_date"));
@@ -87,7 +84,7 @@ public class MatjibDao {
 
 	public int update(Matjib matjib) {
 		String sql = "update final_matjibs set matjib_title=?, matjib_name=?, matjib_content=? ";
-		int rows = jdbcTemplate.update(sql, matjib.getTitle(), matjib.getName(), matjib.getNo());
+		int rows = jdbcTemplate.update(sql, matjib.getName(), matjib.getNo());
 		return rows;
 	}
 	
