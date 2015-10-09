@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.LoginValidator;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.MemberValidator;
@@ -44,7 +45,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("member/loginForm")
-	public String loginForm() {
+	public String loginForm(Login login) {
 		return "Member/loginForm";
 	}
 
