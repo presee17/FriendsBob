@@ -90,8 +90,8 @@
 				<div class="middle">함께 먹어요...♥</div>
 			</div>
 			<div id="join">
-				<button class="i">밥친구닷컴 들어가기</button>
-				<button class="i">회원가입</button>
+				<form action="member/login" method="get"><button class="i">밥친구닷컴 들어가기</button></form>
+				<form action="member/join" method="get"><button class="i">회원가입</button></form>
 			</div>
 		</div><hr>
 		<div id="main">
