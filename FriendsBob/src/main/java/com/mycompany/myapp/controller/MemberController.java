@@ -8,9 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.myapp.dto.MemberValidator;
 import com.mycompany.myapp.dto.LoginValidator;
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.MemberValidator;
 import com.mycompany.myapp.service.MemberService;
 
 
@@ -22,23 +22,23 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("member/joinForm")
-	public String joinForm() {
-
+	public String joinForm(Member member) {
 		return "Member/joinForm";
 	}
 	
 	@RequestMapping("member/join")
-	public String join(Member member, BindingResult bindingResult, Errors errors) {
+	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
-			// 가입 가능 코드
 			new MemberValidator().validate(member, bindingResult);
+			
 			if (bindingResult.hasErrors()) {
 				return "Member/joinForm";
 			} else {
-				return "redirect:/Member/login";
+				memberService.join(member);
+				return "redirect:/Member/loginForm";
 			}
 		} else {
-			errors.rejectValue("id", "usedId", "존재하는 id 입니다.");
+			bindingResult.rejectValue("id", "usedId", "존재하는 id 입니다.");
 			return "Member/joinForm";
 		}
 	}
