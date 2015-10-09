@@ -85,7 +85,7 @@
 	<body>
 	<div id="top">
 			<div id="logo">
-				<img src="${pageContext.request.contextPath}/resources/imgaes/logo.jpg"/>
+				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 			</div>
 			<div id="talk">
 				<table id="menu">

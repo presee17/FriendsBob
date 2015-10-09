@@ -58,16 +58,18 @@ public class PartnerDao {
 	}
 
 	public List<Partner> selectByPage(int pageNo, int rowsPerPage, String kinds) {
+		System.out.println("pageNo: " + pageNo);
+		System.out.println("rowsPerPage: " + rowsPerPage);
+		System.out.println("kinds: " + kinds);
+		
 		String sql = "";
 		sql += "select partner_no, partner_name, partner_location, partner_kind ";
 		sql += "from final_partners ";
-		sql += "where partner_kind like '%";
-		sql += "?";
-		sql += "%' ";
+		sql += "where partner_kind like ? ";
 		sql += "order by partner_no desc ";
 		sql += "limit ?,?";
 
-		List<Partner> list = jdbcTemplate.query(sql, new Object[] { kinds, (pageNo - 1) * rowsPerPage, rowsPerPage },
+		List<Partner> list = jdbcTemplate.query(sql, new Object[] { "%"+kinds+"%", (pageNo - 1) * rowsPerPage, rowsPerPage },
 				new RowMapper<Partner>() {
 					@Override
 					public Partner mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -79,6 +81,7 @@ public class PartnerDao {
 						return partner;
 					}
 				});
+		System.out.println(list.size());
 		return list;
 	}
 

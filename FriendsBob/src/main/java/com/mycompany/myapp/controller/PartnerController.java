@@ -54,13 +54,26 @@ public class PartnerController {
 	}
 	
 	@RequestMapping("Partner/partnerList")
-	public String list(
+	public String list(String kind,
 			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
 		logger.info("pageNo: "+pageNo);
+		String kinds = null;
+		if(kind.equals("k")) {
+			kinds="한식";
+		}else if(kind.equals("w")){
+			kinds="양식";
+		}else if(kind.equals("j")){
+			kinds="일식";
+		}else if(kind.equals("c")){
+			kinds="중식";
+		}else if(kind.equals("b")){
+			kinds="분식";
+		}
+		
 		session.setAttribute("pageNo", pageNo);
 		int rowsPerPage=10;
 		int pagesPerGroup=5;
-		String kinds="한식";
+		
 		int totalPartnerNo=partnerService.getTotalPartnerNo();
 		
 		int totalPageNo=totalPartnerNo/rowsPerPage;
