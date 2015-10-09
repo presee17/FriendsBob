@@ -119,7 +119,7 @@
 		</div>		
 		
 		<div id="buttonGroup">
-			<a href="write">글쓰기</a>
+			<a href="Review/write">글쓰기</a>
 		</div>
 	</body>
 </html>

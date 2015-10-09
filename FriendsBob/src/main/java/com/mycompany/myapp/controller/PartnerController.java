@@ -26,12 +26,12 @@ public class PartnerController {
 	@Autowired
 	private PartnerService partnerService;
 	
-	@RequestMapping(value="/board/write",method=RequestMethod.GET)
+	@RequestMapping(value="/Parter/write",method=RequestMethod.GET)
 	public String writeForm(){
-		return "board/writeFrom";
+		return "Partner/writeFrom";
 	}
 	
-	@RequestMapping(value="/board/write",method=RequestMethod.POST)
+	@RequestMapping(value="/Partner/write",method=RequestMethod.POST)
 	public String write(Partner partner, HttpSession session){
 		logger.info("write()");
 		ServletContext application = session.getServletContext();
@@ -50,13 +50,26 @@ public class PartnerController {
 			partner.setContentType(contentType);
 		}
 		partnerService.add(partner);
-		return "redirect:/partner/partnerList";
+		return "redirect:/Partner/partnerList";
 	}
 	
-	@RequestMapping("partner/partnerList")
-	public String list(
+	@RequestMapping("Partner/partnerList")
+	public String list(String kind,
 			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
 		logger.info("pageNo: "+pageNo);
+		String kinds = null;
+		if(kind.equals("k")) {
+			kinds="한식";
+		}else if(kind.equals("w")){
+			kinds="양식";
+		}else if(kind.equals("j")){
+			kinds="일식";
+		}else if(kind.equals("c")){
+			kinds="중식";
+		}else if(kind.equals("b")){
+			kinds="분식";
+		}
+		
 		session.setAttribute("pageNo", pageNo);
 		int rowsPerPage=10;
 		int pagesPerGroup=5;
@@ -74,7 +87,7 @@ public class PartnerController {
 		int endPageNo=startPageNo+pagesPerGroup-1;
 		if(groupNo==totalGroupNo){endPageNo=totalPageNo;}
 		
-		List<Partner> list = partnerService.getPage(pageNo,rowsPerPage);
+		List<Partner> list = partnerService.getPage(pageNo,rowsPerPage,kinds);
 		
 		model.addAttribute("pagesPerGroup",pagesPerGroup);
 		model.addAttribute("totalPageNo",totalPageNo);
@@ -85,7 +98,12 @@ public class PartnerController {
 		model.addAttribute("pageNo",pageNo);
 		model.addAttribute("list",list);
 		
-		return "partner/partnerList";	
+		return "Partner/partnerList";	
+	}
+	
+	@RequestMapping("/Partner/partnerMain")
+	public String main(){
+		return "Partner/partnerMain";
 	}
 	
 	@RequestMapping("/partner/partnerDetail")

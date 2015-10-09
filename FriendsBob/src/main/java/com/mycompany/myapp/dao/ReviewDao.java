@@ -25,7 +25,7 @@ public class ReviewDao {
 	
 	public Integer insert(Review review, Member member){
 		Integer pk=null;
-		String sql="insert into reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, ?) ";
+		String sql="insert into final_reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, ?) ";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator(){
 
@@ -51,7 +51,7 @@ public class ReviewDao {
 	public List<Review> selectByPage(int pageNo, int rowsPerPage){
 		String sql = "";
 		sql += "select review_no, review_title, review_writer, review_date ";
-		sql += "from reviews ";
+		sql += "from final_reviews ";
 		sql += "order by review_no desc ";
 		sql += "limit ?,? ";
 		
@@ -74,7 +74,7 @@ public class ReviewDao {
 	}
 	
 	public Review selectByPk(int reviewNo){
-		String sql="select * from reviews where review_no=? ";
+		String sql="select * from final_reviews where review_no=? ";
 		Review review = jdbcTemplate.queryForObject(sql, 
 				new Object[]{reviewNo},
 				new RowMapper<Review>(){
@@ -97,7 +97,7 @@ public class ReviewDao {
 	}
 	
 	public int update(Review review){
-		String sql="update reviews set review_title=?, review_content=? where review_no=? ";
+		String sql="update final_reviews set review_title=?, review_content=? where review_no=? ";
 		int row = jdbcTemplate.update(sql,
 				review.getReviewTitle(),
 				review.getReviewContent(),
@@ -106,14 +106,14 @@ public class ReviewDao {
 	}
 	
 	public int delete(int reviewNo){
-		String sql="delete from reviews where review_no=? ";
+		String sql="delete from final_reviews where review_no=? ";
 		int row = jdbcTemplate.update(sql,reviewNo);
 		return row;
 		
 	}
 	
 	public int selectCount() {
-		String sql = "select count(*) from reviews";
+		String sql = "select count(*) from final_reviews";
 		int rows = jdbcTemplate.queryForObject(sql, Integer.class);
 		return rows;
 	}

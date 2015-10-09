@@ -30,7 +30,7 @@ public class ReviewController {
 		}
 		
 		@RequestMapping(value="/Review/write",method=RequestMethod.POST)	
-		public String review(Review review, HttpSession session) {	
+		public String review(Review review, HttpSession session) {
 			Member member=(Member)session.getAttribute("Member");
 			//데이터 베이스에 게시물 정보 저장
 			reviewService.add(review,member);
