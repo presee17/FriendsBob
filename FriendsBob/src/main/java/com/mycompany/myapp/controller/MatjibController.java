@@ -104,7 +104,6 @@ public class MatjibController {
 	}
 	
 	@RequestMapping("/Matjib/matjibUpdateForm") 
-<<<<<<< HEAD
 	public String updateForm (@RequestParam("matjibNo") int matjibNo, Model model) {
 		Matjib matjib =matjibService.getMatjib(matjibNo);
 		model.addAttribute("Matjib",matjib);
@@ -118,21 +117,6 @@ public class MatjibController {
 	}
 	
 	@RequestMapping("/Matjib/matjibDelete/{matjibNo}")
-=======
-	public String updateForm (@RequestParam("MatjibNo") int matjibNo, Model model) {
-		Matjib matjib =matjibService.getMatjib(matjibNo);
-		model.addAttribute("Matjib",matjib);
-		return "Matjib/matjibUpdateForm";
-	}
-	
-	@RequestMapping("/Matjib/update")
-	public String update (Matjib matjib) {
-		matjibService.modify(matjib);
-		return "redirect:/Matjib/matjibDetatil?matjibNo="+matjib.getNo();
-	}
-	
-	@RequestMapping("/Matjib/delete/{matjibNo}")
->>>>>>> branch 'master' of https://github.com/presee17/FriendsBob.git
 	public String delete (@PathVariable int matjibNo) {
 		matjibService.remove(matjibNo);
 		return "redirect:/Matjib/lsit";
