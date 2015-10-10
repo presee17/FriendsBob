@@ -54,15 +54,13 @@ public class MemberDao {
 			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Member member = new Member();
 				member.setId(rs.getString("member_id"));
-				member.setPassword(rs.getString("member_password"));
+				member.setPassword(rs.getString("member_pwd"));
 				member.setAddress1(rs.getString("member_address1"));
 				member.setAddress2(rs.getString("member_address2"));
 				member.setNick(rs.getString("member_nick"));
 				member.setGrade(rs.getInt("member_grade"));
 				member.setPoint(rs.getInt("member_point"));
 				member.setRetire(rs.getString("member_retire"));
-				member.setGrade(rs.getInt("member_warning"));
-				member.setAccusation(rs.getString("member_accusation"));
 				return member;
 			}
 		});
@@ -80,15 +78,13 @@ public class MemberDao {
 			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Member member = new Member();
 				member.setId(rs.getString("member_id"));
-				member.setPassword(rs.getString("member_password"));
+				member.setPassword(rs.getString("member_pwd"));
 				member.setAddress1(rs.getString("member_address1"));
 				member.setAddress2(rs.getString("member_address2"));
 				member.setNick(rs.getString("member_nick"));
 				member.setGrade(rs.getInt("member_grade"));
 				member.setPoint(rs.getInt("member_point"));
 				member.setRetire(rs.getString("member_retire"));
-				member.setGrade(rs.getInt("member_warning"));
-				member.setAccusation(rs.getString("member_accusation"));
 				return member;
 			}
 		});
