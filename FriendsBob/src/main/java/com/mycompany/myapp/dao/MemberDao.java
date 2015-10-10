@@ -25,16 +25,16 @@ public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public String insert(Member member) {
-		String sql = "insert into final_members values(?,?,?,?,?,?)";
+		String sql = "insert into final_members values(?,?,?,?,?,0,0,0)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, member.getId());
-				pstmt.setString(3, member.getPassword());
-				pstmt.setString(4, member.getAddress1());
-				pstmt.setString(5, member.getAddress2());
-				pstmt.setString(6, member.getNick());
+				pstmt.setString(2, member.getPassword());
+				pstmt.setString(3, member.getAddress1());
+				pstmt.setString(4, member.getAddress2());
+				pstmt.setString(5, member.getNick());
 				return pstmt;
 			}
 		});

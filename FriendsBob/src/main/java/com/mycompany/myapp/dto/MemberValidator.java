@@ -22,7 +22,7 @@ public class MemberValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nick","required","필수 항목입니다.");
 		
 		if(member.getPassword().length()<6){
-			errors.rejectValue("memberPassword", "minlength", new Object[]{4},"최소 6자리 이상 입력");
+			errors.rejectValue("password", "minlength", new Object[]{4},"최소 6자리 이상 입력");
 		}
 	}
 }
