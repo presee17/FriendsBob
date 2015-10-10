@@ -33,6 +33,9 @@ public class ReviewController {
 		public String review(Review review, HttpSession session) {
 			Member member=(Member)session.getAttribute("Member");
 			//데이터 베이스에 게시물 정보 저장
+			
+			member.setId("admin");
+			member.setNick("admin");
 			reviewService.add(review,member);
 			
 			return "redirect:/Review/reviewList";
