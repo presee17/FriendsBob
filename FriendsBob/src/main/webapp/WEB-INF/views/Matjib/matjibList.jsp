@@ -6,6 +6,79 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<style type="text/css">		
+			body {
+				color: white;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: small;
+			}
+			table, th, td {
+				border: 1px solid white;
+				text-align: center;
+			}
+			th {
+				background-color: orange;
+				color: black;
+			}
+			
+			#buttonGroup {
+				margin: 10px;
+				text-align: center;
+			}
+			
+			#buttonGroup a {
+				display:inline-block;
+				width: 70px;
+				line-height: 30px;
+				text-decoration: none;
+				font-size: small;
+				color: white;
+				border: 1px solid darkgray;
+				background-color: gray;
+				font-weight: bold;
+			}
+			
+			#buttonGroup a:hover {
+				color: black;
+				background-color: lightgray;
+			}
+			
+			#pager {
+				margin-top: 5px;
+				text-align: center;
+				font-size: small;
+			}
+			
+			#pager a {
+				text-decoration: none;
+				color: white;
+			}
+			
+			#pager a:hover {
+				color: orange;
+			}
+			
+			#pager a.pageNo {
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+			
+			#pager a.pageNo.selected {
+				color: aqua;
+			}
+			
+			.title {
+				text-decoration: none;
+				color: white;
+			}	
+			.title:hover {
+				color: orange;
+			}
+		</style>
+		
 	</head>
 	<body>
 		<h4>맛집 게시물 목록</h4>

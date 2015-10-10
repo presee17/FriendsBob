@@ -17,7 +17,7 @@
 				<span class="content">${matjib.food }</span>
 				
 				<span class="title">가게 이름:</span>
-				<span class="content">${matjib.title }</span>
+				<span class="content">${matjib.name }</span>
 				
 				<span class="title">글쓴이 : </span>
 				<span class="content">${matjib.id}</span>
