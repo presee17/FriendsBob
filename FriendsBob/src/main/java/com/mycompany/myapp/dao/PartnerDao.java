@@ -23,7 +23,7 @@ public class PartnerDao {
 
 	public Integer insert(Partner partner) {
 		Integer pk = null;
-		String sql = "insert into final_partners(partner_name, partner_content, partner_location, partner_tel, partner_original_file_name, partner_filesystem_name, partner_content_type) values(?,?,?,?,?,?,?)";
+		String sql = "insert into final_partners(partner_name, partner_content, partner_location, partner_tel, partner_kind, partner_original_file_name, partner_filesystem_name, partner_content_type) values(?,?,?,?,?,?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -33,9 +33,10 @@ public class PartnerDao {
 				pstmt.setString(2, partner.getContent());
 				pstmt.setString(3, partner.getLocation());
 				pstmt.setString(4, partner.getTel());
-				pstmt.setString(5, partner.getOriginalFileName());
-				pstmt.setString(6, partner.getFilesystemName());
-				pstmt.setString(7, partner.getContentType());
+				pstmt.setString(5, partner.getKind());
+				pstmt.setString(6, partner.getOriginalFileName());
+				pstmt.setString(7, partner.getFilesystemName());
+				pstmt.setString(8, partner.getContentType());
 				return pstmt;
 			}
 
@@ -101,6 +102,7 @@ public class PartnerDao {
 				partner.setTel(rs.getString("partner_tel"));
 				partner.setLocation(rs.getString("partner_location"));
 				partner.setContent(rs.getString("partner_content"));
+				partner.setKind(rs.getString("partner_kind"));
 				partner.setOriginalFileName(rs.getString("partner_original_file_name"));
 				partner.setFilesystemName(rs.getString("partner_filesystem_name"));
 				partner.setContentType(rs.getString("partner_content_type"));

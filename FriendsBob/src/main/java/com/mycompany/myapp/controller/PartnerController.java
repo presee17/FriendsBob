@@ -132,6 +132,6 @@ public class PartnerController {
 	@RequestMapping("/Partner/partnerDelete/{partnerNo}")
 	public String delete(@PathVariable int partnerNo){
 		partnerService.remove(partnerNo);
-		return "redirect:/partner/partnerList";
+		return "redirect:/Partner/partnerList";
 	}
 }

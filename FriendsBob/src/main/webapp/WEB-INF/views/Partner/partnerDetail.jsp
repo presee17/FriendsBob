@@ -9,7 +9,7 @@
 			body {
 				font-family: "돋움";
 				font-size: 12px;
-				color: white;
+				color: black;
 			}
 			span {
 				display: inline-block;
@@ -109,7 +109,7 @@
 		</div>
 		
 		<div id="buttonGroup">
-			<a href="partnerlist?pageNo=${pageNo}">목록</a>
+			<a href="partnerList?pageNo=${pageNo}">목록</a>
 			<a href="partnerUpdate?pno=${partner.no}">수정</a>
 			<a href="partnerDelete/${partner.no}">삭제</a>
 		</div>		
