@@ -14,24 +14,22 @@ import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.MemberValidator;
 import com.mycompany.myapp.service.MemberService;
 
-
-
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(value="/Member/join",method=RequestMethod.GET)
+	@RequestMapping(value = "/Member/join", method = RequestMethod.GET)
 	public String joinForm(Member member) {
 		return "Member/joinForm";
 	}
-	
-	@RequestMapping(value="/Member/join",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/Member/join", method = RequestMethod.POST)
 	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
 			new MemberValidator().validate(member, bindingResult);
-			
+
 			if (bindingResult.hasErrors()) {
 				return "Member/joinForm";
 			} else {
@@ -44,20 +42,31 @@ public class MemberController {
 		}
 	}
 
-	@RequestMapping("Member/loginForm")
+	@RequestMapping(value = "/Member/login", method = RequestMethod.GET)
 	public String loginForm(Login login) {
 		return "Member/loginForm";
 	}
 
-	@RequestMapping("Member/login")
+	@RequestMapping(value = "/Member/login", method = RequestMethod.POST)
 	public String login(Login login, BindingResult bindingResult, HttpSession session) {
+
 		new LoginValidator().validate(login, bindingResult);
-		memberService.login(login);
 		if (bindingResult.hasErrors()) {
 			return "Member/loginForm";
 		} else {
-			session.setAttribute("id",login.getId());
-			session.setAttribute("login", true);
+			String state = memberService.login(login);
+			switch (state) {
+			case "noId":
+				bindingResult.rejectValue("id", "usedId", "존재하지 않는 아이디입니다.");
+				break;
+			case "correct":
+				session.setAttribute("id", login.getId());
+				session.setAttribute("login", true);
+				break;
+			case "wrongPw":
+				bindingResult.rejectValue("id", "usedId", "패스워드가 틀렸습니다.");
+				break;
+			}
 			return "redirect:/Member/main";
 		}
 	}
@@ -79,14 +88,15 @@ public class MemberController {
 		session.setAttribute("login", false);
 		return "redirect:/Member/home";// 리다이렉트
 	}
-	
+
 	@RequestMapping("Member/findPwForm")
 	public String findPw(String id) {
-		if(memberService.findPw(id)==null){
-			//존재하는 아이디가 없는 경우
-		}else{
-			//존재하는 경우
-		};
+		if (memberService.findPw(id) == null) {
+			// 존재하는 아이디가 없는 경우
+		} else {
+			// 존재하는 경우
+		}
+		;
 		return "Member/findPwForm";
 	}
 }
