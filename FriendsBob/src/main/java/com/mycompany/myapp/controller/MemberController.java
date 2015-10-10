@@ -64,7 +64,7 @@ public class MemberController {
 			case "correct":
 				session.setAttribute("id", login.getId());
 				session.setAttribute("login", true);
-				url = "redirect:/Member/main";
+				url = "redirect:/main";
 				break;
 			case "wrongPw":
 				bindingResult.rejectValue("id", "usedId", "패스워드가 틀렸습니다.");
