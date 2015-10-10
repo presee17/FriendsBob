@@ -23,7 +23,7 @@ public class PartnerDao {
 
 	public Integer insert(Partner partner) {
 		Integer pk = null;
-		String sql = "insert into final_partners(partner_name, partner_content, partner_location, partner_tel, partner_original_file_name, partner_filesystem_name, partner_content_type) values(?,?,?,?,?,?,?)";
+		String sql = "insert into final_partners(partner_name, partner_content, partner_location, partner_tel, partner_kind, partner_original_file_name, partner_filesystem_name, partner_content_type) values(?,?,?,?,?,?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -33,9 +33,10 @@ public class PartnerDao {
 				pstmt.setString(2, partner.getContent());
 				pstmt.setString(3, partner.getLocation());
 				pstmt.setString(4, partner.getTel());
-				pstmt.setString(5, partner.getOriginalFileName());
-				pstmt.setString(6, partner.getFilesystemName());
-				pstmt.setString(7, partner.getContentType());
+				pstmt.setString(5, partner.getKind());
+				pstmt.setString(6, partner.getOriginalFileName());
+				pstmt.setString(7, partner.getFilesystemName());
+				pstmt.setString(8, partner.getContentType());
 				return pstmt;
 			}
 
@@ -46,8 +47,8 @@ public class PartnerDao {
 	}
 
 	public int update(Partner partner) {
-		String sql = "update final_partners set partner_name=?, partner_content=? where partner_no=?";
-		int rows = jdbcTemplate.update(sql, partner.getName(), partner.getContent(), partner.getNo());
+		String sql = "update final_partners set partner_name=?, partner_location=? where partner_no=?";
+		int rows = jdbcTemplate.update(sql, partner.getName(), partner.getLocation(), partner.getNo());
 		return rows;
 	}
 
@@ -58,18 +59,23 @@ public class PartnerDao {
 	}
 
 	public List<Partner> selectByPage(int pageNo, int rowsPerPage, String kinds) {
-		System.out.println("pageNo: " + pageNo);
-		System.out.println("rowsPerPage: " + rowsPerPage);
-		System.out.println("kinds: " + kinds);
-		
 		String sql = "";
 		sql += "select partner_no, partner_name, partner_location, partner_kind ";
 		sql += "from final_partners ";
-		sql += "where partner_kind like ? ";
+		if(!kinds.equals("all")) {
+			sql += "where partner_kind like ? ";
+		}
 		sql += "order by partner_no desc ";
 		sql += "limit ?,?";
 
-		List<Partner> list = jdbcTemplate.query(sql, new Object[] { "%"+kinds+"%", (pageNo - 1) * rowsPerPage, rowsPerPage },
+		Object[] values;
+		if(kinds.equals("all")) {
+			values = new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage };
+		} else {
+			values = new Object[] { "%"+kinds+"%", (pageNo - 1) * rowsPerPage, rowsPerPage };
+		}
+		
+		List<Partner> list = jdbcTemplate.query(sql, values,
 				new RowMapper<Partner>() {
 					@Override
 					public Partner mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -96,6 +102,10 @@ public class PartnerDao {
 				partner.setTel(rs.getString("partner_tel"));
 				partner.setLocation(rs.getString("partner_location"));
 				partner.setContent(rs.getString("partner_content"));
+				partner.setKind(rs.getString("partner_kind"));
+				partner.setOriginalFileName(rs.getString("partner_original_file_name"));
+				partner.setFilesystemName(rs.getString("partner_filesystem_name"));
+				partner.setContentType(rs.getString("partner_content_type"));
 				return partner;
 			}
 		});

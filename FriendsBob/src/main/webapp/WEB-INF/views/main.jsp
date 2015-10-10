@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -12,6 +12,7 @@
 			#top{
 				min-width:940px;
 				display:flex;
+				min-height: 
 			}
 			#logo{
 				text-align:center;
@@ -61,6 +62,7 @@
 			}
 			#content{
 				display:flex;
+				height:100%;
 			}
 			#content1{
 				text-align:center;
@@ -77,39 +79,42 @@
 			#side1{
 				height:150px;
 			}
-			#side2{
-	
+			#frame{
+				width:100%;
+				height:83vh;
 			}
 		</style>
 	</head>
 	<body>
-	<div id="top">
-			<div id="logo">
-				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
-			</div>
-			<div id="talk">
-				<table id="menu">
-					<tr>
-						<td class="line">마이페이지</td>
-						<td class="line">약속목록</td>
-						<td class="line">맛집정보</td>
-						<td class="line">후기</td>
-						<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="partnerMain">제휴사</a></td>
-					</tr>
-				</table>
-			</div>
-			<div id="join">
-				<button class="i">밥친구닷컴 나가기</button>
-			</div>
-		</div><hr>
-		<div id="content">
-			<iframe name="partnerMain" width="100%" height="100%">
-			</iframe>
-			<hr>
-			<div id="content3">
-				<div id="side1">센
-				</div><hr>
-				<div id="side2">
+	<div id="all">
+		<div id="top">
+				<div id="logo">
+					<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
+				</div>
+				<div id="talk">
+					<table id="menu">
+						<tr>
+							<td class="line">마이페이지</td>
+							<td class="line">약속목록</td>
+							<td class="line">맛집정보</td>
+							<td class="line"><a href="Review/reviewMain" style="text-decoration:none;" target="main">모임후기</a></td>
+							<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="main">제휴사</a></td>
+						</tr>
+					</table>
+				</div>
+				<div id="join">
+					<button class="i">밥친구닷컴 나가기</button>
+				</div>
+			</div><hr>
+			<div id="content">
+				<iframe id="frame" name="main">
+				</iframe>
+				<hr>
+				<div id="content3">
+					<div id="side1">센
+					</div><hr>
+					<div id="side2">
+					</div>
 				</div>
 			</div>
 		</div>

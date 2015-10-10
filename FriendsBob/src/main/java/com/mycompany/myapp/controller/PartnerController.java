@@ -26,9 +26,9 @@ public class PartnerController {
 	@Autowired
 	private PartnerService partnerService;
 	
-	@RequestMapping(value="/Parter/write",method=RequestMethod.GET)
+	@RequestMapping(value="/Partner/write",method=RequestMethod.GET)
 	public String writeForm(){
-		return "Partner/writeFrom";
+		return "Partner/partnerWriteForm";
 	}
 	
 	@RequestMapping(value="/Partner/write",method=RequestMethod.POST)
@@ -50,13 +50,23 @@ public class PartnerController {
 			partner.setContentType(contentType);
 		}
 		partnerService.add(partner);
-		return "redirect:/Partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 	
 	@RequestMapping("Partner/partnerList")
-	public String list(String kind,
-			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
-		logger.info("pageNo: "+pageNo);
+	public String list(
+			String kind,
+			@RequestParam(value="pageNo",defaultValue="0") int pageNo, 
+			Model model, 
+			HttpSession session){
+		System.out.println("kind: "+kind);
+		System.out.println("pageNo: "+pageNo);
+	    if(pageNo == 0) {
+	    	session.setAttribute("kind", kind);
+	    	pageNo=1;
+	    } else {
+	    	kind = (String) session.getAttribute("kind");
+	    }
 		String kinds = null;
 		if(kind.equals("k")) {
 			kinds="한식";
@@ -68,6 +78,8 @@ public class PartnerController {
 			kinds="중식";
 		}else if(kind.equals("b")){
 			kinds="분식";
+		}else if(kind.equals("all")){
+			kinds="all";
 		}
 		
 		session.setAttribute("pageNo", pageNo);
@@ -96,6 +108,7 @@ public class PartnerController {
 		model.addAttribute("startPageNo",startPageNo);
 		model.addAttribute("endPageNo",endPageNo);
 		model.addAttribute("pageNo",pageNo);
+		model.addAttribute("kind",kind);
 		model.addAttribute("list",list);
 		
 		return "Partner/partnerList";	
@@ -106,29 +119,29 @@ public class PartnerController {
 		return "Partner/partnerMain";
 	}
 	
-	@RequestMapping("/partner/partnerDetail")
+	@RequestMapping("/Partner/partnerDetail")
 	public String detail(int partnerNo, Model model){
 		Partner partner=partnerService.getPartner(partnerNo);
 		model.addAttribute("partner",partner);
-		return "partner/partnerDetail";
+		return "Partner/partnerDetail";
 	}
 	
-	@RequestMapping("/partner/partnerUpdate")
+	@RequestMapping("/Partner/partnerUpdate")
 	public String partnerUpdate(@RequestParam("pno")int partnerNo, Model model){
 		Partner partner=partnerService.getPartner(partnerNo);
 		model.addAttribute("partner",partner);
-		return "partner/partnerUpdate";
+		return "Partner/partnerUpdate";
 	}
 	
-	@RequestMapping("/partner/update")
+	@RequestMapping("/Partner/update")
 	public String update(Partner partner){
 		partnerService.modify(partner);
-		return "redirect:/partner/partnerDetail?partnerNo="+partner.getNo();
+		return "redirect:/Partner/partnerDetail?partnerNo="+partner.getNo();
 	}
 	
-	@RequestMapping("/partner/delete/{partnerNo}")
+	@RequestMapping("/Partner/partnerDelete/{partnerNo}")
 	public String delete(@PathVariable int partnerNo){
 		partnerService.remove(partnerNo);
-		return "redirect:/partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 }

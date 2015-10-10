@@ -5,15 +5,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycompany.myapp.dto.JoinValidator;
+import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.LoginValidator;
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.MemberValidator;
 import com.mycompany.myapp.service.MemberService;
-
-
 
 @Controller
 public class MemberController {
@@ -21,71 +20,87 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("member/joinForm")
-	public String joinForm() {
-
+	@RequestMapping(value = "/Member/join", method = RequestMethod.GET)
+	public String joinForm(Member member) {
 		return "Member/joinForm";
 	}
-	
-	@RequestMapping("member/join")
-	public String join(Member member, BindingResult bindingResult, Errors errors) {
+
+	@RequestMapping(value = "/Member/join", method = RequestMethod.POST)
+	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
-			// 가입 가능 코드
-			new JoinValidator().validate(member, bindingResult);
+			new MemberValidator().validate(member, bindingResult);
+
 			if (bindingResult.hasErrors()) {
 				return "Member/joinForm";
 			} else {
+				memberService.join(member);
 				return "redirect:/Member/login";
 			}
 		} else {
-			errors.rejectValue("id", "usedId", "존재하는 id 입니다.");
+			bindingResult.rejectValue("id", "usedId", "존재하는 id 입니다.");
 			return "Member/joinForm";
 		}
 	}
 
-	@RequestMapping("member/loginForm")
-	public String loginForm() {
+	@RequestMapping(value = "/Member/login", method = RequestMethod.GET)
+	public String loginForm(Login login) {
 		return "Member/loginForm";
 	}
 
-	@RequestMapping("member/login")
-	public String login(Member member, BindingResult bindingResult, HttpSession session) {
-		new LoginValidator().validate(member, bindingResult);
-		memberService.login(member);
+	@RequestMapping(value = "/Member/login", method = RequestMethod.POST)
+	public String login(Login login, BindingResult bindingResult, HttpSession session) {
+
+		new LoginValidator().validate(login, bindingResult);
 		if (bindingResult.hasErrors()) {
 			return "Member/loginForm";
 		} else {
-			session.setAttribute("id",member.getId());
-			session.setAttribute("login", true);
-			return "redirect:/Member/main";
+			String url ="";
+			String state = memberService.login(login);
+			switch (state) {
+			case "noId":
+				bindingResult.rejectValue("id", "usedId", "존재하지 않는 아이디입니다.");
+				url = "Member/loginForm";
+				break;
+			case "correct":
+				session.setAttribute("id", login.getId());
+				session.setAttribute("login", true);
+				url = "redirect:/main";
+				break;
+			case "wrongPw":
+				bindingResult.rejectValue("id", "usedId", "패스워드가 틀렸습니다.");
+				url = "Member/loginForm";
+				break;
+			}
+			return url;
 		}
 	}
 
-	@RequestMapping("member/dropOutForm")
+	@RequestMapping("Member/dropOutForm")
 	public String dropOutForm() {
 		return "Member/dropOutForm";
 	}
 
-	@RequestMapping("member/dropOut")
+	@RequestMapping("Member/dropOut")
 	public String dropOut(String id) {
 		memberService.dropOut(id);
 		return "redirect:/Member/home";// 리다이렉트
 	}
 
-	@RequestMapping("member/logOut")
+	@RequestMapping("Member/logOut")
 	public String logOut(HttpSession session) {
 		session.removeAttribute("id");
 		session.setAttribute("login", false);
 		return "redirect:/Member/home";// 리다이렉트
 	}
-	
-	@RequestMapping("member/findPwForm")
+
+	@RequestMapping("Member/findPwForm")
 	public String findPw(String id) {
-		if(memberService.findPw(id)==null){
-			//존재하는 아이디가 없는 경우 코드해야함
-		}else{
-			//존재하는 경우 코드해야함
-		};
+		if (memberService.findPw(id) == null) {
+			// 존재하는 아이디가 없는 경우
+		} else {
+			// 존재하는 경우
+		}
+		;
 		return "Member/findPwForm";
 	}
 }

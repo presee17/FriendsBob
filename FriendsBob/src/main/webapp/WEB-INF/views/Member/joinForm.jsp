@@ -6,23 +6,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<style type="text/css">
-			body {
-				font-size: small;
-				color:white;
-			}
-		</style>
-		
-		<script language='JavaScript'> 
-		window.resizeTo(500, 700);
-		window.moveTo(0, 0);
-		</script>
 	</head>
 	
 	<body>
+		
 		<h4>회원가입</h4>
 		<hr/>
-		<form:form commandName="Join">
+		<form:form commandName="member">
 			아이디:
 			<form:input path="id" size="20"/>
 			<form:errors path="id"/> <br/>

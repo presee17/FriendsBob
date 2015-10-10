@@ -54,7 +54,7 @@
 			
 			#pager a {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}
 			
 			#pager a:hover {
@@ -72,7 +72,7 @@
 			
 			.title {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}	
 			.title:hover {
 				color: orange;
@@ -92,7 +92,7 @@
 			<c:forEach var="review" items="${list}">
 				<tr>
 					<td>${reivew.reviewNo}</td>
-					<td><a class="title" href="reviewDetail?boardNo=${review.reviewNo}">${review.reivewTitle}</a></td>
+					<td><a class="title" href="reviewDetail?reviewNo=${review.reviewNo}">${review.reviewTitle}</a></td>
 					<td>${review.reviewWriter}</td>
 					<td>${review.reviewDate}</td>
 				</tr>
@@ -119,7 +119,7 @@
 		</div>		
 		
 		<div id="buttonGroup">
-			<a href="Review/write">글쓰기</a>
+			<a href="write">글쓰기</a>
 		</div>
 	</body>
 </html>

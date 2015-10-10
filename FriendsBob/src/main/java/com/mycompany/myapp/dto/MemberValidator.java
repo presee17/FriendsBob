@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class JoinValidator implements Validator{
+public class MemberValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -13,8 +13,7 @@ public class JoinValidator implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		Member login=(Member) target;
-		String memberId=login.getId();
+		Member member=(Member) target;
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id","required","필수 항목입니다.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password","required","필수 항목입니다.");
@@ -22,8 +21,8 @@ public class JoinValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address2","required","필수 항목입니다.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nick","required","필수 항목입니다.");
 		
-		if(login.getPassword().length()<4){
-			errors.rejectValue("password", "minlength", new Object[]{6},"최소 6자리 이상 입력 해야 합니다.");
+		if(member.getPassword().length()<6){
+			errors.rejectValue("password", "minlength", new Object[]{4},"최소 6자리 이상 입력");
 		}
 	}
 }

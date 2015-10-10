@@ -79,6 +79,20 @@
 				color: white;
 			}
 		</style>
+
+		
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+    	<script type="application/javascript">
+    	
+    	function clickJBtn() {
+    		window.open("Member/join","join","width=400,height=600");
+ 		}
+    	
+    	function clickLBtn() {
+    		window.open("Member/login","login","width=400,height=600");
+ 		}
+    	
+	</script> 
 	</head>
 	<body>
 		<div id="top">
@@ -90,8 +104,8 @@
 				<div class="middle">함께 먹어요...♥</div>
 			</div>
 			<div id="join">
-				<button class="i">밥친구닷컴 들어가기</button>
-				<button class="i">회원가입</button>
+				<button class="i" id="lBtn" onclick="clickLBtn();">로그인</button>
+				<button class="i" id="jBtn" onclick="clickJBtn();">회원가입</button>
 			</div>
 		</div><hr>
 		<div id="main">

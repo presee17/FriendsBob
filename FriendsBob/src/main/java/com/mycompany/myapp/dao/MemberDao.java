@@ -19,22 +19,22 @@ import com.mycompany.myapp.dto.Member;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MemberDao {
+public class MemberDao {  
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public String insert(Member member) {
-		String sql = "insert into final_members values(?,?,?,?,?,?)";
+	public String insert(Member member) {  
+		String sql = "insert into final_members values(?,?,?,?,?,0,0,0)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, member.getId());
-				pstmt.setString(3, member.getPassword());
-				pstmt.setString(4, member.getAddress1());
-				pstmt.setString(5, member.getAddress2());
-				pstmt.setString(6, member.getNick());
+				pstmt.setString(2, member.getPassword());
+				pstmt.setString(3, member.getAddress1());
+				pstmt.setString(4, member.getAddress2());
+				pstmt.setString(5, member.getNick());
 				return pstmt;
 			}
 		});
@@ -54,15 +54,13 @@ public class MemberDao {
 			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Member member = new Member();
 				member.setId(rs.getString("member_id"));
-				member.setPassword(rs.getString("member_password"));
+				member.setPassword(rs.getString("member_pwd"));
 				member.setAddress1(rs.getString("member_address1"));
 				member.setAddress2(rs.getString("member_address2"));
 				member.setNick(rs.getString("member_nick"));
 				member.setGrade(rs.getInt("member_grade"));
 				member.setPoint(rs.getInt("member_point"));
 				member.setRetire(rs.getString("member_retire"));
-				member.setGrade(rs.getInt("member_warning"));
-				member.setAccusation(rs.getString("member_accusation"));
 				return member;
 			}
 		});
@@ -80,15 +78,13 @@ public class MemberDao {
 			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Member member = new Member();
 				member.setId(rs.getString("member_id"));
-				member.setPassword(rs.getString("member_password"));
+				member.setPassword(rs.getString("member_pwd"));
 				member.setAddress1(rs.getString("member_address1"));
 				member.setAddress2(rs.getString("member_address2"));
 				member.setNick(rs.getString("member_nick"));
 				member.setGrade(rs.getInt("member_grade"));
 				member.setPoint(rs.getInt("member_point"));
 				member.setRetire(rs.getString("member_retire"));
-				member.setGrade(rs.getInt("member_warning"));
-				member.setAccusation(rs.getString("member_accusation"));
 				return member;
 			}
 		});

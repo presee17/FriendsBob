@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dao.MemberDao;
+import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.Member;
 
 @Component
@@ -13,11 +14,11 @@ public class MemberService {
 	private MemberDao memberDao;
 
 	public void Memberlist() {// 운영자가 볼 수 있는 멤버의 리스트
-
 	}
 
 	public boolean joinCheck(Member member) {// 회원 가입
 		boolean joinOk;
+		System.out.println(member.getId());
 		if (memberDao.selectById(member.getId()) == null) {
 			joinOk = true;// 가입 가능
 		} else {
@@ -35,12 +36,12 @@ public class MemberService {
 		memberDao.delete(id);
 	}
 
-	public String login(Member member) {// 회원 로그인
+	public String login(Login login) {// 회원 로그인
 		String state = "";
-		if (memberDao.selectById(member.getId()) == null) {
+		if (memberDao.selectById(login.getId()) == null) {
 			state = "noId";
 		} else {
-			if (memberDao.selectById(member.getId()).getPassword().equals(member.getPassword())) {
+			if (memberDao.selectById(login.getId()).getPassword().equals(login.getPassword())) {
 				state = "correct";
 			} else {
 				state = "wrongPw";
