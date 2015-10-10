@@ -5,8 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.LoginValidator;
@@ -22,12 +22,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("Member/joinForm")
+	@RequestMapping(value="/Member/join",method=RequestMethod.GET)
 	public String joinForm(Member member) {
 		return "Member/joinForm";
 	}
 	
-	@RequestMapping("Member/join")
+	@RequestMapping(value="/Member/join",method=RequestMethod.POST)
 	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
 			new MemberValidator().validate(member, bindingResult);

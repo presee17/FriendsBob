@@ -92,7 +92,7 @@
 			<c:forEach var="review" items="${list}">
 				<tr>
 					<td>${reivew.reviewNo}</td>
-					<td><a class="title" href="reviewDetail?boardNo=${review.reviewNo}">${review.reivewTitle}</a></td>
+					<td><a class="title" href="reviewDetail?reviewNo=${review.reviewNo}">${review.reivewTitle}</a></td>
 					<td>${review.reviewWriter}</td>
 					<td>${review.reviewDate}</td>
 				</tr>

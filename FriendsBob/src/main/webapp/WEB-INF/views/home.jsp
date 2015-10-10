@@ -85,11 +85,11 @@
     	<script type="application/javascript">
     	
     	function clickJBtn() {
-    		window.open("Member/joinForm","join","width=400,height=600");
+    		window.open("Member/join","join","width=400,height=600");
  		}
     	
     	function clickLBtn() {
-    		window.open("Member/loginForm","login","width=400,height=600");
+    		window.open("Member/login","login","width=400,height=600");
  		}
     	
 	</script> 
