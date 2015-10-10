@@ -36,17 +36,9 @@ public class ReviewController {
 			Member member = new Member();
 			member.setId("admin");
 			member.setNick("admin");
-			System.out.println(review.getReviewTitle());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(review.getReviewContent());
-			System.out.println(member.getId());
-			//reviewService.add(review,member);
-			System.out.println(review.getReviewTitle());
+
+			reviewService.add(review,member);
+			
 			return "redirect:/Review/reviewList";
 		}
 		

@@ -34,11 +34,11 @@ public class ReviewDao {
 				PreparedStatement pstmt = conn.prepareStatement(sql, new String[]{"review_no"});
 				pstmt.setString(1, review.getReviewTitle());
 				pstmt.setString(2, review.getReviewContent());
-				//pstmt.setInt(3, review.getGrade());
+				pstmt.setInt(3, review.getGrade());
 				pstmt.setString(4, member.getNick());
-				//pstmt.setInt(5, review.getMeetingNo());
+				pstmt.setInt(5, review.getMeetingNo());
 				
-				return null;
+				return pstmt;
 			}
 			
 		},keyHolder);
