@@ -13,8 +13,9 @@
 				font-size: small;
 				color: black;
 			}
-			table{
-				width="100%";
+			table {
+				width: 100%;
+				background-color:white;
 				
 			}
 			

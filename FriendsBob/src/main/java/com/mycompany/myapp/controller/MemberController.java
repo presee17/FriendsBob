@@ -54,20 +54,24 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 			return "Member/loginForm";
 		} else {
+			String url ="";
 			String state = memberService.login(login);
 			switch (state) {
 			case "noId":
 				bindingResult.rejectValue("id", "usedId", "존재하지 않는 아이디입니다.");
+				url = "Member/loginForm";
 				break;
 			case "correct":
 				session.setAttribute("id", login.getId());
 				session.setAttribute("login", true);
+				url = "redirect:/main";
 				break;
 			case "wrongPw":
 				bindingResult.rejectValue("id", "usedId", "패스워드가 틀렸습니다.");
+				url = "Member/loginForm";
 				break;
 			}
-			return "redirect:/Member/main";
+			return url;
 		}
 	}
 
