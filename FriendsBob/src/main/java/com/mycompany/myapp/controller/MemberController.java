@@ -34,7 +34,7 @@ public class MemberController {
 				return "Member/joinForm";
 			} else {
 				memberService.join(member);
-				return "redirect:/Member/loginForm";
+				return "redirect:/Member/login";
 			}
 		} else {
 			bindingResult.rejectValue("id", "usedId", "존재하는 id 입니다.");
