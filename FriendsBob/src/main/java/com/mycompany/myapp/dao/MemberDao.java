@@ -19,7 +19,7 @@ import com.mycompany.myapp.dto.Member;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MemberDao { 
+public class MemberDao {  
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
