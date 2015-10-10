@@ -6,7 +6,7 @@
 		<title>밥친구닷컴</title>
 		<style type="text/css">
 			body{
-				overflow:hidden;
+				
 			}
 			#all{
 				display: flex;
@@ -17,6 +17,9 @@
 			}
 			#list{
 				flex:1;
+			}
+			#frame{
+				height:96vh;
 			}
 		</style>
 	</head>
@@ -32,7 +35,7 @@
 					<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList">분식</a><br/>
 				</form>
 			</div>
-			<iframe name="partnerList" width="100%" height="100%">
+			<iframe id="frame" name="partnerList" width="100%">
 			
 			</iframe>
 		</div>
