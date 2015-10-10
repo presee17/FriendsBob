@@ -94,7 +94,7 @@
 						<td class="line">약속목록</td>
 						<td class="line">맛집정보</td>
 						<td class="line">후기</td>
-						<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="partnerMain">제휴사</a></td>
+						<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="main">제휴사</a></td>
 					</tr>
 				</table>
 			</div>
@@ -103,7 +103,7 @@
 			</div>
 		</div><hr>
 		<div id="content">
-			<iframe name="partnerMain" width="100%" height="100%">
+			<iframe name="main" width="100%" height="100%">
 			</iframe>
 			<hr>
 			<div id="content3">
