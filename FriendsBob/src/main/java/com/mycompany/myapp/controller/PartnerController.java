@@ -54,9 +54,19 @@ public class PartnerController {
 	}
 	
 	@RequestMapping("Partner/partnerList")
-	public String list(String kind,
-			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
-		logger.info("pageNo: "+pageNo);
+	public String list(
+			String kind,
+			@RequestParam(value="pageNo",defaultValue="0") int pageNo, 
+			Model model, 
+			HttpSession session){
+		System.out.println("kind: "+kind);
+		System.out.println("pageNo: "+pageNo);
+	    if(pageNo == 0) {
+	    	session.setAttribute("kind", kind);
+	    	pageNo=1;
+	    } else {
+	    	kind = (String) session.getAttribute("kind");
+	    }
 		String kinds = null;
 		if(kind.equals("k")) {
 			kinds="한식";
