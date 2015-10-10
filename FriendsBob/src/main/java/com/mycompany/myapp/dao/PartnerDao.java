@@ -47,8 +47,8 @@ public class PartnerDao {
 	}
 
 	public int update(Partner partner) {
-		String sql = "update final_partners set partner_name=?, partner_content=? where partner_no=?";
-		int rows = jdbcTemplate.update(sql, partner.getName(), partner.getContent(), partner.getNo());
+		String sql = "update final_partners set partner_name=?, partner_location=? where partner_no=?";
+		int rows = jdbcTemplate.update(sql, partner.getName(), partner.getLocation(), partner.getNo());
 		return rows;
 	}
 

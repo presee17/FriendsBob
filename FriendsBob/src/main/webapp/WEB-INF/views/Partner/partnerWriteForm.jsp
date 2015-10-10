@@ -26,11 +26,11 @@
 					<td>분류</td>
 					<td>
 						<select name="kind">
-						  <option value="k">한식</option>
-						  <option value="w">양식</option>
-						  <option value="j">일식</option>
-						  <option value="c">중식</option>
-						  <option value="b">분식</option>
+						  <option value="한식">한식</option>
+						  <option value="양식">양식</option>
+						  <option value="일식">일식</option>
+						  <option value="중식">중식</option>
+						  <option value="분식">분식</option>
 						</select>
 					</td>
 				</tr>

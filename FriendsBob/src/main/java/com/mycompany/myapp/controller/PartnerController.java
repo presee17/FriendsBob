@@ -50,7 +50,7 @@ public class PartnerController {
 			partner.setContentType(contentType);
 		}
 		partnerService.add(partner);
-		return "redirect:/Partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 	
 	@RequestMapping("Partner/partnerList")
@@ -116,22 +116,22 @@ public class PartnerController {
 		return "Partner/partnerDetail";
 	}
 	
-	@RequestMapping("/partner/partnerUpdate")
+	@RequestMapping("/Partner/partnerUpdate")
 	public String partnerUpdate(@RequestParam("pno")int partnerNo, Model model){
 		Partner partner=partnerService.getPartner(partnerNo);
 		model.addAttribute("partner",partner);
-		return "partner/partnerUpdate";
+		return "Partner/partnerUpdate";
 	}
 	
-	@RequestMapping("/partner/update")
+	@RequestMapping("/Partner/update")
 	public String update(Partner partner){
 		partnerService.modify(partner);
-		return "redirect:/partner/partnerDetail?partnerNo="+partner.getNo();
+		return "redirect:/Partner/partnerDetail?partnerNo="+partner.getNo();
 	}
 	
 	@RequestMapping("/Partner/partnerDelete/{partnerNo}")
 	public String delete(@PathVariable int partnerNo){
 		partnerService.remove(partnerNo);
-		return "redirect:/Partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 }

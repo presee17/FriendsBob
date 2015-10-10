@@ -99,7 +99,6 @@
 			
 			<div id="part1_2">
 				<img src="${pageContext.request.contextPath}/resources/uploadfiles/${partner.filesystemName}" width="100px" height="100px"/>
-				<button>다운로드</button>
 			</div>
 		</div>
 		
@@ -109,7 +108,7 @@
 		</div>
 		
 		<div id="buttonGroup">
-			<a href="partnerList?pageNo=${pageNo}">목록</a>
+			<a href="partnerList?&&pageNo=${pageNo}">목록</a>
 			<a href="partnerUpdate?pno=${partner.no}">수정</a>
 			<a href="partnerDelete/${partner.no}">삭제</a>
 		</div>		

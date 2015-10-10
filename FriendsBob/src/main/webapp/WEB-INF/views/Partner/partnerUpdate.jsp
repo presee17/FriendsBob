@@ -9,7 +9,7 @@
 			body {
 				font-family: "돋움";
 				font-size: 12px;
-				color: white;
+				color: black;
 			}
 			span {
 				display: inline-block;
@@ -69,13 +69,13 @@
 				console.log(modifyForm);
 				
 				//var title = document.querySelector("#title");
-				var title = document.modifyForm.title;
-				console.log(title);
+				var name = document.modifyForm.name;
+			
 				
-				var content = document.modifyForm.content;
+				var location = document.modifyForm.location;
 				
-				if(title.value == "" || content.value == "") {
-					alert("제목과 내용은 있어야 합니다.");
+				if(name.value == "" || location.value == "") {
+					alert("상호명과 위치는 있어야 합니다.");
 					return;
 				}
  
@@ -86,30 +86,30 @@
 	</head>
 	
 	<body>
-		<h4>게시물 보기</h4>
+		<h4>제휴사 수정</h4>
 		<form id="modifyForm" name="modifyForm" method="post" action="update">		
 			<span class="title">번호:</span> 
-			<span class="content">${board.no}</span> 
-			<input type="hidden" name="no" value="${board.no}"/><br/>
+			<span class="content">${partner.no}</span>
+			<input type="hidden" name="no" value="${partner.no}"/><br/>
 			
-			<span class="title">제목:</span> 
-			<input id="title" type="text" name="title" value="${board.title}"/> <br/>
+			<span class="title">상호명:</span> 
+			<input id="title" type="text" name="name" value="${partner.name}"/> <br/>
 			
-			<span class="title">글쓴이:</span> 
-			<span class="content">${board.writer}</span> <br/>
+			<span class="title">위치:</span> 
+			<input id="title" type="text" name="location" value="${partner.location}"/> <br/>
 			
-			<span class="title">날짜:</span> 
-			<span class="content">${board.date}</span> <br/>
+			<span class="title">전화번호:</span> 
+			<span class="content">${partner.tel}</span> <br/>
 			
-			<span class="title">조회수:</span> 
-			<span class="content">${board.hitcount}</span> <br/>
+			<span class="title">분류:</span> 
+			<span class="content">${partner.kind}</span> <br/>
 			
 			<span class="title">내용:</span> <br/>
-			<textarea name="content" cols="80" rows="5">${board.content}</textarea>
+			<span class="content">${partner.content}</span> <br/>
 		</form>
 		<div id="buttonGroup">
 			<a href="javascript:sendData()">수정</a>
-			<a href="detail?boardNo=${board.no}">취소</a>
+			<a href="partnerDetail?partnerNo=${partner.no}">취소</a>
 		</div>		
 	</body>
 </html>
