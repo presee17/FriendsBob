@@ -58,10 +58,6 @@ public class PartnerDao {
 	}
 
 	public List<Partner> selectByPage(int pageNo, int rowsPerPage, String kinds) {
-		System.out.println("pageNo: " + pageNo);
-		System.out.println("rowsPerPage: " + rowsPerPage);
-		System.out.println("kinds: " + kinds);
-		
 		String sql = "";
 		sql += "select partner_no, partner_name, partner_location, partner_kind ";
 		sql += "from final_partners ";
@@ -96,6 +92,9 @@ public class PartnerDao {
 				partner.setTel(rs.getString("partner_tel"));
 				partner.setLocation(rs.getString("partner_location"));
 				partner.setContent(rs.getString("partner_content"));
+				partner.setOriginalFileName(rs.getString("partner_original_file_name"));
+				partner.setFilesystemName(rs.getString("partner_filesystem_name"));
+				partner.setContentType(rs.getString("partner_content_type"));
 				return partner;
 			}
 		});

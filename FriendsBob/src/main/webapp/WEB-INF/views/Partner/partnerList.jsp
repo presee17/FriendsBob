@@ -77,7 +77,7 @@
 			<c:forEach var="partner" items="${list}">
 				<tr>
 					<td class="data">${partner.no}</td>
-					<td class="data"><a class="name" href="detail?PartnerNo=${partner.no}">${partner.name}</a></td>
+					<td class="data"><a class="name" href="partnerDetail?PartnerNo=${partner.no}">${partner.name}</a></td>
 					<td class="data">${partner.location}</td>
 					<td class="data">${partner.kind}</td>
 				</tr>

@@ -106,11 +106,11 @@ public class PartnerController {
 		return "Partner/partnerMain";
 	}
 	
-	@RequestMapping("/partner/partnerDetail")
+	@RequestMapping("/Partner/partnerDetail")
 	public String detail(int partnerNo, Model model){
 		Partner partner=partnerService.getPartner(partnerNo);
 		model.addAttribute("partner",partner);
-		return "partner/partnerDetail";
+		return "Partner/partnerDetail";
 	}
 	
 	@RequestMapping("/partner/partnerUpdate")
