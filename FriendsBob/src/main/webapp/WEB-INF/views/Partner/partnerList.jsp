@@ -7,7 +7,7 @@
 		<title>밥친구닷컴</title>
 		<style type="text/css">
 			body{
-				overflow:hidden;
+				
 			}
 			*{
 				

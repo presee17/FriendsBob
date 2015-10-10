@@ -26,9 +26,9 @@ public class PartnerController {
 	@Autowired
 	private PartnerService partnerService;
 	
-	@RequestMapping(value="/Parter/write",method=RequestMethod.GET)
+	@RequestMapping(value="/Partner/write",method=RequestMethod.GET)
 	public String writeForm(){
-		return "Partner/writeFrom";
+		return "Partner/partnerWriteForm";
 	}
 	
 	@RequestMapping(value="/Partner/write",method=RequestMethod.POST)
