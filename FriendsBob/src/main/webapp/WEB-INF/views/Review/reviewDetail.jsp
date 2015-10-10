@@ -82,26 +82,26 @@
 				<span class="content">${reivew.reviewNo}</span> <br/>
 				
 				<span class="title">제목:</span> 
-				<span class="content">${review.reivewTitle}</span> <br/>
+				<span class="content">${review.reviewTitle}</span> <br/>
 				
 				<span class="title">글쓴이:</span> 
 				<span class="content">${review.reviewWriter}</span> <br/>
 				
 				<span class="title">날짜:</span> 
-				<span class="content">${review.reivewDate}</span> <br/>
+				<span class="content">${review.reviewDate}</span> <br/>
 			</div>
 
 		</div>
 		
 		<div id="part2">
 			<span class="title">내용:</span> <br/>
-			<pre>${review.reviewContent}</pre>
+			${review.reviewContent}
 		</div>
 		
 		<div id="buttonGroup">
 			<a href="reviewList?pageNo=${pageNo}">목록</a>
 			<a href="reviewUpdateForm?rno=${review.reviewNo}">수정</a>
-			<a href="delete/${review.reivewNO}">삭제</a>
+			<a href="delete/${review.reviewNo}">삭제</a>
 		</div>		
 	</body>
 </html>

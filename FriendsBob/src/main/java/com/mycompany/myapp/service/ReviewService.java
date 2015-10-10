@@ -16,8 +16,8 @@ public class ReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
 	
-	public void add(Review review, Member member){
-		reviewDao.insert(review, member);
+	public void add(Review review, Member member, Meeting meeting){
+		reviewDao.insert(review, member,meeting);
 		
 	}
 	public List<Review> getPage(int pageNo, int rowsPerPage){
@@ -37,5 +37,12 @@ public class ReviewService {
 	public int getTotalReviewNo(){
 		int rows = reviewDao.selectCount();
 		return rows;
+	}
+	public boolean isWriter(int reviewNo,String loginId){
+		if(loginId==reviewDao.selectWriterByNo(reviewNo)){
+			return true;
+		}
+		return false;
+		
 	}
 }
