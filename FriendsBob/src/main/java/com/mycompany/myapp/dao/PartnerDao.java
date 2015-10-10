@@ -61,11 +61,20 @@ public class PartnerDao {
 		String sql = "";
 		sql += "select partner_no, partner_name, partner_location, partner_kind ";
 		sql += "from final_partners ";
-		sql += "where partner_kind like ? ";
+		if(!kinds.equals("all")) {
+			sql += "where partner_kind like ? ";
+		}
 		sql += "order by partner_no desc ";
 		sql += "limit ?,?";
 
-		List<Partner> list = jdbcTemplate.query(sql, new Object[] { "%"+kinds+"%", (pageNo - 1) * rowsPerPage, rowsPerPage },
+		Object[] values;
+		if(kinds.equals("all")) {
+			values = new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage };
+		} else {
+			values = new Object[] { "%"+kinds+"%", (pageNo - 1) * rowsPerPage, rowsPerPage };
+		}
+		
+		List<Partner> list = jdbcTemplate.query(sql, values,
 				new RowMapper<Partner>() {
 					@Override
 					public Partner mapRow(ResultSet rs, int rowNum) throws SQLException {

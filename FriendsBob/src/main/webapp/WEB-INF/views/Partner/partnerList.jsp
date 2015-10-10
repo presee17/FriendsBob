@@ -77,7 +77,7 @@
 			<c:forEach var="partner" items="${list}">
 				<tr>
 					<td class="data">${partner.no}</td>
-					<td class="data"><a class="name" href="partnerDetail?PartnerNo=${partner.no}">${partner.name}</a></td>
+					<td class="data"><a class="name" href="partnerDetail?partnerNo=${partner.no}">${partner.name}</a></td>
 					<td class="data">${partner.location}</td>
 					<td class="data">${partner.kind}</td>
 				</tr>
@@ -102,8 +102,10 @@
 			<a href="list?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>		
 		
-		<div id="buttonGroup">
-			<a href="write">제휴사 등록</a>
-		</div>
+		<c:if test="${kind=='all'}">
+			<div id="buttonGroup">
+				<a href="write">제휴사 등록</a>
+			</div>
+		</c:if>
 	</body>
 </html>

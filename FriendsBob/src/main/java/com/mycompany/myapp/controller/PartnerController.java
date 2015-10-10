@@ -68,6 +68,8 @@ public class PartnerController {
 			kinds="중식";
 		}else if(kind.equals("b")){
 			kinds="분식";
+		}else if(kind.equals("all")){
+			kinds="all";
 		}
 		
 		session.setAttribute("pageNo", pageNo);
@@ -96,6 +98,7 @@ public class PartnerController {
 		model.addAttribute("startPageNo",startPageNo);
 		model.addAttribute("endPageNo",endPageNo);
 		model.addAttribute("pageNo",pageNo);
+		model.addAttribute("kind",kind);
 		model.addAttribute("list",list);
 		
 		return "Partner/partnerList";	
