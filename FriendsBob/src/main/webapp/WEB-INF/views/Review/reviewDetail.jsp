@@ -97,11 +97,13 @@
 			<span class="title">내용:</span> <br/>
 			${review.reviewContent}
 		</div>
-		
+		<div id="part3">
+			
+		</div>
 		<div id="buttonGroup">
-			<a href="reviewList?pageNo=${pageNo}">목록</a>
-			<a href="reviewUpdateForm?rno=${review.reviewNo}">수정</a>
-			<a href="delete/${review.reviewNo}">삭제</a>
+			<input type="button" id="listButton" href="reviewList?pageNo=${pageNo}">목록</a>
+			<input type="button" id="modyfiButton" href="reviewUpdate?rno=${review.reviewNo}">수정</a>
+			<input type="button" id="deleteButton" href="delete/${review.reviewNo}">삭제</a>
 		</div>		
 	</body>
 </html>
