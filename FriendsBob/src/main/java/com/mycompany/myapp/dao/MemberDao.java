@@ -24,7 +24,7 @@ public class MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public String insert(Member member) { 
+	public String insert(Member member) {  
 		String sql = "insert into final_members values(?,?,?,?,?,0,0,0)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
