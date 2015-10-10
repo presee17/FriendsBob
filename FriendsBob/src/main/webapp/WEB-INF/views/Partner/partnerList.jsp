@@ -41,7 +41,7 @@
 			
 			#pager a {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}
 			
 			#pager a:hover {
@@ -54,13 +54,19 @@
 			}
 			
 			#pager a.pageNo.selected {
-				color: aqua;
+				color: red;
+			}
+			.data{
+				text-align: center;
+			}
+			.name{
+				text-decoration: none;
 			}
 		</style>
 	</head>
 	<body>
 		<h4>제휴사 목록</h4>
-		<table>
+		<table border="1">
 			<tr style="height:40px">
 				<th style="width:120px">제휴사번호</th>
 				<th style="width:200px">이름</th>
@@ -70,10 +76,10 @@
 		
 			<c:forEach var="partner" items="${list}">
 				<tr>
-					<td>${partner.no}</td>
-					<td><a class="name" href="detail?PartnerNo=${partner.no}">${partner.name}</a></td>
-					<td>${partner.location}</td>
-					<td>${partner.kind}</td>
+					<td class="data">${partner.no}</td>
+					<td class="data"><a class="name" href="detail?PartnerNo=${partner.no}">${partner.name}</a></td>
+					<td class="data">${partner.location}</td>
+					<td class="data">${partner.kind}</td>
 				</tr>
 			</c:forEach>
 		</table>
