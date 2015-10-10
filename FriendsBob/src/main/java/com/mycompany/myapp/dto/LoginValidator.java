@@ -17,9 +17,5 @@ public class LoginValidator implements Validator {
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id","required","필수 항목입니다.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password","required","필수 항목입니다.");
-		
-		if(login.getPassword().length()<6){
-			errors.rejectValue("memberPassword", "minlength", new Object[]{6},"최소 6자리 이상 입력");
-		}
 	}
 }
