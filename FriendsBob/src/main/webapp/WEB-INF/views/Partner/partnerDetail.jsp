@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -108,7 +109,23 @@
 		</div>
 		
 		<div id="buttonGroup">
-			<a href="partnerList?&&pageNo=${pageNo}">목록</a>
+			<a href="partnerList?kind=all&&pageNo=${pageNo}">전체목록</a>
+			<c:if test="${partner.kind=='한식'}">
+			<a href="partnerList?kind=k&&pageNo=${pageNo}">한식목록</a>
+			</c:if>
+			<c:if test="${partner.kind=='일식'}">
+			<a href="partnerList?kind=j&&pageNo=${pageNo}">일식목록</a>
+			</c:if>
+			<c:if test="${partner.kind=='양식'}">
+			<a href="partnerList?kind=w&&pageNo=${pageNo}">양식목록</a>
+			</c:if>
+			<c:if test="${partner.kind=='분식'}">
+			<a href="partnerList?kind=b&&pageNo=${pageNo}">분식목록</a>
+			</c:if>
+			<c:if test="${partner.kind=='중식'}">
+			<a href="partnerList?kind=c&&pageNo=${pageNo}">중식목록</a>
+			</c:if>
+			
 			<a href="partnerUpdate?pno=${partner.no}">수정</a>
 			<a href="partnerDelete/${partner.no}">삭제</a>
 		</div>		

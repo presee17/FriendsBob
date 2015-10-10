@@ -4,12 +4,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>밥친구닷컴</title>
+		<style type="text/css">
+			#buttonGroup {
+				margin: 10px;
+				text-align: center;
+			}
+			
+			#buttonGroup a {
+				display:inline-block;
+				width: 70px;
+				line-height: 30px;
+				text-decoration: none;
+				font-size: small;
+				color: white;
+				border: 1px solid darkgray;
+				background-color: gray;
+				font-weight: bold;
+			}
+			
+			#buttonGroup a:hover {
+				color: black;
+				background-color: lightgray;
+			}
+		</style>
 	</head>
 	
 	<body>
 		<h4>제휴사 등록</h4>
 		<form method="post" action="write" enctype="multipart/form-data">
-			<table border="1">
+			<table border="2" align="center">
 				<tr>
 					<td>상호명</td>
 					<td><input type="text" name="name"/></td>
@@ -51,5 +74,8 @@
 				</tr>
 			</table>
 		</form>
+		<div id="buttonGroup">
+			<a href="partnerList?kind=all&&pageNo=${pageNo}">뒤로가기</a>
+		</div>
 	</body>
 </html>
