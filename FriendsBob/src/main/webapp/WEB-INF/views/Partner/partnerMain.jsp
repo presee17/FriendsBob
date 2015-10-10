@@ -35,8 +35,7 @@
 					<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList">분식</a><br/>
 				</form>
 			</div>
-			<iframe id="frame" name="partnerList" width="100%">
-			
+			<iframe id="frame" name="partnerList" width="100%" src="partnerList?kind=all">
 			</iframe>
 		</div>
 	</body>

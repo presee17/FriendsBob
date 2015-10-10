@@ -35,13 +35,13 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea name="reviewContent" id="reviewContent" rows="5" cols="50"></textarea></td>
+					<td><textarea name="reviewContent" id="ir1" rows="5" cols="50"></textarea></td>
 				</tr>
 				
 				<tr>
 					<td colspan="2" style="text-align: center;">
 						<br/>
-						<input type="submit" value="글올리기"/>
+						<input type="button" onclick="submitContents(this)" value="글올리기"/>
 						<input type="reset" value="다시작성"/>					
 					</td>
 				</tr>
@@ -57,7 +57,7 @@
 			
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef: oEditors,
-				elPlaceHolder: "reviewContent",
+				elPlaceHolder: "ir1",
 				sSkinURI: "${pageContext.request.contextPath}/resources/smartedit/SmartEditor2Skin.html",	
 				htParams : {
 					bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -75,7 +75,7 @@
 				fCreator: "createSEditor2"
 			});
 			function submitContents(elClickedObj) {
-				oEditors.getById["reviewContent"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+				oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 				
 				// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 				
