@@ -14,7 +14,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import com.mycompany.myapp.dto.Meeting;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.Review;
 
@@ -35,9 +34,9 @@ public class ReviewDao {
 				PreparedStatement pstmt = conn.prepareStatement(sql, new String[]{"review_no"});
 				pstmt.setString(1, review.getReviewTitle());
 				pstmt.setString(2, review.getReviewContent());
-				pstmt.setInt(3, review.getGrade());
+				//pstmt.setInt(3, review.getGrade());
 				pstmt.setString(4, member.getNick());
-				pstmt.setInt(5, review.getMeetingNo());
+				//pstmt.setInt(5, review.getMeetingNo());
 				
 				return null;
 			}
