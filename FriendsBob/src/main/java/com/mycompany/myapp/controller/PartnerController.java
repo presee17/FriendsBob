@@ -126,7 +126,7 @@ public class PartnerController {
 		return "redirect:/partner/partnerDetail?partnerNo="+partner.getNo();
 	}
 	
-	@RequestMapping("/partner/delete/{partnerNo}")
+	@RequestMapping("/Partner/partnerDelete/{partnerNo}")
 	public String delete(@PathVariable int partnerNo){
 		partnerService.remove(partnerNo);
 		return "redirect:/partner/partnerList";
