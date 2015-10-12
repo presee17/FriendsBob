@@ -20,46 +20,36 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(value = "/Member/join", method = RequestMethod.GET)
-	public String joinForm(Member member) {
-		return "Member/joinForm";
-	}
-
-	@RequestMapping(value = "/Member/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
 			new MemberValidator().validate(member, bindingResult);
 
 			if (bindingResult.hasErrors()) {
-				return "Member/joinForm";
+				return "home";
 			} else {
 				memberService.join(member);
-				return "redirect:/Member/login";
+				return "redirect:home";
 			}
 		} else {
 			bindingResult.rejectValue("id", "usedId", "존재하는 id 입니다.");
-			return "Member/joinForm";
+			return "home";
 		}
 	}
 
-	@RequestMapping(value = "/Member/login", method = RequestMethod.GET)
-	public String loginForm(Login login) {
-		return "Member/loginForm";
-	}
-
-	@RequestMapping(value = "/Member/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Login login, BindingResult bindingResult, HttpSession session) {
 
 		new LoginValidator().validate(login, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "Member/loginForm";
+			return "home";
 		} else {
 			String url ="";
 			String state = memberService.login(login);
 			switch (state) {
 			case "noId":
 				bindingResult.rejectValue("id", "usedId", "존재하지 않는 아이디입니다.");
-				url = "Member/loginForm";
+				url = "home";
 				break;
 			case "correct":
 				session.setAttribute("id", login.getId());
@@ -68,7 +58,7 @@ public class MemberController {
 				break;
 			case "wrongPw":
 				bindingResult.rejectValue("id", "usedId", "패스워드가 틀렸습니다.");
-				url = "Member/loginForm";
+				url = "home";
 				break;
 			}
 			return url;

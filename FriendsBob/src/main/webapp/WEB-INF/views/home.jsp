@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE>
 <html>
@@ -79,22 +80,85 @@
 				color: white;
 			}
 		</style>
-
 		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/excite-bike/jquery-ui.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+ 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     	<script type="application/javascript">
     	
-    	function clickJBtn() {
-    		window.open("Member/join","join","width=400,height=600");
- 		}
+    	 $(function() {
+    		    $( "#ld" ).dialog({
+    		      autoOpen: false,
+    		      show: {
+    		        effect: "blind",
+    		        duration: 1000
+    		      },
+    		      hide: {
+    		        effect: "blind",
+    		        duration: 1000
+    		      }
+    		    });
+    		 
+    		    $( "#lBtn" ).click(function() {
+    		      $( "#ld" ).dialog( "open" );
+    		    });
+    		  });
     	
-    	function clickLBtn() {
-    		window.open("Member/login","login","width=400,height=600");
- 		}
-    	
+    	 $(function() {
+ 		    $( "#jd" ).dialog({
+ 		      autoOpen: false,
+ 		      show: {
+ 		        effect: "blind",
+ 		        duration: 1000
+ 		      },
+ 		      hide: {
+ 		        effect: "blind",
+ 		        duration: 1000
+ 		      }
+ 		    });
+ 		 
+ 		    $( "#jBtn" ).click(function() {
+ 		      $( "#jd" ).dialog( "open" );
+ 		    });
+ 		  });
+    	 
 	</script> 
-	</head>
 	<body>
+		<div id="ld" title="로그인">
+		<hr/>
+		<form:form commandName="login" action="login">
+			id:
+			<form:input path="id" size="20"/>
+			<form:errors path="id"/><br/>
+			password:
+			<form:password path="password" size="20"/>
+			<form:errors path="password"/><br/>
+			<input type="submit" value="로그인"/>
+		</form:form>
+		</div>
+		
+ 		<div id="jd" title="회원가입">
+		<hr/>
+		<form:form commandName="member" action="join">
+			아이디:
+			<form:input path="id" size="20"/>
+			<form:errors path="id"/> <br/>
+			비밀번호:
+			<form:password path="password" size="20"/>
+			<form:errors path="password"/> <br/>
+			관심 주소1:
+			<form:input path="address1" size="20"/>
+			<form:errors path="address1"/> <br/>
+			관심 주소2:
+			<form:input path="address2" size="20"/>
+			<form:errors path="address2"/> <br/>
+			닉네임:
+			<form:input path="nick" size="20"/>
+			<form:errors path="nick"/> <br/>
+			<input type="submit" value="회원가입"/>
+		</form:form>
+		</div>
+
 		<div id="top">
 			<div id="logo">
 				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
@@ -104,8 +168,8 @@
 				<div class="middle">함께 먹어요...♥</div>
 			</div>
 			<div id="join">
-				<button class="i" id="lBtn" onclick="clickLBtn();">로그인</button>
-				<button class="i" id="jBtn" onclick="clickJBtn();">회원가입</button>
+				<button class="i" id="lBtn">로그인</button>
+				<button class="i" id="jBtn">회원가입</button>
 			</div>
 		</div><hr>
 		<div id="main">

@@ -11,7 +11,7 @@
 	<body>
 		<h4>로그인</h4>
 		<hr/>
-		<form:form commandName="login">
+		<form:form commandName="login" >
 			id:
 			<form:input path="id" size="20"/>
 			<form:errors path="id"/><br/>
