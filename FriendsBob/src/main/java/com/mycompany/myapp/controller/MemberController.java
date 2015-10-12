@@ -39,7 +39,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Login login, BindingResult bindingResult, HttpSession session) {
-
+		
 		new LoginValidator().validate(login, bindingResult);
 		if (bindingResult.hasErrors()) {
 			return "home";
@@ -90,7 +90,6 @@ public class MemberController {
 		} else {
 			// 존재하는 경우
 		}
-		;
 		return "Member/findPwForm";
 	}
 }
