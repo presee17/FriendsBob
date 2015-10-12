@@ -52,7 +52,7 @@ public class MemberController {
 				url = "home";
 				break;
 			case "correct":
-				session.setAttribute("id", login.getId());
+				session.setAttribute("member", memberService.getObject(login.getId()));
 				session.setAttribute("login", true);
 				url = "redirect:/main";
 				break;
