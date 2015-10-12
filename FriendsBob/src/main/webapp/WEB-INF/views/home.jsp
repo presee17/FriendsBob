@@ -88,7 +88,7 @@
     	
     	 $(function() {
     		    $( "#ld" ).dialog({
-    		      autoOpen: true,
+    		      autoOpen: false,
     		      show: {
     		        effect: "blind",
     		        duration: 1000
