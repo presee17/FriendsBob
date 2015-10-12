@@ -118,10 +118,10 @@
 			
 		</div>
 		<div id="buttonGroup">
-			<input type="button" id="listButton" href="reviewList?pageNo=${pageNo}">목록</a>
+			<a href="reviewList?pageNo=${pageNo}">목록</a>
 			<c:if test="${isWriter}">
-				<input type="button" id="modyfiButton" href="reviewUpdate?rno=${review.reviewNo}">수정</a>
-				<input type="button" id="deleteButton" href="delete/${review.reviewNo}">삭제</a>
+				<a href="reviewUpdate?rno=${review.reviewNo}">수정</a>
+				<a href="delete/${review.reviewNo}">삭제</a>
 			</c:if>
 		</div>		
 	</body>

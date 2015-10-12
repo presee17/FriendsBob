@@ -48,8 +48,8 @@ public class ReviewCommentDao {
 	}
 	
 	public List<ReviewComment> selectByReviewNo(int reviewNo){
-		String sql="select review_comment_no, review_comment_content, reivew_comment_date,members_member_id ";
-		sql+="from final_review_comments ";
+		String sql="select review_comment_no, review_comment_content, reivew_comment_date, members_member_id ";
+		sql+="from final_review_comment ";
 		sql+="where reviews_review_no=? ";
 		sql+="order by review_comment_no desc ";
 		List<ReviewComment> list = jdbcTemplate.query(sql, new Object[]{reviewNo},
@@ -59,10 +59,10 @@ public class ReviewCommentDao {
 					public ReviewComment mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						ReviewComment reviewComment=new ReviewComment();
-						reviewComment.setMemberId(rs.getString("members_member_id"));
+						reviewComment.setrCommentNo(rs.getInt("review_comment_no"));
 						reviewComment.setrCommentContent(rs.getString("review_comment_content"));
 						reviewComment.setrCommentDate(rs.getDate("review_comment_date"));
-						reviewComment.setrCommentNo(rs.getInt("review_comment_no"));
+						reviewComment.setMemberId(rs.getString("members_member_id"));
 						
 						return reviewComment;
 					}
