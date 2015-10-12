@@ -175,6 +175,7 @@
 		<div id="main">
 			<img id="main" src="${pageContext.request.contextPath}/resources/images/main.jpg"/>
 			<div id="comment1">밥 친구, 쉽고 편리하게 찾을 수 있습니다.</div>
+			<button id="btn">밥친구 찾기⊙⊙</button>
 			<div id="comment2">현재 [ ] 명의 친구가 기다리고 있습니다.</div>
 		</div>
 	</body>
