@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mycompany.myapp.dto.Meeting;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.Review;
+import com.mycompany.myapp.dto.ReviewComment;
+import com.mycompany.myapp.service.ReviewCommentService;
 import com.mycompany.myapp.service.ReviewService;
 
 
@@ -31,15 +32,11 @@ public class ReviewController {
 		}
 		
 		@RequestMapping(value="/Review/write",method=RequestMethod.POST)	
-		public String review(Review review, HttpSession session) {
-			//Member member=(Member)session.getAttribute("Member");
+		public String review(Review review, HttpSession session, int meetingNo) {
+			Member member=(Member)session.getAttribute("Member");
 			//데이터 베이스에 게시물 정보 저장
-			Member member = new Member();
-			Meeting meeting=new Meeting();
-			member.setId("admin");
-			member.setNick("admin");
-			meeting.setNo(1);
-			reviewService.add(review,member,meeting);
+
+			reviewService.add(review,member,meetingNo);
 			
 			return "redirect:/Review/reviewList";
 		}
@@ -97,9 +94,12 @@ public class ReviewController {
 		@RequestMapping("/Review/reviewDetail")
 		public String detail(int reviewNo, Model model,HttpSession httpSession) {
 			String loginId=(String) httpSession.getAttribute("id");
+			ReviewCommentService reviewCommentService = new ReviewCommentService();
 
 			Review review = reviewService.getReview(reviewNo);
+			List<ReviewComment> list= reviewCommentService.getComment(reviewNo);
 			model.addAttribute("review", review);
+			model.addAttribute("list",list);
 			boolean isWriter=false;
 			if(reviewService.isWriter(reviewNo,loginId)){
 				isWriter=true;
