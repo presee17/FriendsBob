@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.myapp.dto.Meeting;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.Review;
 import com.mycompany.myapp.service.ReviewService;
@@ -34,13 +35,19 @@ public class ReviewController {
 			//Member member=(Member)session.getAttribute("Member");
 			//데이터 베이스에 게시물 정보 저장
 			Member member = new Member();
+			Meeting meeting=new Meeting();
 			member.setId("admin");
 			member.setNick("admin");
-
-			reviewService.add(review,member);
+			meeting.setNo(1);
+			reviewService.add(review,member,meeting);
 			
 			return "redirect:/Review/reviewList";
 		}
+		@RequestMapping("/Review/reviewMain")
+		public String main(){
+			return "Review/reviewMain";
+		}
+
 		
 		@RequestMapping("/Review/reviewList")
 		public String list(
@@ -88,10 +95,16 @@ public class ReviewController {
 		}
 
 		@RequestMapping("/Review/reviewDetail")
-		public String detail(int reviewNo, Model model) {
-			
+		public String detail(int reviewNo, Model model,HttpSession httpSession) {
+			String loginId=(String) httpSession.getAttribute("id");
+
 			Review review = reviewService.getReview(reviewNo);
 			model.addAttribute("review", review);
+			boolean isWriter=false;
+			if(reviewService.isWriter(reviewNo,loginId)){
+				isWriter=true;
+			}
+			model.addAttribute("isWriter",isWriter);
 			return "Review/reviewDetail";
 		}
 		
@@ -103,7 +116,8 @@ public class ReviewController {
 		}
 		
 		@RequestMapping("/Review/reviewUpdate")
-		public String update(Review review) {
+		public String update(Review review, HttpSession httpSession) {
+
 			reviewService.modify(review);
 			return "redirect:/Review/reviewDetail?boardNo="+review.getReviewNo();
 		}

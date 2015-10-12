@@ -14,6 +14,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import com.mycompany.myapp.dto.Meeting;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.Review;
 
@@ -22,9 +23,9 @@ public class ReviewDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public Integer insert(Review review, Member member){
+	public Integer insert(Review review, Member member, Meeting meeting){
 		Integer pk=null;
-		String sql="insert into final_reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, ?) ";
+		String sql="insert into final_reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, 1) ";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator(){
 
@@ -35,8 +36,8 @@ public class ReviewDao {
 				pstmt.setString(1, review.getReviewTitle());
 				pstmt.setString(2, review.getReviewContent());
 				pstmt.setInt(3, review.getGrade());
-				pstmt.setString(4, member.getNick());
-				pstmt.setInt(5, review.getMeetingNo());
+				pstmt.setString(4, member.getId());
+				//pstmt.setInt(5, meeting.getNo());
 				
 				return pstmt;
 			}
@@ -93,6 +94,25 @@ public class ReviewDao {
 			
 		});
 		return review;
+	}
+	
+	public String selectWriterByNo(int reviewNo){
+		String sql="select review_writer from final_reviews where review_no=? ";
+		Review review=jdbcTemplate.queryForObject(sql, 
+				new Object[]{reviewNo},
+				new RowMapper<Review>(){
+
+					@Override
+					public Review mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						Review review=new Review();
+						review.setReviewWriter(rs.getString("review_writer"));
+						return review;
+					}
+			
+		});
+		
+		return review.getReviewWriter();
 	}
 	
 	public int update(Review review){

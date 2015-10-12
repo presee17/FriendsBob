@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +10,7 @@
 			body {
 				font-family: "돋움";
 				font-size: 12px;
-				color: white;
+				color: black;
 			}
 			span {
 				display: inline-block;
@@ -99,7 +100,6 @@
 			
 			<div id="part1_2">
 				<img src="${pageContext.request.contextPath}/resources/uploadfiles/${partner.filesystemName}" width="100px" height="100px"/>
-				<button>다운로드</button>
 			</div>
 		</div>
 		
@@ -109,8 +109,10 @@
 		</div>
 		
 		<div id="buttonGroup">
-			<a href="partnerlist?pageNo=${pageNo}">목록</a>
-			<a href="partnerUpdate?pno=${partner.no}">수정</a>
+			<a href="partnerList?pageNo=${pageNo}">목록</a>
+			<c:if test="${id=='admin'}">
+				<a href="partnerUpdate?pno=${partner.no}">수정</a>
+			</c:if>
 			<a href="partnerDelete/${partner.no}">삭제</a>
 		</div>		
 	</body>

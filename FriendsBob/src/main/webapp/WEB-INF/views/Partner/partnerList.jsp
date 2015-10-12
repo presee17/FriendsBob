@@ -13,8 +13,8 @@
 				
 			}
 			#buttonGroup {
-				margin: 10px;
-				text-align: center;
+				text-align: right;
+				margin-right: 20px;
 			}
 			
 			#buttonGroup a {
@@ -66,7 +66,7 @@
 	</head>
 	<body>
 		<h4>제휴사 목록</h4>
-		<table border="1">
+		<table align=center border="1">
 			<tr style="height:40px">
 				<th style="width:120px">제휴사번호</th>
 				<th style="width:200px">이름</th>
@@ -82,30 +82,31 @@
 					<td class="data">${partner.kind}</td>
 				</tr>
 			</c:forEach>
-		</table>
+		</table><br/>
 		<div id="pager">
-			<a href="list?pageNo=1">[처음]</a>
+			<a href="partnerList?pageNo=1">[처음]</a>
 			
 			<c:if test="${groupNo>1}">
-				<a href="list?pageNo=${startPageNo-pagesPerGroup}">[이전]</a>
+				<a href="partnerList?pageNo=${startPageNo-pagesPerGroup}">[이전]</a>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPageNo}" end="${endPageNo}">
 				<a class="pageNo <c:if test="${pageNo==i}">selected</c:if>" 
-				   href="list?pageNo=${i}">${i}</a>
+				   href="partnerList?pageNo=${i}">${i}</a>
 			</c:forEach>
 			
 			<c:if test="${groupNo<totalGroupNo}">
-				<a href="list?pageNo=${endPageNo+1}">[다음]</a>
+				<a href="partnerList?pageNo=${endPageNo+1}">[다음]</a>
 			</c:if>		
 	
-			<a href="list?pageNo=${totalPageNo}">[맨끝]</a>
+			<a href="partnerList?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>		
-		
-		<c:if test="${kind=='all'}">
-			<div id="buttonGroup">
-				<a href="write">제휴사 등록</a>
-			</div>
+		<c:if test="${id=='admin'}">
+			<c:if test="${kind=='all'}">
+				<div id="buttonGroup">
+					<a href="write">제휴사 등록</a>
+				</div>
+			</c:if>
 		</c:if>
 	</body>
 </html>

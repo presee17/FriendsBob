@@ -50,13 +50,21 @@ public class PartnerController {
 			partner.setContentType(contentType);
 		}
 		partnerService.add(partner);
-		return "redirect:/Partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 	
 	@RequestMapping("Partner/partnerList")
-	public String list(String kind,
-			@RequestParam(value="pageNo",defaultValue="1")int pageNo, Model model, HttpSession session){
-		logger.info("pageNo: "+pageNo);
+	public String list(
+			String kind,
+			@RequestParam(value="pageNo",defaultValue="0") int pageNo, 
+			Model model, 
+			HttpSession session){
+	    if(pageNo == 0) {
+	    	session.setAttribute("kind", kind);
+	    	pageNo=1;
+	    } else {
+	    	kind = (String) session.getAttribute("kind");
+	    }
 		String kinds = null;
 		if(kind.equals("k")) {
 			kinds="한식";
@@ -100,7 +108,7 @@ public class PartnerController {
 		model.addAttribute("pageNo",pageNo);
 		model.addAttribute("kind",kind);
 		model.addAttribute("list",list);
-		
+		model.addAttribute("id",session.getAttribute("id"));
 		return "Partner/partnerList";	
 	}
 	
@@ -116,22 +124,22 @@ public class PartnerController {
 		return "Partner/partnerDetail";
 	}
 	
-	@RequestMapping("/partner/partnerUpdate")
+	@RequestMapping("/Partner/partnerUpdate")
 	public String partnerUpdate(@RequestParam("pno")int partnerNo, Model model){
 		Partner partner=partnerService.getPartner(partnerNo);
 		model.addAttribute("partner",partner);
-		return "partner/partnerUpdate";
+		return "Partner/partnerUpdate";
 	}
 	
-	@RequestMapping("/partner/update")
+	@RequestMapping("/Partner/update")
 	public String update(Partner partner){
 		partnerService.modify(partner);
-		return "redirect:/partner/partnerDetail?partnerNo="+partner.getNo();
+		return "redirect:/Partner/partnerDetail?partnerNo="+partner.getNo();
 	}
 	
 	@RequestMapping("/Partner/partnerDelete/{partnerNo}")
 	public String delete(@PathVariable int partnerNo){
 		partnerService.remove(partnerNo);
-		return "redirect:/partner/partnerList";
+		return "redirect:/Partner/partnerList?kind=all";
 	}
 }

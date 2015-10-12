@@ -2,6 +2,8 @@ package com.mycompany.myapp.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Matjib {
 	private int no;
 	private String name;
@@ -11,8 +13,37 @@ public class Matjib {
 	private String address;
 	private String food;
 	private int hitCount;
-
 	
+	private String originalFileName;
+	private String contentType;
+	private String filesystemName;
+	private MultipartFile attach;
+	
+	
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+	public String getContentType() {
+		return contentType;
+	}
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+	public String getFilesystemName() {
+		return filesystemName;
+	}
+	public void setFilesystemName(String filesystemName) {
+		this.filesystemName = filesystemName;
+	}
+	public MultipartFile getAttach() {
+		return attach;
+	}
+	public void setAttach(MultipartFile attach) {
+		this.attach = attach;
+	}
 	public int getHitCount() {
 		return hitCount;
 	}

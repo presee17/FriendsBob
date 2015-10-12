@@ -1,7 +1,9 @@
 package com.mycompany.myapp.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.myapp.dto.Matjib;
+import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.service.MatjibService;
 
 @Controller
@@ -29,23 +32,31 @@ public class MatjibController {
 		return "Matjib/matjibForm";
 	}
 
-	/*
-	 * @RequestMapping(value="Matjb/matjibForm", method=RequestMethod.POST) {
-	 * public String write(Matjib matjib, HttpSession session) {
-	 * logger.info("write()");
-	 * 
-	 * //파일 정보 얻기 ServletContext application = session.getServletContext();
-	 * String dirPath = application.getRealPath("/resources/uploadfiles");
-	 * String filesystemName = System.currentTimeMillis() + "-" +
-	 * originalFilename; String ContentType =
-	 * matjib.getAttach().getContentType(); if(!matjib.getAttach().isEmpty()){
-	 * //파일에 저장하기 try{ matjib.getAttach().transferto(new File(dirPath + "/" +
-	 * filesystemName)); } cateh (Exception e) {e.printStackTrace(); } }
-	 * matjib.setOriginalFileName(originalFilename);
-	 * matjib.setFilesystemName(filesystemName);
-	 * matjib.stContentType(contentType); } //데이터 베이스에 저장
-	 * matjibService.add(matjib); return "redirect:/Matjib/lsit"; }
-	 */
+	
+	  @RequestMapping(value="Matjb/matjibWrite", method=RequestMethod.POST) 
+	  public String write(Matjib matjib, Member member, HttpSession session) {
+	  logger.info("write()");
+	  
+	  ServletContext application = session.getServletContext();
+		String dirPath=application.getRealPath("/resources/uploadfiles");
+		if(matjib.getAttach()!=null){
+			String originalFileName=matjib.getAttach().getOriginalFilename();
+			String filesystemName=System.currentTimeMillis()+"-"+originalFileName;
+			String contentType=matjib.getAttach().getContentType();
+			if(!matjib.getAttach().isEmpty()){
+				try{
+					matjib.getAttach().transferTo(new File(dirPath+"/"+filesystemName));
+				}catch(Exception e){e.printStackTrace();}
+			}
+			matjib.setOriginalFileName(originalFileName);
+			matjib.setFilesystemName(filesystemName);
+			matjib.setContentType(contentType);
+		}
+	  matjibService.add(matjib, member); 
+	   return "redirect:/Matjib/mtjibWrite"; 
+	  	}
+	
+	  
 
 	@RequestMapping("/Matjib/matjibList")
 	public String list(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo, Model model,
@@ -98,6 +109,7 @@ public class MatjibController {
 
 	@RequestMapping("/Matjib/matjibDetail")
 	public String detail(int matjibNo, Model model) {
+		matjibService.addHitcount(matjibNo);
 		Matjib matjib = matjibService.getMatjib(matjibNo);
 		model.addAttribute("matjib", matjib);
 		return "Matjib/matjibDetail";
