@@ -33,7 +33,7 @@ public class MatjibController {
 	}
 
 	
-	  @RequestMapping(value="Matjb/matjibWrite", method=RequestMethod.POST) 
+	  @RequestMapping(value="/Matjb/matjibWrite", method=RequestMethod.POST) 
 	  public String write(Matjib matjib, Member member, HttpSession session) {
 	  logger.info("write()");
 	  
@@ -53,11 +53,9 @@ public class MatjibController {
 			matjib.setContentType(contentType);
 		}
 	  matjibService.add(matjib, member); 
-	   return "redirect:/Matjib/mtjibWrite"; 
+	   return "redirect:/Matjib/mtjibList"; 
 	  	}
 	
-	  
-
 	@RequestMapping("/Matjib/matjibList")
 	public String list(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo, Model model,
 			HttpSession session) {
@@ -102,7 +100,7 @@ public class MatjibController {
 		model.addAttribute("startPageNo", startPageNo);
 		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("pageNo", pageNo);
-		model.addAttribute("lsit", list);
+		model.addAttribute("list", list);
 
 		return "Matjib/matjibList";
 	}

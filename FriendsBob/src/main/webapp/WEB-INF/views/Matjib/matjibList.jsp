@@ -96,7 +96,7 @@
 					<tr>
 						<td>${matjib.no}</td>
 						<td>${matjib.food}</td>
-						<td><a class="name" href=matjibDetail?matjibNo=${matjib.no}">${matjib.name}</a></td>
+						<td><a class="name" href="matjibDetail?matjibNo=${matjib.no}">${matjib.name}</a></td>
 						<td>${matjib.id}</td>
 						<td>${matjib.date}</td>
 						<td>${matjib.hitCount}</td>
@@ -124,7 +124,7 @@
 			</div>
 			
 			<div id="buttonGroup">
-				<a href="write">글쓰기</a>
+				<a href="matjibWrite">글쓰기</a>
 			</div>
 	</body>
 </html>
