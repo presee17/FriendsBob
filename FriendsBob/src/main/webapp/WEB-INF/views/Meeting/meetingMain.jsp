@@ -32,34 +32,48 @@
 			<div id="full"><br/>
 				<div id="food">
 					음식 분류<br/><br/>
-					<form method="post">
-						<a href="partnerList?kind=k" style="text-decoration:none;" target="partnerList">한식</a><br/>
-						<a href="partnerList?kind=w" style="text-decoration:none;" target="partnerList">양식</a><br/>
-						<a href="partnerList?kind=j" style="text-decoration:none;" target="partnerList">일식</a><br/>
-						<a href="partnerList?kind=c" style="text-decoration:none;" target="partnerList">중식</a><br/>
-						<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList">분식</a><br/>
+					
+					<form action="meetingDetail" method="get">
+	  					<input type="checkbox" name="foodkind" value="korea" checked="checked">한식<br>
+	  					<input type="checkbox" name="foodkind" value="american" >양식<br>
+	  					<input type="checkbox" name="foodkind" value="japan">일식<br>
+	  					<input type="checkbox" name="foodkind" value="china">중식<br>
+	  					<input type="checkbox" name="foodkind" value="fast">분식<br>
+  					<br/>
+  					<br/>
+  					지역선택 
+	  					<select>
+						  <optgroup label="경기도">
+						    <option value="soul">서울 특별시</option>
+						    <option value="incheon">인천 광역시</option>
+						  </optgroup>
+						  
+						  <optgroup label="강원도">
+						  </optgroup>
+						  
+						  <optgroup label="충천도">
+						  </optgroup>
+						    
+						  <optgroup label="전라도">
+						    <option value="kwangju">광주 광역시</option>
+						    <option value="daejeon">대전 광역시</option>
+						  </optgroup>
+						  
+						  <optgroup label="경상도">
+						    <option value="busan">부산 광역시</option>
+						    <option value="daegu">대구 광역시</option>
+						    <option value="ulsan">울산 광역시</option>
+						  </optgroup>
+						</select>
+						
+						<br/>
+						<br/>
+						  검색 <input type="text" name="search" value="검색어를 입력하세요"><br/><br/>
+  					<input type="submit" value="검색">
 					</form>
+					
+					
 				</div><br/><br/>
-				<div>
-					<select name="city">
-						<option value="all">도시선택</option>
-						<option value="서울">서울특별시</option>
-						<option value="인천">인천광역시</option>
-						<option value="대구">대구광역시</option>
-						<option value="대전">대전광역시</option>
-						<option value="광주">광주광역시</option>
-						<option value="부산">부산광역시</option>
-						<option value="울산">울산광역시</option>
-						<option value="경기">경기도</option>
-						<option value="강원">강원도</option>
-						<option value="충남">충청남도</option>
-						<option value="충북">충청북도</option>
-						<option value="경남">경상남도</option>
-						<option value="경북">경상북도</option>
-						<option value="전남">전라남도</option>
-						<option value="전북">전라북도</option>
-					</select>
-				</div>
 			</div>
 			<iframe id="frame" name="meetingList" width="100%" src="meetingList?kind=all">
 			</iframe>

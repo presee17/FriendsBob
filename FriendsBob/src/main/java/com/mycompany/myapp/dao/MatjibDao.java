@@ -25,7 +25,7 @@ public class MatjibDao {
 
 	public Integer insert(Matjib matjib, Member member) {
 		Integer pk = null;
-		String sql = "insert into final_matjibs (matjib_name, matjib_content, matjib_date, members_member_id, matjib_food, matjib_address) value (?,?,now(),?,?,?)";
+		String sql = "insert into final_matjibs (matjib_name, matjib_content, matjib_date, members_mem ber_id, matjib_food, matjib_address) value (?,?,now(),?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
