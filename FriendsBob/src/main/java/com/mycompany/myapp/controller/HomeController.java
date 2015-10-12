@@ -23,7 +23,12 @@ public class HomeController {
 	@Autowired MemberService memberService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, Member member, Login login, BindingResult bindingResult) {
+	public String home(Locale locale, Model model, Member member, Login login) {
+		return "home";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String homeP(Locale locale, Model model, Member member, Login login, BindingResult bindingResult) {
 		return "home";
 	}
 }

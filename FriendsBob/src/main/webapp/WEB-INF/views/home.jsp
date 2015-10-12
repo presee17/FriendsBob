@@ -88,7 +88,7 @@
     	
     	 $(function() {
     		    $( "#ld" ).dialog({
-    		      autoOpen: false,
+    		      autoOpen: true,
     		      show: {
     		        effect: "blind",
     		        duration: 1000
@@ -127,11 +127,11 @@
 		<div id="ld" title="로그인">
 		<hr/>
 		<form:form commandName="login" action="login">
-			id:
-			<form:input path="id" size="20"/>
+			E-mail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<form:input path="id" size="15"/>
 			<form:errors path="id"/><br/>
-			password:
-			<form:password path="password" size="20"/>
+			Password &nbsp;
+			<form:password path="password" size="15"/>
 			<form:errors path="password"/><br/>
 			<input type="submit" value="로그인"/>
 		</form:form>
@@ -176,7 +176,6 @@
 			<img id="main" src="${pageContext.request.contextPath}/resources/images/main.jpg"/>
 			<div id="comment1">밥 친구, 쉽고 편리하게 찾을 수 있습니다.</div>
 			<button id="btn">밥친구 찾기⊙⊙</button>
-			<a href="review/reiv">밥친구 찾기⊙⊙</button>
 			<div id="comment2">현재 [ ] 명의 친구가 기다리고 있습니다.</div>
 		</div>
 	</body>
