@@ -19,7 +19,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-
+ 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(Member member, BindingResult bindingResult) {
 		if (memberService.joinCheck(member)) {
