@@ -110,7 +110,9 @@
 		
 		<div id="buttonGroup">
 			<a href="partnerList?pageNo=${pageNo}">목록</a>
-			<a href="partnerUpdate?pno=${partner.no}">수정</a>
+			<c:if test="${id=='admin'}">
+				<a href="partnerUpdate?pno=${partner.no}">수정</a>
+			</c:if>
 			<a href="partnerDelete/${partner.no}">삭제</a>
 		</div>		
 	</body>

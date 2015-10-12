@@ -59,8 +59,6 @@ public class PartnerController {
 			@RequestParam(value="pageNo",defaultValue="0") int pageNo, 
 			Model model, 
 			HttpSession session){
-		System.out.println("kind: "+kind);
-		System.out.println("pageNo: "+pageNo);
 	    if(pageNo == 0) {
 	    	session.setAttribute("kind", kind);
 	    	pageNo=1;
@@ -110,7 +108,7 @@ public class PartnerController {
 		model.addAttribute("pageNo",pageNo);
 		model.addAttribute("kind",kind);
 		model.addAttribute("list",list);
-		
+		model.addAttribute("id",session.getAttribute("id"));
 		return "Partner/partnerList";	
 	}
 	
