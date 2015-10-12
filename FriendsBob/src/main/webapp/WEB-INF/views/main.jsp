@@ -95,7 +95,7 @@
 					<table id="menu">
 						<tr>
 							<td class="line">마이페이지</td>
-							<td class="line">약속목록</td>
+							<td class="line"><a href="Meeting/meetingMain" style="text-decoration:none;" target="main">약속목록</a></td>
 							<td class="line">맛집정보</td>
 							<td class="line"><a href="Review/reviewMain" style="text-decoration:none;" target="main">모임후기</a></td>
 							<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="main">제휴사</a></td>

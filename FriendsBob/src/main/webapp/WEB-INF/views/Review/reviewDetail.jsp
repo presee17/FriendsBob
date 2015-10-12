@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <!DOCTYPE html>
 <html>
@@ -98,12 +99,30 @@
 			${review.reviewContent}
 		</div>
 		<div id="part3">
+			<table>
+				<c:forEach var="reviewComment" items="${list}">
+					<tr>
+						<td style="width:50px">${reviewComment.memberId}</td>
+						<td> ${reviewComment.rCommentContent}</td>
+						<td style="width:80px">${reviewComment.rCommentDate}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div id="repply">
+			<form name="repplyForm" id = "repplyForm" method="post" action="commentWrite" >
+				<textarea name="rCommentContent" rows="5" cols="20">댓글작성</textarea>
+				<input type="submit" value="등록">
+				<input type="reset" value="다시작성">
+			</form>
 			
 		</div>
 		<div id="buttonGroup">
 			<input type="button" id="listButton" href="reviewList?pageNo=${pageNo}">목록</a>
-			<input type="button" id="modyfiButton" href="reviewUpdate?rno=${review.reviewNo}">수정</a>
-			<input type="button" id="deleteButton" href="delete/${review.reviewNo}">삭제</a>
+			<c:if test="${isWriter}">
+				<input type="button" id="modyfiButton" href="reviewUpdate?rno=${review.reviewNo}">수정</a>
+				<input type="button" id="deleteButton" href="delete/${review.reviewNo}">삭제</a>
+			</c:if>
 		</div>		
 	</body>
 </html>

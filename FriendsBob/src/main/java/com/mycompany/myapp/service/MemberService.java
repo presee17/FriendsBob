@@ -16,6 +16,10 @@ public class MemberService {
 	public void Memberlist() {// 운영자가 볼 수 있는 멤버의 리스트
 	}
 
+	public Member getObject(String id){
+		return memberDao.selectById(id);
+	}
+	
 	public boolean joinCheck(Member member) {// 회원 가입
 		boolean joinOk;
 		System.out.println(member.getId());

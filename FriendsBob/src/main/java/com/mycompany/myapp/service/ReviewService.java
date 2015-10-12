@@ -16,8 +16,8 @@ public class ReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
 	
-	public void add(Review review, Member member, Meeting meeting){
-		reviewDao.insert(review, member,meeting);
+	public void add(Review review, Member member, int meetingNo){
+		reviewDao.insert(review, member,meetingNo);
 		
 	}
 	public List<Review> getPage(int pageNo, int rowsPerPage){
