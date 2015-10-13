@@ -15,6 +15,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.Review;
 import com.mycompany.myapp.dto.ReviewComment;
 
 @Component
@@ -48,11 +49,13 @@ public class ReviewCommentDao {
 	}
 	
 	public List<ReviewComment> selectByReviewNo(int reviewNo){
-		String sql="select review_comment_no, review_comment_content, reivew_comment_date, members_member_id ";
-		sql+="from final_review_comment ";
-		sql+="where reviews_review_no=? ";
+		System.out.println(reviewNo);
+		String sql="";
+		sql+="select * ";
+		sql+="from final_review_comments ";
+		sql+="where reviews_review_no = ? ";
 		sql+="order by review_comment_no desc ";
-		List<ReviewComment> list = jdbcTemplate.query(sql, new Object[]{reviewNo},
+		List<ReviewComment> list = jdbcTemplate.query(sql, new Object[]{ reviewNo },
 				new RowMapper<ReviewComment>(){
 
 					@Override
@@ -68,9 +71,7 @@ public class ReviewCommentDao {
 					}
 			
 		});
-		
-		
-		
+	
 		return list;
 	}
 	public int update(ReviewComment review) {

@@ -26,6 +26,9 @@ public class ReviewController {
 		@Autowired
 		private ReviewService reviewService;
 		
+		@Autowired
+		private ReviewCommentService reviewCommentService;
+		
 		@RequestMapping(value="/Review/write",method=RequestMethod.GET)
 		public String reviewForm() {
 			return "Review/reviewForm";
@@ -93,15 +96,15 @@ public class ReviewController {
 
 		@RequestMapping("/Review/reviewDetail")
 		public String detail(int reviewNo, Model model,HttpSession httpSession) {
-			String loginId=(String) httpSession.getAttribute("id");
-			ReviewCommentService reviewCommentService = new ReviewCommentService();
-
+			Member member=(Member) httpSession.getAttribute("member");
 			Review review = reviewService.getReview(reviewNo);
-			List<ReviewComment> list= reviewCommentService.getComment(reviewNo);
+			
+			//System.out.println(member.getId());
+			List<ReviewComment> commentlist= reviewCommentService.getComment(reviewNo);
 			model.addAttribute("review", review);
-			model.addAttribute("list",list);
+			model.addAttribute("commentlist",commentlist);
 			boolean isWriter=false;
-			if(reviewService.isWriter(reviewNo,loginId)){
+			if(reviewService.isWriter(reviewNo,"admin")){
 				isWriter=true;
 			}
 			model.addAttribute("isWriter",isWriter);
