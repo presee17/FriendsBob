@@ -120,27 +120,27 @@
 						<ul>
 							<li>
 								<a href="#" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/p.jpg" alt=""/>마이페이지
+								<img src="${pageContext.request.contextPath}/resources/images/p.JPG" alt=""/>마이페이지
 								</a>
 							</li>
 							<li>
 								<a href="Meeting/meetingMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/l.jpg" alt=""/>약속목록
+								<img src="${pageContext.request.contextPath}/resources/images/l.JPG" alt=""/>약속목록
 								</a>
 							</li>
 							<li>
 								<a href="#" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/m.jpg" alt=""/>맛집정보
+								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
 								</a>
 							</li>
 							<li>
 								<a href="Review/reviewMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/g.jpg" alt=""/>모임후기
+								<img src="${pageContext.request.contextPath}/resources/images/g.JPG" alt=""/>모임후기
 								</a>
 							</li>
 							<li>
 								<a href="Partner/partnerMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/h.jpg" alt=""/>제휴사
+								<img src="${pageContext.request.contextPath}/resources/images/h.JPG" alt=""/>제휴사
 								</a>
 							</li>
 						</ul>
