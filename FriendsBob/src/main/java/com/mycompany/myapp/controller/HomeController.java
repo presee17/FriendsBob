@@ -15,7 +15,6 @@ import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.service.MemberService;
 
-
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);

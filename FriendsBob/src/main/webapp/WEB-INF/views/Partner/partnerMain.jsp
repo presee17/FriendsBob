@@ -39,7 +39,7 @@
 						<a href="partnerList?kind=c" style="text-decoration:none;" target="partnerList">중식</a><br/>
 						<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList">분식</a><br/>
 					</form>
-				</div><br/><br/>
+				</div><br/><!-- <br/>
 				<div>
 					<select name="city">
 						<option value="all">도시선택</option>
@@ -59,7 +59,7 @@
 						<option value="전남">전라남도</option>
 						<option value="전북">전라북도</option>
 					</select>
-				</div>
+				</div> -->
 			</div>
 			<iframe id="frame" name="partnerList" width="100%" src="partnerList?kind=all">
 			</iframe>

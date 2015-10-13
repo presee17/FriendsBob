@@ -27,9 +27,11 @@
 				text-align:center;
 				display:inline-block;
 			}
-			#talk{
-				margin-top:7px;
+			#tab_design{
+				margin-top:10px;
 				flex:1;
+				margin-bottom:0px;
+				margin-left:80px;
 				padding:18px;
 			}
 			#menu{
@@ -44,21 +46,6 @@
 				text-align:center;
 				color:white;
 				display:inline-block;
-			}
-			.line{
-				font-size:large;
-				padding:10px;
-			}
-			td{
-				background-color: white;
-			}
-			td:hover{
-				color: white;
-				background-color: #FF7E7E;
-			}
-			table,tr,td{
-				border:1px solid black;
-				border-color: #FF2424;
 			}
 			#content{
 				display:flex;
@@ -83,6 +70,43 @@
 				width:100%;
 				height:83vh;
 			}
+			.tab_menu li {/*아이콘 및 카테고리 글쓰를 포함하는 li*/
+			  position: relative;
+			  float: left;
+			  list-style:none;
+			  margin-right: 2px;
+			}
+			.tab_menu li a {
+			  display: block;
+			  padding: 0.5em 1.5em;
+			  background: #e5e9ea;
+			  color: #607291;
+			  font-size: 16px;
+			  -webkit-border-radius: 7px 7px 0 0;
+			  -webkit-transition: all 0.2s;
+			}
+
+			.tab_menu li:hover a, 
+			.tab_menu li a:focus, 
+			.tab_menu li.active a {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
+			  padding-left: 2.2em;
+			  padding-right: 0.8em;
+			  background: #f9f9f9;
+			  -webkit-box-shadow: 1px -1px 2px #5c5c5c;
+			}
+			.tab_menu li img {
+			  opacity: 0;
+			  position: absolute;
+			  top: 7px;
+			  left: 16px;
+			  -webkit-transition: all 0.2s;
+			}/*탭 메뉴의  img태그에 대해  투명도를 0으로 하여 안보이게 하고 변화가 있을 시 모든 변화에 대해 수행 시간을 0.2초로 한다.*/
+			
+			.tab_menu li:hover img, 
+			.tab_menu li.active img {
+			  opacity: 1;
+			  left: 6px;
+			}
 		</style>
 	</head>
 	<body>
@@ -91,16 +115,36 @@
 				<div id="logo">
 					<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 				</div>
-				<div id="talk">
-					<table id="menu">
-						<tr>
-							<td class="line">마이페이지</td>
-							<td class="line"><a href="Meeting/meetingMain" style="text-decoration:none;" target="main">약속목록</a></td>
-							<td class="line">맛집정보</td>
-							<td class="line"><a href="Review/reviewMain" style="text-decoration:none;" target="main">모임후기</a></td>
-							<td class="line"><a href="Partner/partnerMain" style="text-decoration:none;" target="main">제휴사</a></td>
-						</tr>
-					</table>
+				<div id="tab_design">
+					<nav class="tab_menu clearfix">
+						<ul>
+							<li>
+								<a href="#" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/p.jpg" alt=""/>마이페이지
+								</a>
+							</li>
+							<li>
+								<a href="Meeting/meetingMain" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/l.jpg" alt=""/>약속목록
+								</a>
+							</li>
+							<li>
+								<a href="#" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/m.jpg" alt=""/>맛집정보
+								</a>
+							</li>
+							<li>
+								<a href="Review/reviewMain" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/g.jpg" alt=""/>모임후기
+								</a>
+							</li>
+							<li>
+								<a href="Partner/partnerMain" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/h.jpg" alt=""/>제휴사
+								</a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 				<div id="join">
 					<button class="i">밥친구닷컴 나가기</button>
