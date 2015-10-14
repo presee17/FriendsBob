@@ -105,6 +105,9 @@
 						<td style="width:50px">${reviewComment.memberId}</td>
 						<td> ${reviewComment.rCommentContent}</td>
 						<td style="width:80px">${reviewComment.rCommentDate}</td>
+						<c:if test="${reviewComment.memberId==loginNick }">
+							<td style="width:50px"><a href="commentDelete/${reviewComment }">삭제</a></td>
+						</c:if>	
 					</tr>
 				</c:forEach>
 			</table>
@@ -119,8 +122,9 @@
 			
 		</div>
 		<div id="buttonGroup">
-			<a href="reviewList?pageNo=${pageNo}">목록</a>
-			<c:if test="${isWriter}">
+			<a href="reviewList?pageNo=${pageNo}">목록${review.reviewWriter }</a>
+			
+			<c:if test="${review.reviewWriter==loginNick }">
 				<a href="reviewUpdate?rno=${review.reviewNo}">수정</a>
 				<a href="delete/${review.reviewNo}">삭제</a>
 			</c:if>

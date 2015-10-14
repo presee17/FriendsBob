@@ -28,7 +28,7 @@ public class ReviewCommentService {
 		reviewCommentDao.update(reviewComment);
 		
 	}
-	public void remove(ReviewComment reviewComment, Member member){
+	public void remove(ReviewComment reviewComment){
 		reviewCommentDao.delete(reviewComment.getrCommentNo());
 	}
 }
