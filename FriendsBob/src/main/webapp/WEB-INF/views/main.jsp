@@ -100,8 +100,8 @@
 			  left: 16px;
 			  -webkit-transition: all 0.2s;
 			}/*탭 메뉴의  img태그에 대해  투명도를 0으로 하여 안보이게 하고 변화가 있을 시 모든 변화에 대해 수행 시간을 0.2초로 한다.*/
-			
-			.tab_menu li:hover img, 
+	
+			.tab_menu li:hover img,
 			.tab_menu li.active img {
 			  opacity: 1;
 			  left: 6px;
@@ -128,7 +128,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="Mitjib/matjibMain" style="text-decoration:none;" target="main">
+								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
 								</a>
 							</li>
