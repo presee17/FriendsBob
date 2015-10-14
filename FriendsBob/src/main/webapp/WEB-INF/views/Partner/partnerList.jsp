@@ -95,11 +95,12 @@
 	
 			<a href="partnerList?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>		
-		<c:if test="${id=='admin'}">
-			
-				<div id="buttonGroup">
-					<a href="write">제휴사 등록</a>
-				</div>
+			<c:if test="${id=='admin'}">
+				<c:if test="${kind=='all'}">
+					<div id="buttonGroup">
+						<a href="write">제휴사 등록</a>
+					</div>
+				</c:if>
 			</c:if>
 		
 	</body>
