@@ -161,7 +161,7 @@
 					</nav>
 				</div>
 				<div id="join">
-					<a href="exit"><button class="i">밥친구닷컴 나가기</button></a>
+					<a href="exit"><button class="i">로그아웃</button></a>
 				</div>
 			</div><hr>
 			<div id="content">
