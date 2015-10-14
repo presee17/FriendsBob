@@ -39,26 +39,9 @@
 				text-align:center;
 				width:700px;
 			}
-			.i{
-				background-color:#FF0000;
-				font-size:large;
-				padding:10px;
-				text-align:center;
-				color:white;
-				display:inline-block;
-			}
 			#content{
 				display:flex;
 				height:100%;
-			}
-			#content1{
-				text-align:center;
-				width:250px;
-			}
-			#content2{
-				height:100%;
-				flex:1;
-				display: inline-block;	
 			}
 			#content3{
 				width:330px;
@@ -85,9 +68,9 @@
 			  -webkit-border-radius: 7px 7px 0 0;
 			  -webkit-transition: all 0.2s;
 			}
-			.tab_menu li a:hover, 
+			.tab_menu li:hover a, 
 			.tab_menu li a:focus, 
-			.tab_menu li a:active {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
+			.tab_menu li.active a {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
 			  padding-left: 2.2em;
 			  padding-right: 0.8em;
 			  background: #f9f9f9;
