@@ -85,9 +85,9 @@
 			  -webkit-border-radius: 7px 7px 0 0;
 			  -webkit-transition: all 0.2s;
 			}
-			.tab_menu li:hover a, 
+			.tab_menu li a:hover, 
 			.tab_menu li a:focus, 
-			.tab_menu li.active a {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
+			.tab_menu li a:active {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
 			  padding-left: 2.2em;
 			  padding-right: 0.8em;
 			  background: #f9f9f9;
@@ -107,6 +107,31 @@
 			  left: 6px;
 			}
 		</style>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var $menu_li = $('.tab_menu li');
+				var $menu_a = $menu_li.find('a');
+					
+				// $menu 내부의 a 클릭 시 이벤트 핸들링
+				$menu_a.click(function(e) {		
+					// 대상 참조.
+					var $this = $(this);
+						
+					// 활성화된 a 클릭 시, 작동하지 않도록 설정.
+		 			if($this.parent().hasClass('active')) return;
+		 			
+		 			// $menu_link에서 active 클래스 제거
+					$menu_li.removeClass('active');
+					
+					// 클릭한 a의 부모 li에 active 클래스 추가
+					$this.parent().addClass('active');
+				
+					// 브라우저 링크 기본 동작 차단
+					//e.preventDefault();
+				});
+			});
+		</script>
 	</head>
 	<body>
 	<div id="all">
@@ -115,7 +140,7 @@
 					<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 				</div>
 				<div id="tab_design">
-					<nav class="tab_menu clearfix">
+					<nav class="tab_menu">
 						<ul>
 							<li>
 								<a href="#" style="text-decoration:none;" target="main">
