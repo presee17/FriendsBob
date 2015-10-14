@@ -37,11 +37,11 @@ public class ReviewController {
 		
 		@RequestMapping(value="/Review/write",method=RequestMethod.POST)	
 		public String review(Member member,Review review, HttpSession session, Meeting meeting) {
-			member=(Member)session.getValue("member");
+			member=(Member)session.getAttribute("member");
 			//데이터 베이스에 게시물 정보 저장
 			System.out.println(member.getId());
 			int meetingNo=1;
-			reviewService.add(review,member.getId(),meetingNo);
+			reviewService.add(review,member.getNick(),meetingNo);
 			
 			return "redirect:/Review/reviewList";
 		}
@@ -105,11 +105,8 @@ public class ReviewController {
 			List<ReviewComment> commentlist= reviewCommentService.getComment(reviewNo);
 			model.addAttribute("review", review);
 			model.addAttribute("commentlist",commentlist);
-			boolean isWriter=false;
-			if(reviewService.isWriter(reviewNo,"admin")){
-				isWriter=true;
-			}
-			model.addAttribute("isWriter",isWriter);
+
+			model.addAttribute("loginNick",member.getNick());
 			return "Review/reviewDetail";
 		}
 		
@@ -127,7 +124,7 @@ public class ReviewController {
 			return "redirect:/Review/reviewDetail?reviewNo="+review.getReviewNo();
 		}
 		
-		@RequestMapping("/review/delete/{reviewNo}")
+		@RequestMapping("/Review/delete/{reviewNo}")
 		public String delete(@PathVariable int reviewNo) {
 			reviewService.remove(reviewNo);
 			return "redirect:/Review/reviewList";
@@ -138,6 +135,13 @@ public class ReviewController {
 			reviewCommentService.add(reviewComment, member);
 			
 			return "redirect:/Review/reviewDetail?reviewNo="+reviewComment.getReviewNo();
+		}
+		@RequestMapping("/Review/commentDelete/{reviewComment}")
+		public String CommentDelete(@PathVariable ReviewComment reviewComment){
+			int reviewNo=reviewComment.getReviewNo();
+			reviewCommentService.remove(reviewComment);
+			
+			return "redirect:/Review/reviewDetail?reviewNo="+reviewNo;
 		}
 
 		

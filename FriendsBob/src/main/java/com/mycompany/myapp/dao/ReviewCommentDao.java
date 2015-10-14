@@ -34,7 +34,7 @@ public class ReviewCommentDao {
 					throws SQLException {
 				PreparedStatement pstmt = conn.prepareStatement(sql,new String[]{"review_comment_no"});
 				pstmt.setString(1,reviewComment .getrCommentContent());
-				pstmt.setString(2,member.getId());
+				pstmt.setString(2,member.getNick());
 				pstmt.setInt(3, reviewComment.getReviewNo());
 				
 				return pstmt;
@@ -85,7 +85,7 @@ public class ReviewCommentDao {
 		return rows;
 	}
 	
-	public int delete(long reviewCommentNo) {
+	public int delete(int reviewCommentNo) {
 		String sql = "delete from reviewComments where review_comment_no=?";
 		int rows = jdbcTemplate.update(
 			sql,
