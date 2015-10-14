@@ -136,9 +136,13 @@ public class ReviewController {
 			
 			return "redirect:/Review/reviewDetail?reviewNo="+reviewComment.getReviewNo();
 		}
-		@RequestMapping("/Review/commentDelete/{reviewComment}")
-		public String CommentDelete(@PathVariable ReviewComment reviewComment){
+		@RequestMapping("/Review/commentDelete")
+		public String CommentDelete(int reviewCommentNo){
+			ReviewComment reviewComment=reviewCommentService.getCommentByPk(reviewCommentNo);
+			
 			int reviewNo=reviewComment.getReviewNo();
+			System.out.println(reviewNo);
+			System.out.println(reviewComment.getMemberId());
 			reviewCommentService.remove(reviewComment);
 			
 			return "redirect:/Review/reviewDetail?reviewNo="+reviewNo;

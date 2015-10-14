@@ -48,6 +48,31 @@ public class ReviewCommentDao {
 		return pk;
 	}
 	
+	public ReviewComment selectByPk(int reviewCommentNo){
+		String sql="select * from final_review_comments where review_comment_no=? ";
+		ReviewComment reviewComment = jdbcTemplate.queryForObject(sql, 
+				new Object[]{reviewCommentNo},
+				new RowMapper<ReviewComment>(){
+
+					@Override
+					public ReviewComment mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						ReviewComment reviewComment=new ReviewComment();
+						reviewComment.setrCommentNo(rs.getInt("review_comment_no"));
+						reviewComment.setrCommentContent(rs.getString("review_comment_content"));
+						reviewComment.setrCommentDate(rs.getDate("review_comment_date"));
+						reviewComment.setMemberId(rs.getString("members_member_id"));
+						reviewComment.setReviewNo(rs.getInt("reviews_review_no"));
+						
+						return reviewComment;
+					}
+				
+			
+		});
+		return reviewComment;
+	}
+	
+	
 	public List<ReviewComment> selectByReviewNo(int reviewNo){
 		System.out.println(reviewNo);
 		String sql="";
@@ -82,15 +107,12 @@ public class ReviewCommentDao {
 			
 			review.getrCommentNo()
 		);
-		return rows;
+		return rows; 
 	}
 	
 	public int delete(int reviewCommentNo) {
-		String sql = "delete from reviewComments where review_comment_no=?";
-		int rows = jdbcTemplate.update(
-			sql,
-			reviewCommentNo
-		);
+		String sql = "delete from final_review_comments where review_comment_no=?";
+		int rows = jdbcTemplate.update(sql,reviewCommentNo);
 		return rows;
 	}
 }

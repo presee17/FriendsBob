@@ -19,6 +19,11 @@ public class ReviewCommentService {
 		reviewCommentDao.insert(reviewComment,member);
 		
 	}
+	
+	public ReviewComment getCommentByPk(int reviewCommentNo){
+		ReviewComment reviewComment=reviewCommentDao.selectByPk(reviewCommentNo);
+		return reviewComment;
+	}
 	public List<ReviewComment> getComment(int reviewNo){
 		List<ReviewComment> list = reviewCommentDao.selectByReviewNo(reviewNo);
 		
