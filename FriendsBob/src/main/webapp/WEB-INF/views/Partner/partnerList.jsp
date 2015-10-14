@@ -6,12 +6,6 @@
 		<meta charset="UTF-8">
 		<title>밥친구닷컴</title>
 		<style type="text/css">
-			body{
-				
-			}
-			*{
-				
-			}
 			#buttonGroup {
 				text-align: right;
 				margin-right: 20px;
@@ -102,11 +96,11 @@
 			<a href="partnerList?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>		
 		<c:if test="${id=='admin'}">
-			<c:if test="${kind=='all'}">
+			
 				<div id="buttonGroup">
 					<a href="write">제휴사 등록</a>
 				</div>
 			</c:if>
-		</c:if>
+		
 	</body>
 </html>
