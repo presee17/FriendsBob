@@ -1,31 +1,133 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>후기 작성 페이지</title>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smartedit/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<title>밥친구닷컴</title>
 		<style type="text/css">
-			body {
-				
-				background-color: orange;
-				font-size: small;
-				color: black;
+			*{
+				margin:0px;
+				padding:0px;
 			}
-			table {
-				width: 100%;
+			#top{
+				min-width:940px;
+				display:flex;
+			}
+			#logo{
+				flex:1;
+				margin: 10px; 0px;
+				display:inline-block;
+			}
+			#join{
+				border:20px;
+				padding:20px;
+				display:inline-block;
+			}
+			#talk{
+				flex:3;
+			}
+			.i{
+				font-size:large;
+				padding:10px;
+				text-align:center;
+				display:inline-block;
+			}
+			.middle{
+				width:750px;
+				text-align: left;
+				
+			}
+			#main{
+				width:100%;
+				height:500px;
+			}
+			#comment1{
+				height:40px;
+				width:450px;
+				position:absolute;
+				top:200px;
+				left:450px;
+				color: white;
+				font-weight:bolder;
+				background-color:rgba(0,0,0,0);
+				padding:5px;
+				font-size: x-large;
+			}
+			#comment2{
+				height:40px;
+				width:600px;
+				text-align:center;
+				position:absolute;
+				top:400px;
+				left:380px;
 				background-color:white;
-				
+				padding:5px;
+				background-color:rgba(0,0,0,0);
+				color: white;
+				font-size: xx-large;
 			}
-			
-			input {
-				font-size: 12px;
+			#btn{
+				height:40px;
+				width:150px;
+				position:absolute;
+				top:300px;
+				left:600px;
+				font-weight:bolder;
+				font-size: large;
+				background-color: orange;
+				color: white;
 			}
 		</style>
-	</head>
-	
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/excite-bike/jquery-ui.css">
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+ 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    	<script type="application/javascript">
+    	
+    	 $(function() {
+    		    $( "#ld" ).dialog({
+    		      autoOpen: false,
+    		      show: {
+    		        effect: "blind",
+    		        duration: 1000
+    		      },
+    		      hide: {
+    		        effect: "blind",
+    		        duration: 1000
+    		      }
+    		      modal: true,
+    		    });
+    		 	
+    		    $( "#lBtn" ).click(function() {
+    		      $( "#ld" ).dialog( "open" );
+    		    });
+    		  });
+    	
+    	 $(function() {
+ 		    $( "#jd" ).dialog({
+ 		      autoOpen: false,
+ 		     modal: true,
+ 		      show: {
+ 		        effect: "blind",
+ 		        duration: 1000
+ 		      },
+ 		      hide: {
+ 		        effect: "blind",
+ 		        duration: 1000
+ 		      }
+ 		    });
+ 		 
+ 		    $( "#jBtn" ).click(function() {
+ 		      $( "#jd" ).dialog( "open" );
+ 		    });
+ 		  });
+    	 
+	</script> 
 	<body>
+		<div id="wd" title="모임 만들기">
+		<hr/>
 		<h4>후기작성</h4>
 		<form name="Form" id="Form" method="post" action="write">
 			<table>
@@ -47,9 +149,10 @@
 				</tr>
 			</table>
 		</form>
- 		<script type="text/javascript">
+		</div>
+		
+		<script type="text/javascript">
 
- 		
 			var oEditors = [];
 			
 			// 추가 글꼴 목록
@@ -96,7 +199,5 @@
 				} catch(e) {}
 			}
 		</script>
-	
-	</script>
 	</body>
 </html>
