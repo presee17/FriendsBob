@@ -20,7 +20,6 @@ public class ReviewCommentService {
 		
 	}
 	public List<ReviewComment> getComment(int reviewNo){
-		System.out.println("실행되나"+reviewNo);
 		List<ReviewComment> list = reviewCommentDao.selectByReviewNo(reviewNo);
 		
 		return list;

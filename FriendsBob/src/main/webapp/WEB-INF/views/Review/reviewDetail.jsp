@@ -114,6 +114,7 @@
 				<textarea name="rCommentContent" rows="5" cols="20">댓글작성</textarea>
 				<input type="submit" value="등록">
 				<input type="reset" value="다시작성">
+				<input type="hidden" name="reviewNo" value="${review.reviewNo }"/>
 			</form>
 			
 		</div>

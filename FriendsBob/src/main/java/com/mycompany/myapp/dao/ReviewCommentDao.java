@@ -32,12 +32,12 @@ public class ReviewCommentDao {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn)
 					throws SQLException {
-				PreparedStatement pstmt = conn.prepareStatement(sql,new String[]{"final_reivew_no"});
-				pstmt.setString(1,reviewComment.getrCommentContent());
+				PreparedStatement pstmt = conn.prepareStatement(sql,new String[]{"review_comment_no"});
+				pstmt.setString(1,reviewComment .getrCommentContent());
 				pstmt.setString(2,member.getId());
 				pstmt.setInt(3, reviewComment.getReviewNo());
 				
-				return null;
+				return pstmt;
 			}
 		},keyHolder);
 		
