@@ -85,7 +85,6 @@
 			  -webkit-border-radius: 7px 7px 0 0;
 			  -webkit-transition: all 0.2s;
 			}
-
 			.tab_menu li:hover a, 
 			.tab_menu li a:focus, 
 			.tab_menu li.active a {/*a태그(아이콘및 글씨)위에 마우스 커서가 올라갔을 때, a에 focus됬을 때, a가 클릭됬을 때*/
