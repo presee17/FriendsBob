@@ -109,17 +109,17 @@ public class ReviewController {
 			model.addAttribute("loginNick",member.getNick());
 			return "Review/reviewDetail";
 		}
+
 		
-		@RequestMapping("/Review/reviewForm")
-		public String updateForm(@RequestParam("reviewNo") int reviewNo, Model model) {
-			Review review= reviewService.getReview(reviewNo);
-			model.addAttribute("review", review);
+		@RequestMapping(value="/Review/reviewUpdate",method=RequestMethod.GET)
+		public String updateForm(int reviewNo, HttpSession httpSession,Model model) {
+			Review review=reviewService.getReview(reviewNo);
+			model.addAttribute("review",review);
 			return "Review/reviewUpdateForm";
 		}
-		
-		@RequestMapping("/Review/reviewUpdate")
-		public String update(Review review, HttpSession httpSession) {
-
+		@RequestMapping(value="/Review/reviewUpdate",method=RequestMethod.POST)
+		public String update(int reviewNo, HttpSession httpSession) {
+			Review review=reviewService.getReview(reviewNo);
 			reviewService.modify(review);
 			return "redirect:/Review/reviewDetail?reviewNo="+review.getReviewNo();
 		}

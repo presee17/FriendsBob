@@ -122,10 +122,10 @@
 			
 		</div>
 		<div id="buttonGroup">
-			<a href="reviewList?pageNo=${pageNo}">목록${review.reviewWriter }</a>
+			<a href="reviewList?pageNo=${pageNo}">목록</a>
 			
 			<c:if test="${review.reviewWriter==loginNick }">
-				<a href="reviewUpdate?rno=${review.reviewNo}">수정</a>
+				<a href="reviewUpdate?reviewNo=${review.reviewNo}">수정</a>
 				<a href="delete/${review.reviewNo}">삭제</a>
 			</c:if>
 		</div>		

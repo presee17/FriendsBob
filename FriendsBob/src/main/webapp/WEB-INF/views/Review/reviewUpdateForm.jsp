@@ -31,18 +31,18 @@
 			<table>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" id="title" name="reviewTitle"/>{review.reviewTitle}</td>
+					<td><input type="text" id="title" name="reviewTitle" value="${review.reviewTitle}"/></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea name="reviewContent" id="ir1" rows="5" cols="50">{review.reviewContent}</textarea></td>
+					<td><textarea name="reviewContent" id="ir1" rows="5" cols="50">${review.reviewContent}</textarea></td>
 				</tr>
 				
 				<tr>
 					<td colspan="2" style="text-align: center;">
 						<br/>
 						<input type="button" onclick="submitContents(this)" value="글올리기"/>
-						<input type="reset" value="다시작성"/>					
+						<input type="submit" formmethod="get" formaction="reviewDetail?reviewNo=${review.reviewNo }" value="돌아가기"/>					
 					</td>
 				</tr>
 			</table>
