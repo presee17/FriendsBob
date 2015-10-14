@@ -112,9 +112,9 @@ public class MeetingDao {
 		sql += "from final_meetings ";
 		sql += "where meeting_address1=? and meeting_address2=? ";
 		sql += "order by meeting_no desc ";
-		sql += "list ?,?";
+		sql += "limit ?,?";
 
-		List<Meeting> list = jdbcTemplate.query(sql, new Object[] { address1, address2, (pageNo - 1) * rowsPerPage, rowsPerPage },
+		List<Meeting> list = jdbcTemplate.query(sql, new Object[] {address1, address2, (pageNo - 1) * rowsPerPage, rowsPerPage},
 				new RowMapper<Meeting>() {
 					@Override
 					public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -128,7 +128,6 @@ public class MeetingDao {
 				});
 		return list;
 	}
-	
 
 	public Meeting selectByPk(int meetingNo) {
 		String sql = "select * from final_meetings where meeting_no=?";
