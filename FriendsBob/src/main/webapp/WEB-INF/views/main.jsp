@@ -129,7 +129,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#" style="text-decoration:none;" target="main">
+								<a href="Mitjib/matjibMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
 								</a>
 							</li>

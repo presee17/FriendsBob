@@ -55,7 +55,12 @@ public class MatjibController {
 	  matjibService.add(matjib, member); 
 	   return "redirect:/Matjib/mtjibList"; 
 	  	}
-	
+	  
+	  @RequestMapping("/Matjib/matjibMain")
+		public String main(){
+			return "Matjib/matjibMain";
+	  }
+		
 	@RequestMapping("/Matjib/matjibList")
 	public String list(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo, Model model,
 			HttpSession session) {
