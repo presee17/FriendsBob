@@ -40,7 +40,7 @@ public class MemberDao {
 		});
 		return member.getId();
 	}
-
+	
 	public int update(Member member) {
 		String sql = "update final_members set member_point=? where member_id=?";
 		int rows = jdbcTemplate.update(sql, member.getPoint(), member.getId());
@@ -93,6 +93,12 @@ public class MemberDao {
 		} else {
 			return list.get(0);
 		}
+	}
+	
+	public int memberCount(){
+		String sql="select count(*) from final_members";
+		int rows = jdbcTemplate.queryForObject(sql, Integer.class);
+		return rows;
 	}
 	
 	public int delete(String id) {

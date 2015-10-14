@@ -16,7 +16,7 @@ import com.mycompany.myapp.service.MemberService;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	private MemberService memberService;
  

@@ -27,9 +27,10 @@ public class HomeController {
 	public String home(Locale locale, Model model, Member member, Login login) {
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String homeP(Locale locale, Model model, Member member, Login login, BindingResult bindingResult) {
+		memberService.memberC();
 		return "home";
 	}
 }
