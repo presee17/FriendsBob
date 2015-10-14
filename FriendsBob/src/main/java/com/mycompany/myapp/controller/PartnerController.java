@@ -65,7 +65,7 @@ public class PartnerController {
 	    } else {
 	    	kind = (String) session.getAttribute("kind");
 	    }
-	    String cities=null;
+	   
 		String kinds = null;
 	/*	if(city.equals("서울")){
 			cities="서울특별시";
