@@ -79,13 +79,6 @@
 				background-color: orange;
 				color: white;
 			}
-			
-			global
-		 	{
-		 		modal-transparency: 0.65;
-		 		modal-transparency-color: #000000;
-		 		modal-transparency-blur: 0;
-		 	}
 		</style>
 		
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/excite-bike/jquery-ui.css">
@@ -96,17 +89,17 @@
     	 $(function() {
     		    $( "#ld" ).dialog({
     		      autoOpen: false,
-    		      show: { 
+    		      show: {
     		        effect: "blind",
-    		        duration: 300
+    		        duration: 1000
     		      },
-    		      modal: true,
     		      hide: {
     		        effect: "blind",
-    		        duration: 300
+    		        duration: 1000
     		      }
+    		      modal: true,
     		    });
-    		 
+    		 	
     		    $( "#lBtn" ).click(function() {
     		      $( "#ld" ).dialog( "open" );
     		    });
@@ -115,11 +108,11 @@
     	 $(function() {
  		    $( "#jd" ).dialog({
  		      autoOpen: false,
+ 		     modal: true,
  		      show: {
  		        effect: "blind",
  		        duration: 1000
  		      },
- 		     modal: true,
  		      hide: {
  		        effect: "blind",
  		        duration: 1000
@@ -166,26 +159,6 @@
 			<form:errors path="nick"/> <br/>
 			<input type="submit" value="회원가입"/>
 		</form:form>
-		</div>
-
-		<div id="top">
-			<div id="logo">
-				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
-			</div>
-			<div id="talk" style="padding:18px;">
-				<div class="middle">혼자 밥먹지 마세요.</div>
-				<div class="middle">함께 먹어요...♥</div>
-			</div>
-			<div id="join">
-				<button class="i" id="lBtn">로그인</button>
-				<button class="i" id="jBtn">회원가입</button>
-			</div>
-		</div><hr>
-		<div id="main">
-			<img id="main" src="${pageContext.request.contextPath}/resources/images/main.jpg"/>
-			<div id="comment1">밥 친구, 쉽고 편리하게 찾을 수 있습니다.</div>
-			<button id="btn">밥친구 찾기⊙⊙</button>
-			<div id="comment2">현재 [ ] 명의 친구가 기다리고 있습니다.</div>
 		</div>
 	</body>
 </html>
