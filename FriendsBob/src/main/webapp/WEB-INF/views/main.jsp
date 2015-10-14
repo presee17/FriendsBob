@@ -89,6 +89,13 @@
 			  opacity: 1;
 			  left: 6px;
 			}
+			.i{
+				width:200px;
+				font-size:large;
+				background:red;
+				color:white;
+				height:50px;
+			}
 		</style>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript">

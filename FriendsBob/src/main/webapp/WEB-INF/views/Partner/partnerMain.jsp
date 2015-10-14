@@ -25,13 +25,16 @@
 				width:250px;
 				
 			}
+			#kind{
+				display:inline-block;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="all">
 			<div id="full"><br/>
 				<div id="food">
-					음식 분류<br/><br/>
+					<h3 id="kind">음식 분류</h3><img src="${pageContext.request.contextPath}/resources/images/sik.png"/><br/><br/>
 					<form method="post">
 						<a href="partnerList?kind=k" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/></a><br/>
 						<a href="partnerList?kind=w" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/></a><br/>
