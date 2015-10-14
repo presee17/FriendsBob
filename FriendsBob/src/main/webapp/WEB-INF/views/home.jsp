@@ -96,7 +96,7 @@
     	 $(function() {
     		    $( "#ld" ).dialog({
     		      autoOpen: false,
-    		      show: {
+    		      show: { 
     		        effect: "blind",
     		        duration: 300
     		      },
