@@ -23,15 +23,15 @@ public class MeetingController {
 	}
 	
 	@RequestMapping(value = "Meeting/meetingList", method = RequestMethod.GET)
-	public String MeetingList(HttpSession session) {
-		Member member = (Member)session.getValue("member");
+	public String MeetingList(Member member, HttpSession session) {
+		member = (Member)session.getValue("member");
 		System.out.println("test"+member.getAddress1());
 		meetingService.getPage(10, 5, (Member)session.getValue("member"));
 		return "Meeting/meetingList";
 	}
 	
 	@RequestMapping(value = "Meeting/meetingList", method = RequestMethod.POST)
-	public String searchMeetingList(HttpSession session, Search search) {
+	public String searchMeetingList(HttpSession session, Search search){
 		meetingService.getPage(10, 5, (Member)session.getValue("member"), search);
 		return "Meeting/meetingList";
 	}

@@ -33,11 +33,11 @@
 				<div id="food">
 					음식 분류<br/><br/>
 					<form method="post">
-						<a href="partnerList?kind=k" style="text-decoration:none;" target="partnerList">한식</a><br/>
-						<a href="partnerList?kind=w" style="text-decoration:none;" target="partnerList">양식</a><br/>
-						<a href="partnerList?kind=j" style="text-decoration:none;" target="partnerList">일식</a><br/>
-						<a href="partnerList?kind=c" style="text-decoration:none;" target="partnerList">중식</a><br/>
-						<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList">분식</a><br/>
+						<a href="partnerList?kind=k" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/></a><br/>
+						<a href="partnerList?kind=w" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/></a><br/>
+						<a href="partnerList?kind=j" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/></a><br/>
+						<a href="partnerList?kind=c" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/></a><br/>
+						<a href="partnerList?kind=b" style="text-decoration:none;" target="partnerList"><img src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/></a><br/>
 					</form>
 				</div><br/><!-- <br/>
 				<div>
