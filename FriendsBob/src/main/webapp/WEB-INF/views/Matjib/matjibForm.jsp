@@ -105,7 +105,5 @@
 				} catch(e) {}
 			}
 		</script>
-	
-	</script>
 	</body>
 </html>

@@ -100,7 +100,7 @@
 		</div>
 		<div id="part3">
 			<table>
-				<c:forEach var="reviewComment" items="${list}">
+				<c:forEach var="reviewComment" items="${commentlist}">
 					<tr>
 						<td style="width:50px">${reviewComment.memberId}</td>
 						<td> ${reviewComment.rCommentContent}</td>
