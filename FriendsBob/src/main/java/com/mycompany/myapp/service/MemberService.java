@@ -60,7 +60,6 @@ public class MemberService {
 		member.setPoint(afterPoint);
 	}
 	
-
 	
 	public Member findPw(String id){
 		if(memberDao.selectById(id) == null){
