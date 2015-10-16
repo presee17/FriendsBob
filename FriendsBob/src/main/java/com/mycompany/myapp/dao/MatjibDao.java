@@ -86,7 +86,6 @@ public class MatjibDao {
 				matjib.setId(rs.getString("members_member_id"));
 				matjib.setFood(rs.getString("matjib_food"));
 				matjib.setAddress(rs.getString("matjib_address"));
-				matjib.setAddress(rs.getString("matjib_address"));
 				return matjib;
 			}
 		});

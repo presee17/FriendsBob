@@ -87,26 +87,29 @@
 	
 	<body>
 		<h4>게시물 보기</h4>
-		<form id="modifyForm" name="modifyForm" method="post" action="update">		
-			<span class="title">번호:</span> 
-			<span class="content">${review.reviewNo}</span> 
-			<input type="hidden" name="no" value="${review.reveiwNo}"/><br/>
+		<form id="modifyForm" name="modifyForm" method="post" action="matjibUpdateForm">		
+			<span class="title">게시물 번호:</span> 
+			<span class="content">${matjib.no}</span> 
+			<input type="hidden" name="no" value="${matjib.no}"/><br/>
 			
-			<span class="title">제목:</span> 
-			<input id="title" type="text" name="title" value="${review.reviewTitle}"/> <br/>
+			<span class="title">종류: </span> 
+			<input id="title" type="text" name="food" value="${matjib.food}"/> <br/>
+			
+			<span class="title">가게 이름:</span> 
+			<input id="title" type="text" name="name" value="${matjib.name}"/> <br/>
 			
 			<span class="title">글쓴이:</span> 
-			<span class="content">${review.reviewWriter}</span> <br/>
+			<span class="content">${matjib.id}</span> <br/>
 			
 			<span class="title">날짜:</span> 
-			<span class="content">${review.reviewDate}</span> <br/>
+			<span class="content">${matjib.date}</span> <br/>
 						
 			<span class="title">내용:</span> <br/>
-			<textarea name="content" cols="80" rows="5">${review.reviewContent}</textarea>
+			<textarea name="content" cols="80" rows="5">${matjib.content}</textarea>
 		</form>
 		<div id="buttonGroup">
 			<a href="javascript:sendData()">수정</a>
-			<a href="detail?reviewNo=${review.reviewNo}">취소</a>
+			<a href="matjibDetail?matjibNo=${matjib.no}">취소</a>
 		</div>	
 		 		<script type="text/javascript">
 

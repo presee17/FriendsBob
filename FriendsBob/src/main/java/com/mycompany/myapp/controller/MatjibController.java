@@ -121,7 +121,7 @@ public class MatjibController {
 	@RequestMapping("/Matjib/matjibUpdateForm") 
 	public String updateForm (@RequestParam("matjibNo") int matjibNo, Model model) {
 		Matjib matjib =matjibService.getMatjib(matjibNo);
-		model.addAttribute("Matjib",matjib);
+		model.addAttribute("matjib",matjib);
 		return "Matjib/matjibUpdateForm";
 	}
 	

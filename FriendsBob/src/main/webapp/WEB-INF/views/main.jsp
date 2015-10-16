@@ -161,8 +161,6 @@
 							</li>
 							<li>
 								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
-								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/list.png" alt=""/>맛집정보
 								</a>
 							</li>

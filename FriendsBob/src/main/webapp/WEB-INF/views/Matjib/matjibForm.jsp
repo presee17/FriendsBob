@@ -56,7 +56,10 @@
 					<td colspan="2" style="text-align: center;">
 						<br/>
 						<input type="button" onclick="submitContents(this)" value="글올리기"/>
-						<input type="reset" value="다시작성"/>					
+						<input type="reset" value="다시작성"/>
+						
+					<!--  content부분은 reset이 안됨. 추후 수정 필 -->
+											
 					</td>
 				</tr>
 			</table>
