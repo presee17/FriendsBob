@@ -1,117 +1,66 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>후기 작성 페이지</title>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smartedit/js/HuskyEZCreator.js" charset="utf-8"></script>
 		<style type="text/css">
 			body {
-				font-family: "돋움";
-				font-size: 12px;
-				color: white;
-			}
-			span {
-				display: inline-block;
-				margin: 2px 10px;
-			}
-			
-			span.title {
-				margin: 2px 10px;
-				border: 1px solid darkgray;
-				background: lightgray;
-				width: 70px;
-				text-align: center;
-				color: black;
-			}
-			
-			textarea {
-				margin: 2px 10px;
-			}
-			
-			pre {
-				margin: 10px;
-				border: 1px solid darkgray;
-				padding: 10px;
-				width: 300px;
-				height: 100px;
-				font-size: 12px;
-			}
-			
-			#buttonGroup {
-				margin: 10px;
-				text-align: center;
-			}
-			
-			#buttonGroup a {
-				display:inline-block;
-				width: 70px;
-				line-height: 30px;
-				text-decoration: none;
+				
+				background-color: orange;
 				font-size: small;
-				color: white;
-				border: 1px solid darkgray;
-				background-color: gray;
-				font-weight: bold;
+				color: black;
+			}
+			table {
+				width: 100%;
+				background-color:white;
+				
 			}
 			
-			#buttonGroup a:hover {
-				color: black;
-				background-color: lightgray;
+			input {
+				font-size: 12px;
 			}
 		</style>
-		
-		<script type="text/javascript">
-			function sendData() {
-				//값의 유효성 검사
-				//var modifyForm = document.querySelector("#modifyForm");
-				var modifyForm = document.modifyForm;
-				console.log(modifyForm);
-				
-				//var title = document.querySelector("#title");
-				var title = document.modifyForm.title;
-				console.log(title);
-				
-				var content = document.modifyForm.content;
-				
-				if(title.value == "" || content.value == "") {
-					alert("제목과 내용은 있어야 합니다.");
-					return;
-				}
-
-				//서버로 전송
-				modifyForm.submit();
-			}
-		</script>
 	</head>
 	
 	<body>
-		<h4>게시물 보기</h4>
-		<form id="modifyForm" name="modifyForm" method="post" action="matjibUpdateForm">		
-			<span class="title">게시물 번호:</span> 
-			<span class="content">${matjib.no}</span> 
-			<input type="hidden" name="no" value="${matjib.no}"/><br/>
-			
-			<span class="title">종류: </span> 
-			<input id="title" type="text" name="food" value="${matjib.food}"/> <br/>
-			
-			<span class="title">가게 이름:</span> 
-			<input id="title" type="text" name="name" value="${matjib.name}"/> <br/>
-			
-			<span class="title">글쓴이:</span> 
-			<span class="content">${matjib.id}</span> <br/>
-			
-			<span class="title">날짜:</span> 
-			<span class="content">${matjib.date}</span> <br/>
-						
-			<span class="title">내용:</span> <br/>
-			<textarea name="content" cols="80" rows="5">${matjib.content}</textarea>
+		<h4>후기작성</h4>
+		<form name="Form" id="Form" method="post" action="matjibWrite">
+			<table>
+				<tr>
+					<td>종류: </td>
+					<td><input type="text" id="title" name="food" value="${matjib.food}"/></td>
+				</tr>
+				<tr>
+					<td>가게 이름:</td>
+					<td><input type="text" id="title" name="name" value="${matjib.name}"/></td>
+				</tr>
+				<tr>
+					<td>글쓴이: </td>
+					<td><input type="text" id="title" name="id" value="${matjib.id}" readonly=""/></td>
+				</tr>
+				<tr>
+					<td>주소: </td>
+					<td><input type="text" id="title" name="address" value="${matjib.address}"/></td>
+				</tr>
+				
+				<tr>
+					<td>내용</td>
+					<td><textarea name="content" id="ir1" rows="5" cols="50">${matjib.content}</textarea></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<br/>
+						<input type="button" onclick="submitContents(this)" value="글올리기"/>
+						<input type="submit" formmethod="get" formaction="matjibDetail?matjibNo=${matjib.no }" value="돌아가기"/>					
+					</td>
+				</tr>
+			</table>
 		</form>
-		<div id="buttonGroup">
-			<a href="javascript:sendData()">수정</a>
-			<a href="matjibDetail?matjibNo=${matjib.no}">취소</a>
-		</div>	
-		 		<script type="text/javascript">
+ 		<script type="text/javascript">
 
  		
 			var oEditors = [];
@@ -140,14 +89,27 @@
 			});
 			function submitContents(elClickedObj) {
 				oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+				var Form = document.Form;
+				console.log(Form);
 				
+				//var title = document.querySelector("#title");
+				var title = document.Form.title;
+				console.log(title);
+				
+				var content = document.Form.ir1;
+				
+// 				if(title.value == "" || content.value == "") {
+// 					alert("제목과 내용은 있어야 합니다.");
+// 					return;
+// 				}
 				// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 				
 				try {
 					elClickedObj.form.submit();
 				} catch(e) {}
 			}
+		</script>
 	
-	</script>	
+	</script>
 	</body>
 </html>

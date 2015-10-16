@@ -108,7 +108,7 @@
 			<div id="buttonGroup">
 				<a href="matjibList?pageNo=${pageNo}">목록</a>
 				<a href="matjibUpdateForm?matjibNo=${matjib.no}">수정</a>
-				<a href="matjibDelete/${matjib.no}">삭제</a>
+				<a href="matjibDelete/{matjibNo}=${matjib.no}">삭제</a>
 			</div>
 			
 		</div>

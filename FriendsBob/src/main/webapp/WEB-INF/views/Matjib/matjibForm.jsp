@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>글쓴이 </td>
-					<td><input type="text" id="title" name="id" value = "${member.id}"/></td>
+					<td><input type="text" id="title" name="id" value = "${member.id}" readonly=""/></td>
 				</tr>
 				<tr>
 					<td>주소 </td>
