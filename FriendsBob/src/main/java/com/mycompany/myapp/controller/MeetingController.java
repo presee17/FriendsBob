@@ -76,6 +76,14 @@ public class MeetingController {
 		meetingService.getPage(10, 5, (Member)session.getAttribute("member"), search);
 		return "Meeting/meetingList";
 	}
+	
+	@RequestMapping("Meeting/write")
+	public String write(HttpSession session, Meeting meeting){
+		Member member = (Member)session.getAttribute("member");
+		meetingService.add(meeting);
+		return "Meeting/meetingList";
+	}
+	
 }
 
 

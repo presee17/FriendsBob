@@ -78,11 +78,135 @@
 				color: orange;
 			}
 		</style>
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/excite-bike/jquery-ui.css">
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/smartedit/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script>
+		  $(function() {
+		    $( "#wd" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "blind",
+		        duration: 300
+		      },
+		      hide: {
+		        effect: "blind",
+		        duration: 300
+		      },
+		      modal : true,
+		    });
+		 
+		    $( "#wBtn" ).click(function() {
+		      $( "#wd" ).dialog( "open" );
+		    });
+		  });
+		</script>
+		
 	</head>
 	
 	<body>
 		<h4>게시물 목록</h4>
+		<div id = "wd" title ="게시글쓰기">
+		<form name="Form" id="Form" method="post" action="write">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" id="title" name="title"/></td>
+				</tr>
+				
+				<tr>
+					<td>상호 명</td>
+					<td><input type="text" id="name" name="name"/></td>
+				</tr>
+				
+				<tr>
+					<td>최대 참여 인원</td>
+					<td><input type="number" id ="total" name="total"/></td>
+				</tr>
+				
+				<tr>
+					<td>시/군/구</td>
+					<td><input type="text" id ="address1" name="address1"/></td>
+				</tr>
+				
+				<tr>
+					<td>동/면/읍</td>
+					<td><input type="text" id ="address2" name="address2"/></td>
+				</tr>
+				
+				<tr>
+					<td>음식 종류</td>
+					<td><input type="text" id ="food" name="food"/></td>
+				</tr>
+				
+				<tr>
+					<td>내용</td>
+					<td><textarea name="content" id="ir1" rows="5" cols="50">${meeting.meetingContent}</textarea></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<br/>
+						<input type="button" onclick="submitContents(this)" value="글올리기"/>					
+					</td>
+				</tr>
+			</table>
+		</form>
 		
+ 		<script type="text/javascript">
+ 		
+			var oEditors = [];
+			
+			// 추가 글꼴 목록
+			//var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+			
+			nhn.husky.EZCreator.createInIFrame({
+				oAppRef: oEditors,
+				elPlaceHolder: "ir1",
+				sSkinURI: "${pageContext.request.contextPath}/resources/smartedit/SmartEditor2Skin.html",	
+				htParams : {
+					bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+					bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+					bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+					//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+					fOnBeforeUnload : function(){
+						//alert("완료!");
+					}
+				}, //boolean
+				fOnAppLoad : function(){
+					//예제 코드
+					//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+				},
+				fCreator: "createSEditor2"
+			});
+			function submitContents(elClickedObj) {
+				oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+				var Form = document.Form;
+				console.log(Form);
+				
+				//var title = document.querySelector("#title");
+				var title = document.Form.title;
+				console.log(title);
+				
+				var content = document.Form.ir1;
+				
+				if(title.value == "" || content.value == "") {
+					alert("제목과 내용은 있어야 합니다.");
+					return;
+				}
+				// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+				
+				try {
+					elClickedObj.form.submit();
+				} catch(e) {}
+			}
+		</script>
+		
+		</div>
+			
 		<table>
 			<tr>
 				<th style="width:50px">번호</th>
@@ -92,13 +216,13 @@
 				<th style="width:60px">조회수</th>
 			</tr>
 			
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="meeting" items="${list}">
 				<tr>
-					<td>${board.no}</td>
-					<td><a class="title" href="detail?boardNo=${board.no}">${board.title}</a></td>
-					<td>${board.writer}</td>
-					<td>${board.date}</td>
-					<td>${board.hitcount}</td>
+					<td>${meeting.no}</td>
+					<td><a class="title" href="detail?boardNo=${meeting.no}">${meeting.title}</a></td>
+					<td>${meeting.writer}</td>
+					<td>${meeting.date}</td>
+					<td>${meeting.hitcount}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -123,7 +247,7 @@
 		</div>		
 		
 		<div id="buttonGroup">
-			<a href="write">글쓰기</a>
+			<button id="wBtn">글쓰기</button>
 		</div>
 	</body>
 </html>

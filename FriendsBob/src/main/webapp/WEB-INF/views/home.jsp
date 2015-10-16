@@ -93,45 +93,46 @@
  		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     	<script type="application/javascript">
     	
-    	 $(function() {
-    		    $( "#ld" ).dialog({
-    		      autoOpen: false,
-    		      show: { 
-    		        effect: "blind",
-    		        duration: 300
-    		      },
-    		      modal: true,
-    		      hide: {
-    		        effect: "blind",
-    		        duration: 300
-    		      }
-    		    });
-    		 
-    		    $( "#lBtn" ).click(function() {
-    		      $( "#ld" ).dialog( "open" );
-    		    });
-    		  });
-    	
-    	 $(function() {
- 		    $( "#jd" ).dialog({
- 		      autoOpen: false,
- 		      show: {
- 		        effect: "blind",
- 		        duration: 1000
- 		      },
- 		     modal: true,
- 		      hide: {
- 		        effect: "blind",
- 		        duration: 1000
- 		      }
- 		    });
- 		 
- 		    $( "#jBtn" ).click(function() {
- 		      $( "#jd" ).dialog( "open" );
- 		    });
- 		  });
-    	 
-	</script> 
+	    	 $(function() {
+	    		    $( "#ld" ).dialog({
+	    		      autoOpen: false,
+	    		      show: { 
+	    		        effect: "blind",
+	    		        duration: 300
+	    		      },
+	    		      modal: true,
+	    		      hide: {
+	    		        effect: "blind",
+	    		        duration: 300
+	    		      }
+	    		    });
+	    		 
+	    		    $( "#lBtn" ).click(function() {
+	    		      $( "#ld" ).dialog( "open" );
+	    		    });
+	    		  });
+	    	
+	    	 $(function() {
+	 		    $( "#jd" ).dialog({
+	 		      autoOpen: false,
+	 		      show: {
+	 		        effect: "blind",
+	 		        duration: 1000
+	 		      },
+	 		     modal: true,
+	 		      hide: {
+	 		        effect: "blind",
+	 		        duration: 1000
+	 		      }
+	 		    });
+	 		 
+	 		    $( "#jBtn" ).click(function() {
+	 		      $( "#jd" ).dialog( "open" );
+	 		    });
+	 		  });
+		</script>
+	</head>
+	 
 	<body>
 		<div id="ld" title="로그인">
 		<hr/>
