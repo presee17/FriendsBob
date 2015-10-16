@@ -111,6 +111,11 @@
 	    		    $( "#lBtn" ).click(function() {
 	    		      $( "#ld" ).dialog( "open" );
 	    		    });
+	    		    
+	    		    $( "#btn" ).click(function() {
+		    		      $( "#ld" ).dialog( "open" );
+		    		    });
+
 	    		  });
 	    	
 	    	 $(function() {
@@ -129,7 +134,9 @@
 	 		 
 	 		    $( "#jBtn" ).click(function() {
 	 		      $( "#jd" ).dialog( "open" );
-	 		    });
+	 		    }
+	 		    
+	 		    );
 	 		  });
 		</script>
 	</head>
