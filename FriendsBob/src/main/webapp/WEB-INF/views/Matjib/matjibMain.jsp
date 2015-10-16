@@ -75,7 +75,7 @@
 					
 				</div><br/><br/>
 			</div>
-			<iframe id="frame" name="matjibList" width="100%" src="miatjibList?kind=all">
+			<iframe id="frame" name="matjibList" width="100%" src="matjibList">
 			</iframe>
 		</div>
 	</body>
