@@ -29,7 +29,7 @@ public class MemberController {
 				return "home";
 			} else {
 				memberService.join(member);
-				return "redirect:home";
+				return "redirect:/home";
 			}
 		} else {
 			bindingResult.rejectValue("id", "usedId", "존재하는 id 입니다.");

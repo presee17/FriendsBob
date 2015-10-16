@@ -72,7 +72,7 @@
 			
 			.title {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}	
 			.title:hover {
 				color: orange;
@@ -144,7 +144,7 @@
 				
 				<tr>
 					<td>내용</td>
-					<td><textarea name="content" id="ir1" rows="5" cols="50">${meeting.meetingContent}</textarea></td>
+					<td><textarea name="content" id="ir1" rows="5" cols="50">${meeting.content}</textarea></td>
 				</tr>
 				
 				<tr>
@@ -212,17 +212,19 @@
 				<th style="width:50px">번호</th>
 				<th>제목</th>
 				<th style="width:60px">글쓴이</th>
+				<th style="width:80px">음식 종류</th>
 				<th style="width:80px">날짜</th>
-				<th style="width:60px">조회수</th>
+				<th style="width:80px">지역</th>
 			</tr>
 			
 			<c:forEach var="meeting" items="${list}">
 				<tr>
 					<td>${meeting.no}</td>
 					<td><a class="title" href="detail?boardNo=${meeting.no}">${meeting.title}</a></td>
-					<td>${meeting.writer}</td>
+					<td>${nick}</td>
+					<td>${meeting.food}</td>
 					<td>${meeting.date}</td>
-					<td>${meeting.hitcount}</td>
+					<td>${meeting.address1} ${meeting.address2}</td>
 				</tr>
 			</c:forEach>
 		</table>

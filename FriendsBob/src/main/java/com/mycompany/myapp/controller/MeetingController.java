@@ -67,7 +67,7 @@ public class MeetingController {
 		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("list", list);
-		
+		model.addAttribute("nick", member.getNick());
 		return "Meeting/meetingList";
 	}
 	
@@ -80,6 +80,7 @@ public class MeetingController {
 	@RequestMapping("Meeting/write")
 	public String write(HttpSession session, Meeting meeting){
 		Member member = (Member)session.getAttribute("member");
+		meeting.setMemberId(member.getId());
 		meetingService.add(meeting);
 		return "Meeting/meetingList";
 	}

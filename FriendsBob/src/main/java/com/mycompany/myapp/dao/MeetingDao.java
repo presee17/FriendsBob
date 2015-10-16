@@ -33,12 +33,11 @@ public class MeetingDao {
 				pstmt.setString(1, meeting.getTitle());
 				pstmt.setString(2, meeting.getName());
 				pstmt.setString(3, meeting.getContent());
-				pstmt.setString(4, meeting.getRecruit());
-				pstmt.setString(5, meeting.getTotal());
-				pstmt.setString(6, meeting.getMemberId());
-				pstmt.setString(7, meeting.getAddress1());
-				pstmt.setString(8, meeting.getAddress2());
-				pstmt.setString(9, meeting.getFood());
+				pstmt.setString(4, meeting.getTotal());
+				pstmt.setString(5, meeting.getMemberId());
+				pstmt.setString(6, meeting.getAddress1());
+				pstmt.setString(7, meeting.getAddress2());
+				pstmt.setString(8, meeting.getFood());
 				return pstmt;
 			}
 
@@ -122,6 +121,8 @@ public class MeetingDao {
 						meeting.setTitle(rs.getString("meeting_title"));
 						meeting.setFood(rs.getString("meeting_food"));
 						meeting.setMemberId(rs.getString("members_member_id"));
+						meeting.setAddress1(address1);
+						meeting.setAddress2(address2);
 						return meeting;
 					}
 				});
