@@ -1,11 +1,14 @@
 package com.mycompany.myapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dao.MemberDao;
 import com.mycompany.myapp.dto.Login;
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.Partner;
 
 @Component
 public class MemberService {

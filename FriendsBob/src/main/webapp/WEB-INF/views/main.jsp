@@ -113,6 +113,7 @@
 				color:white;
 				height:50px;
 			}
+			
 		</style>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript">
@@ -150,7 +151,7 @@
 					<nav class="tab_menu clearfix">
 						<ul>
 							<li>
-								<a href="#" style="text-decoration:none;" target="main">
+								<a href="Mypage/myPageMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/person.png" alt=""/>마이페이지
 								</a>
 							</li>
@@ -180,7 +181,7 @@
 				<div id="join">
 					<a href="exit"><button class="i">로그아웃</button></a>
 				</div>
-			</div><hr>
+			</div><hr/>
 			<div id="content">
 				<iframe id="frame" name="main">
 				</iframe>
