@@ -25,12 +25,15 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, Member member, Login login) {
+		int num=memberService.memberC();
+		model.addAttribute("num",num);
 		return "home";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homeP(Locale locale, Model model, Member member, Login login, BindingResult bindingResult) {
-		memberService.memberC();
+	public String homeP(Locale locale, Model model, Login login, BindingResult bindingResult) {
+		int num=memberService.memberC();
+		model.addAttribute("num",num);
 		return "home";
 	}
 }

@@ -40,8 +40,9 @@ public class MemberService {
 		memberDao.delete(id);
 	}
 	
-	public void memberC(){
-		memberDao.memberCount();
+	public int memberC(){
+		int num=memberDao.memberCount();
+		return num;
 	}
 
 	public String login(Login login) {// 회원 로그인
