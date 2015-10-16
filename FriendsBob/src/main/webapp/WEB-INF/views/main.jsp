@@ -100,13 +100,45 @@
 			  left: 16px;
 			  -webkit-transition: all 0.2s;
 			}/*탭 메뉴의  img태그에 대해  투명도를 0으로 하여 안보이게 하고 변화가 있을 시 모든 변화에 대해 수행 시간을 0.2초로 한다.*/
-			
-			.tab_menu li:hover img, 
+	
+			.tab_menu li:hover img,
 			.tab_menu li.active img {
 			  opacity: 1;
 			  left: 6px;
 			}
+			.i{
+				width:200px;
+				font-size:large;
+				background:red;
+				color:white;
+				height:50px;
+			}
 		</style>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var $menu_li = $('.tab_menu li');
+				var $menu_a = $menu_li.find('a');
+					
+				// $menu 내부의 a 클릭 시 이벤트 핸들링
+				$menu_a.click(function(e) {		
+					// 대상 참조.
+					var $this = $(this);
+						
+					// 활성화된 a 클릭 시, 작동하지 않도록 설정.
+		 			if($this.parent().hasClass('active')) return;
+		 			
+		 			// $menu_link에서 active 클래스 제거
+					$menu_li.removeClass('active');
+					
+					// 클릭한 a의 부모 li에 active 클래스 추가
+					$this.parent().addClass('active');
+				
+					// 브라우저 링크 기본 동작 차단
+					//e.preventDefault();
+				});
+			});
+		</script>
 	</head>
 	<body>
 	<div id="all">
@@ -119,22 +151,24 @@
 						<ul>
 							<li>
 								<a href="#" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/p.JPG" alt=""/>마이페이지
+								<img src="${pageContext.request.contextPath}/resources/images/person.png" alt=""/>마이페이지
 								</a>
 							</li>
 							<li>
 								<a href="Meeting/meetingMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/l.JPG" alt=""/>약속목록
+								<img src="${pageContext.request.contextPath}/resources/images/cal.png" alt=""/>약속목록
 								</a>
 							</li>
 							<li>
 								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
+								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/list.png" alt=""/>맛집정보
 								</a>
 							</li>
 							<li>
 								<a href="Review/reviewMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/g.JPG" alt=""/>모임후기
+								<img src="${pageContext.request.contextPath}/resources/images/good.png" alt=""/>모임후기
 								</a>
 							</li>
 							<li>
@@ -146,7 +180,7 @@
 					</nav>
 				</div>
 				<div id="join">
-					<button class="i">밥친구닷컴 나가기</button>
+					<a href="exit"><button class="i">로그아웃</button></a>
 				</div>
 			</div><hr>
 			<div id="content">

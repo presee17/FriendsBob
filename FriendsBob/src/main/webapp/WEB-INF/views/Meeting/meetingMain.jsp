@@ -34,25 +34,25 @@
 					음식 분류<br/>
 					
 					<form action="meetingList" target ="meetingList" method ="POST">
-	  					<input type="checkbox" name="foodKind[]" value="korea" checked="checked">한식<br>
-	  					<input type="checkbox" name="foodKind[]" value="american">양식<br>
-	  					<input type="checkbox" name="foodKind[]" value="japan">일식<br>
-	  					<input type="checkbox" name="foodKind[]" value="china">중식<br>
-	  					<input type="checkbox" name="foodKind[]" value="fast">분식<br>
+	  					<input type="checkbox" name="foodKind[]" value="korea" checked="checked"><img id="main" src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind[]" value="american"><img id="main" src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind[]" value="japan"><img id="main" src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind[]" value="china"><img id="main" src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind[]" value="fast"><img id="main" src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/><br>
   					<br/>
   					<br/>
   					지역선택
   					<br/>
   						<select>
-		  						<option name = "address1" value="myAddress">선택안함</option>
-							    <option name = "address1" value="soul">강남구</option>
-							    <option name = "address1" value="incheon">서초구</option>
-							    <option name = "address1" value="soul">강서구</option>
-							    <option name = "address1" value="incheon">강북구</option>
+		  						<option name = "address1" value="myAddress">${member.address1}</option>
+							    <option name = "address1" value="kangnam">강남구</option>
+							    <option name = "address1" value="seocho">서초구</option>
+							    <option name = "address1" value="seoul">강서구</option>
+							    <option name = "address1" value="kangbuk">강북구</option>
 						</select>
   					
 	  					<select>
-		  						<option name = "address2" value="myAddress">선택안함</option>
+		  						<option name = "address2" value="myAddress">${member.address2}</option>
 							    <option name = "address2" value="jamwon">잠원동</option>
 							    <option name = "address2" value="majan">마장동</option>
 							    <option name = "address2" value="karak">가락동</option>

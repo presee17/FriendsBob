@@ -70,7 +70,6 @@
 				
 				//var title = document.querySelector("#title");
 				var name = document.modifyForm.name;
-			
 				
 				var location = document.modifyForm.location;
 				

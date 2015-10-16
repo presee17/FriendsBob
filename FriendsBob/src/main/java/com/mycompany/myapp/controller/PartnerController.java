@@ -65,40 +65,8 @@ public class PartnerController {
 	    } else {
 	    	kind = (String) session.getAttribute("kind");
 	    }
-	    String cities=null;
+	   
 		String kinds = null;
-	/*	if(city.equals("서울")){
-			cities="서울특별시";
-		}else if(city.equals("인천")){
-			cities="인천광역시";
-		}else if(city.equals("대구")){
-			cities="대구광역시";
-		}else if(city.equals("대전")){
-			cities="대전광역시";
-		}else if(city.equals("광주")){
-			cities="광주광역시";
-		}else if(city.equals("부산")){
-			cities="부산광역시";
-		}else if(city.equals("울산")){
-			cities="울산광역시";
-		}else if(city.equals("경기")){
-			cities="인천광역시";
-		}else if(city.equals("강원")){
-			cities="인천광역시";
-		}else if(city.equals("전남")){
-			cities="인천광역시";
-		}else if(city.equals("전북")){
-			cities="인천광역시";
-		}else if(city.equals("충남")){
-			cities="인천광역시";
-		}else if(city.equals("충북")){
-			cities="경기도";
-		}else if(city.equals("경남")){
-			cities="경상남도";
-		}else if(city.equals("경북")){
-			cities="경상북도";
-		}*/
-		
 		
 		if(kind.equals("k")) {
 			kinds="한식";
@@ -143,7 +111,7 @@ public class PartnerController {
 		model.addAttribute("kind",kind);
 
 		model.addAttribute("list",list);
-		model.addAttribute("id",session.getAttribute("id"));
+		model.addAttribute("member",session.getAttribute("member"));
 		return "Partner/partnerList";	
 	}
 	

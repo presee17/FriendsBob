@@ -23,9 +23,9 @@ public class ReviewDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public Integer insert(Review review, Member member, int meetingNo){
+	public Integer insert(Review review, String memberId, int meetingNo){
 		Integer pk=null;
-		String sql="insert into final_reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, 1) ";
+		String sql="insert into final_reviews(review_title, review_content, review_date, review_grade, review_writer, review_meeting_no) values(?, ?, now(), ?, ?, ?) ";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator(){
 
@@ -36,7 +36,7 @@ public class ReviewDao {
 				pstmt.setString(1, review.getReviewTitle());
 				pstmt.setString(2, review.getReviewContent());
 				pstmt.setInt(3, review.getGrade());
-				pstmt.setString(4, member.getId());
+				pstmt.setString(4, memberId);
 				pstmt.setInt(5, meetingNo);
 				
 				return pstmt;

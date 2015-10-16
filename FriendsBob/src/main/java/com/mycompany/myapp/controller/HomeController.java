@@ -2,6 +2,8 @@ package com.mycompany.myapp.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,10 @@ public class HomeController {
 	public String home(Locale locale, Model model, Member member, Login login) {
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String homeP(Locale locale, Model model, Member member, Login login, BindingResult bindingResult) {
+		memberService.memberC();
 		return "home";
 	}
 }

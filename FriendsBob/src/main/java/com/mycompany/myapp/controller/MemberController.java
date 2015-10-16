@@ -16,7 +16,7 @@ import com.mycompany.myapp.service.MemberService;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	private MemberService memberService;
  
@@ -53,7 +53,6 @@ public class MemberController {
 				break;
 			case "correct":
 				session.setAttribute("member", memberService.getObject(login.getId()));
-				session.setAttribute("id",login.getId());
 				session.setAttribute("login", true);
 				url = "redirect:/main";
 				break;

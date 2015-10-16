@@ -19,8 +19,12 @@ public class ReviewCommentService {
 		reviewCommentDao.insert(reviewComment,member);
 		
 	}
+	
+	public ReviewComment getCommentByPk(int reviewCommentNo){
+		ReviewComment reviewComment=reviewCommentDao.selectByPk(reviewCommentNo);
+		return reviewComment;
+	}
 	public List<ReviewComment> getComment(int reviewNo){
-		System.out.println("실행되나"+reviewNo);
 		List<ReviewComment> list = reviewCommentDao.selectByReviewNo(reviewNo);
 		
 		return list;
@@ -29,7 +33,7 @@ public class ReviewCommentService {
 		reviewCommentDao.update(reviewComment);
 		
 	}
-	public void remove(ReviewComment reviewComment, Member member){
+	public void remove(ReviewComment reviewComment){
 		reviewCommentDao.delete(reviewComment.getrCommentNo());
 	}
 }

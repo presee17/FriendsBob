@@ -87,7 +87,6 @@ public class PartnerDao {
 						return partner;
 					}
 				});
-		System.out.println(list.size());
 		return list;
 	}
 
