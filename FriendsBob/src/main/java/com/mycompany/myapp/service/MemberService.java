@@ -39,6 +39,11 @@ public class MemberService {
 									// 대해 운영자가 강제 탈퇴 처리
 		memberDao.delete(id);
 	}
+	
+	public int memberC(){
+		int num=memberDao.memberCount();
+		return num;
+	}
 
 	public String login(Login login) {// 회원 로그인
 		String state = "";

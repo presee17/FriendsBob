@@ -39,9 +39,26 @@
 				text-align:center;
 				width:700px;
 			}
+			.i{
+				background-color:#FF0000;
+				font-size:large;
+				padding:10px;
+				text-align:center;
+				color:white;
+				display:inline-block;
+			}
 			#content{
 				display:flex;
 				height:100%;
+			}
+			#content1{
+				text-align:center;
+				width:250px;
+			}
+			#content2{
+				height:100%;
+				flex:1;
+				display: inline-block;	
 			}
 			#content3{
 				width:330px;
@@ -130,7 +147,7 @@
 					<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 				</div>
 				<div id="tab_design">
-					<nav class="tab_menu">
+					<nav class="tab_menu clearfix">
 						<ul>
 							<li>
 								<a href="#" style="text-decoration:none;" target="main">
@@ -144,6 +161,8 @@
 							</li>
 							<li>
 								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
+								<img src="${pageContext.request.contextPath}/resources/images/m.JPG" alt=""/>맛집정보
+								<a href="Matjib/matjibMain" style="text-decoration:none;" target="main">
 								<img src="${pageContext.request.contextPath}/resources/images/list.png" alt=""/>맛집정보
 								</a>
 							</li>
@@ -154,7 +173,7 @@
 							</li>
 							<li>
 								<a href="Partner/partnerMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/home.png" alt=""/>제휴사
+								<img src="${pageContext.request.contextPath}/resources/images/h.JPG" alt=""/>제휴사
 								</a>
 							</li>
 						</ul>

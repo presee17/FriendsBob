@@ -33,7 +33,7 @@ public class MatjibController {
 	}
 
 	
-	  @RequestMapping(value="/Matjb/matjibWrite", method=RequestMethod.POST) 
+	  @RequestMapping(value="/Matjib/matjibWrite", method=RequestMethod.POST) 
 	  public String write(Matjib matjib, Member member, HttpSession session) {
 	  logger.info("write()");
 	  
@@ -53,7 +53,7 @@ public class MatjibController {
 			matjib.setContentType(contentType);
 		}
 	  matjibService.add(matjib, member); 
-	   return "redirect:/Matjib/mtjibList"; 
+	   return "redirect:/Matjib/matjibList"; 
 	  	}
 	  
 	  @RequestMapping("/Matjib/matjibMain")

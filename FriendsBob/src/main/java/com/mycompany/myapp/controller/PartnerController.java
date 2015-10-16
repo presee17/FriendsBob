@@ -111,7 +111,7 @@ public class PartnerController {
 		model.addAttribute("kind",kind);
 
 		model.addAttribute("list",list);
-		model.addAttribute("id",session.getAttribute("id"));
+		model.addAttribute("member",session.getAttribute("member"));
 		return "Partner/partnerList";	
 	}
 	

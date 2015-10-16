@@ -6,9 +6,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<style type="text/css">		
+		<style type="text/css">
 			body {
-				color: white;
+				color: black;
 			}
 			table {
 				width: 100%;
@@ -35,7 +35,7 @@
 				line-height: 30px;
 				text-decoration: none;
 				font-size: small;
-				color: white;
+				color: black;
 				border: 1px solid darkgray;
 				background-color: gray;
 				font-weight: bold;
@@ -54,7 +54,7 @@
 			
 			#pager a {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}
 			
 			#pager a:hover {
@@ -72,13 +72,12 @@
 			
 			.title {
 				text-decoration: none;
-				color: white;
+				color: black;
 			}	
 			.title:hover {
 				color: orange;
 			}
 		</style>
-		
 	</head>
 	<body>
 		<h4>맛집 게시물 목록</h4>

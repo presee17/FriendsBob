@@ -37,6 +37,7 @@
 			.middle{
 				width:750px;
 				text-align: left;
+				font-size: small;
 				
 			}
 			#main{
@@ -57,11 +58,11 @@
 			}
 			#comment2{
 				height:40px;
-				width:600px;
+				width:650px;
 				text-align:center;
 				position:absolute;
 				top:400px;
-				left:380px;
+				left:350px;
 				background-color:white;
 				padding:5px;
 				background-color:rgba(0,0,0,0);
@@ -174,8 +175,8 @@
 				<img src="${pageContext.request.contextPath}/resources/images/logo.jpg"/>
 			</div>
 			<div id="talk" style="padding:18px;">
-				<div class="middle">혼자 밥먹지 마세요.</div>
-				<div class="middle">함께 먹어요...♥</div>
+				<div class="middle">IE 9 이하의 브라우저에서 동작이 원활하지 않을 시,</div>
+				<div class="middle">IE 10 이상으로 업그레이드 혹은 Chrome으로 실행해주세요.</div>
 			</div>
 			<div id="join">
 				<button class="i" id="lBtn">로그인</button>
@@ -186,7 +187,7 @@
 			<img id="main" src="${pageContext.request.contextPath}/resources/images/main.jpg"/>
 			<div id="comment1">밥 친구, 쉽고 편리하게 찾을 수 있습니다.</div>
 			<button id="btn">밥친구 찾기⊙⊙</button>
-			<div id="comment2">현재 [ ] 명의 친구가 기다리고 있습니다.</div>
+			<div id="comment2">현재 [ ${num} ] 명의 친구가 기다리고 있습니다.</div>
 		</div>
 	</body>
 </html>

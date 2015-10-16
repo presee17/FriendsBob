@@ -75,7 +75,7 @@
 					
 				</div><br/><br/>
 			</div>
-			<iframe id="frame" name="meetingList" width="100%" src="meetingList?kind=all">
+			<iframe id="frame" name="matjibList" width="100%" src="matjibList">
 			</iframe>
 		</div>
 	</body>

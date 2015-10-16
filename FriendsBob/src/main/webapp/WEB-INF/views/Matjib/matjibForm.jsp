@@ -40,7 +40,12 @@
 				</tr>
 				<tr>
 					<td>글쓴이 </td>
-					<td><input type="text" id="title" name="id"/>${member.id}</td>
+					<td><input type="text" id="title" name="id" value = "${member.id}"/></td>
+				</tr>
+				<tr>
+					<td>주소 </td>
+					<td><input type="text" id="title" name="address" /></td>
+				</tr>
 				
 				<tr>
 					<td>내용</td>
@@ -56,6 +61,7 @@
 				</tr>
 			</table>
 		</form>
+		
  		<script type="text/javascript">
 
  		
@@ -94,10 +100,10 @@
 				
 				var content = document.Form.ir1;
 				
-				if(title.value == "" || content.value == "") {
-					alert("제목과 내용은 있어야 합니다.");
-					return;
-				}
+// 				if(title.value == "" || content.value == "") {
+// 					alert("제목과 내용은 있어야 합니다.");
+// 					return;
+// 				}
 				// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 				
 				try {
