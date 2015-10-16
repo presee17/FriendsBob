@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dto.Meeting;
 
-
-
 @Component
 public class MeetingDao {
 	@Autowired
@@ -25,12 +23,13 @@ public class MeetingDao {
 	
 	public Integer insert(Meeting meeting) {
 		Integer pk = null;
-		String sql = "insert into final_meetings(meeting_title,meeting_name, meeting_content, meeting_date, meeting_recruit, meeting_total, members_member_id, meeting_address1, meeting_address2, meeting_food) values(?,?,?,now(),?,?,?,?,?,?)";
+		String sql = "insert into final_meetings(meeting_title, meeting_name, meeting_content, meeting_date, meeting_recruit, meeting_total, members_member_id, meeting_address1, meeting_address2, meeting_food) values(?,?,?,now(),0,?,?,?,?,?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 				PreparedStatement pstmt = conn.prepareStatement(sql, new String[] { "meeting_no" });
+				
 				pstmt.setString(1, meeting.getTitle());
 				pstmt.setString(2, meeting.getName());
 				pstmt.setString(3, meeting.getContent());
@@ -148,7 +147,7 @@ public class MeetingDao {
 				meeting.setContent(rs.getString("meeting_content"));
 				return meeting;
 			}
-		});
+		}); 
 		return meeting;
 	}
 	

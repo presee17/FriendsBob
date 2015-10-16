@@ -87,15 +87,15 @@
     	<script type="application/javascript">
     	
     	 $(function() {
-    		    $( "#ld" ).dialog({
+    		    $( "#wd" ).dialog({
     		      autoOpen: false,
     		      show: {
     		        effect: "blind",
-    		        duration: 1000
+    		        duration: 300
     		      },
     		      hide: {
     		        effect: "blind",
-    		        duration: 1000
+    		        duration: 300
     		      }
     		      modal: true,
     		    });
@@ -104,29 +104,10 @@
     		      $( "#ld" ).dialog( "open" );
     		    });
     		  });
-    	
-    	 $(function() {
- 		    $( "#jd" ).dialog({
- 		      autoOpen: false,
- 		     modal: true,
- 		      show: {
- 		        effect: "blind",
- 		        duration: 1000
- 		      },
- 		      hide: {
- 		        effect: "blind",
- 		        duration: 1000
- 		      }
- 		    });
- 		 
- 		    $( "#jBtn" ).click(function() {
- 		      $( "#jd" ).dialog( "open" );
- 		    });
- 		  });
-    	 
 	</script> 
 	<body>
-		<div id="wd" title="모임 만들기">
+	<div id = "wd">
+		<div title="모임 만들기">
 		<hr/>
 		<h4>후기작성</h4>
 		<form name="Form" id="Form" method="post" action="write">
@@ -151,7 +132,7 @@
 		</form>
 		</div>
 		
-		<script type="text/javascript">
+		<script type="text/javascript" id>
 
 			var oEditors = [];
 			
@@ -199,5 +180,6 @@
 				} catch(e) {}
 			}
 		</script>
+		</div>
 	</body>
 </html>
