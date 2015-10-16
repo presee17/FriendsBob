@@ -80,7 +80,7 @@
 		<div id="part1">
 			<div id="part1_1">	
 				<span class="title">번호:</span> 
-				<span class="content">${reivew.reviewNo}</span> <br/>
+				<span class="content">${review.reviewNo}</span> <br/>
 				
 				<span class="title">제목:</span> 
 				<span class="content">${review.reviewTitle}</span> <br/>

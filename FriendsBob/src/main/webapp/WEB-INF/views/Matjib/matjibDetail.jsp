@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,15 +12,11 @@
 				font-size: 12px;
 				color: black;
 			}
-			
 			span {
 				display: inline-block;
 				margin: 2px 10px;
 			}
 			
-			span {
-			
-			}
 			span.title {
 				margin: 2px 10px;
 				border: 1px solid darkgray;
@@ -77,40 +74,61 @@
 			}
 		</style>
 	</head>
+	
 	<body>
 		<h4>게시물 보기</h4>
 		<div id="part1">
-			<div id="part1_1">
-				<span class="title">번호:</span>
-				<span class="content">${matjib.no}</span>
+			<div id="part1_1">	
+				<span class="title">번호:</span> 
+				<span class="content">${reivew.reviewNo}</span> <br/>
 				
-				<span class="title">종류:</span>
-				<span class="content">${matjib.food }</span>
+				<span class="title">제목:</span> 
+				<span class="content">${review.reviewTitle}</span> <br/>
 				
-				<span class="title">가게 이름:</span>
-				<span class="content">${matjib.name }</span>
+				<span class="title">글쓴이:</span> 
+				<span class="content">${review.reviewWriter}</span> <br/>
 				
-				<span class="title">글쓴이 : </span>
-				<span class="content">${matjib.id}</span>
-				
-				<span class="title">글쓴 날짜:</span>
-				<span class="content">${matjib.date}</span>
-				
-				<span class="title">조회수:</span>
-				<span class="content">${matjib.hitCount }</span>
+				<span class="title">날짜:</span> 
+				<span class="content">${review.reviewDate}</span> <br/>
 			</div>
-				
-			<div id="part2">
-				<span class="title">내용:</span> <br/>
-				<pre>${matjib.content}</pre>
-			</div>
+
+		</div>
 		
-			<div id="buttonGroup">
-				<a href="matjibList?pageNo=${pageNo}">목록</a>
-				<a href="matjibUpdateForm?matjibNo=${matjib.no}">수정</a>
-				<a href="matjibDelete/{matjibNo}=${matjib.no}">삭제</a>
-			</div>
+		<div id="part2">
+			<span class="title">내용:</span> <br/>
+			${review.reviewContent}
+		</div>
+		<div id="part3">
+			<table>
+				<c:forEach var="reviewComment" items="${commentlist}">
+					<tr>
+						<td style="width:50px">${reviewComment.memberId}</td>
+						<td> ${reviewComment.rCommentContent}</td>
+						<td style="width:80px">${reviewComment.rCommentDate}</td>
+						<c:if test="${reviewComment.memberId==loginNick }">
+							<td style="width:50px"><a href="commentDelete?reviewCommentNo=${reviewComment.rCommentNo}">삭제</a></td>
+						</c:if>	
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div id="repply">
+			<form name="repplyForm" id = "repplyForm" method="post" action="commentWrite" >
+				<textarea name="rCommentContent" rows="5" cols="20">댓글작성</textarea>
+				<input type="submit" value="등록">
+				<input type="reset" value="다시작성">
+				<input type="hidden" name="reviewNo" value="${review.reviewNo }"/>
+			</form>
 			
 		</div>
+		<div id="buttonGroup">
+			<a href="reviewList?pageNo=${pageNo}">목록</a>
+			
+			<c:if test="${review.reviewWriter==loginNick }">
+				<a href="reviewUpdate?reviewNo=${review.reviewNo}">수정</a>
+				<a href="delete/${review.reviewNo}">삭제</a>
+			</c:if>
+		</div>		
 	</body>
 </html>
+

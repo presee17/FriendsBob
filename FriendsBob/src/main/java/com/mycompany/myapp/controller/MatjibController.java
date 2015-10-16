@@ -134,6 +134,6 @@ public class MatjibController {
 	@RequestMapping("/Matjib/matjibDelete/{matjibNo}")
 	public String delete (@PathVariable int matjibNo) {
 		matjibService.remove(matjibNo);
-		return "redirect:/Matjib/lsit";
+		return "redirect:/Matjib/matjibList";
 	}
 }
