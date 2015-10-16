@@ -171,7 +171,7 @@
 							</li>
 							<li>
 								<a href="Partner/partnerMain" style="text-decoration:none;" target="main">
-								<img src="${pageContext.request.contextPath}/resources/images/h.JPG" alt=""/>제휴사
+								<img src="${pageContext.request.contextPath}/resources/images/home.png" alt=""/>제휴사
 								</a>
 							</li>
 						</ul>
