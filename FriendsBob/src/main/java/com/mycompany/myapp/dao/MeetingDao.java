@@ -147,7 +147,7 @@ public class MeetingDao {
 				meeting.setContent(rs.getString("meeting_content"));
 				return meeting;
 			}
-		});
+		}); 
 		return meeting;
 	}
 	
