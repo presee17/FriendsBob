@@ -33,6 +33,6 @@ public class MypageController {
 	@RequestMapping("/Mypage/delete")
 	public String delete(Login login){
 		memberService.dropOut(login.getId());
-		return "redirect:/home";
+		return "redirect:/";
 	}
 }
