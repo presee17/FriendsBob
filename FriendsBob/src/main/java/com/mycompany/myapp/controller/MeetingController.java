@@ -15,11 +15,13 @@ import com.mycompany.myapp.dto.Meeting;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.dto.Search;
 import com.mycompany.myapp.service.MeetingService;
+import com.mycompany.myapp.service.MemberService;
 
 @Controller
 public class MeetingController {
 
 	@Autowired MeetingService meetingService;
+	@Autowired MemberService memberService;
 	
 	@RequestMapping("Meeting/meetingMain")
 	public String meetingMain(Member member, HttpSession session) {
@@ -30,7 +32,7 @@ public class MeetingController {
 	@RequestMapping(value = "Meeting/meetingList", method = RequestMethod.GET)
 	public String list(
 			@RequestParam(value="pageNo", defaultValue="1") int pageNo, 
-			Model model, Member member,
+			Model model, Member member, Meeting meeting, 
 			HttpSession session) {
 		member = (Member)session.getAttribute("member");
 		session.setAttribute("pageNo", pageNo);
@@ -67,7 +69,6 @@ public class MeetingController {
 		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("list", list);
-		model.addAttribute("nick", member.getNick());
 		return "Meeting/meetingList";
 	}
 	
@@ -111,7 +112,6 @@ public class MeetingController {
 		model.addAttribute("endPageNo", endPageNo);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("list", list);
-		model.addAttribute("nick", member.getNick());
 		return "Meeting/meetingList";
 	}
 	

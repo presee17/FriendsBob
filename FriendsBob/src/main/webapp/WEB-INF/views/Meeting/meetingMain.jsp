@@ -34,11 +34,11 @@
 					음식 분류<br/>
 					
 					<form action="meetingList" target ="meetingList" method ="POST">
-	  					<input type="checkbox" name="foodKind[]" value="korea" checked="checked"><img id="main" src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind[]" value="american"><img id="main" src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind[]" value="japan"><img id="main" src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind[]" value="china"><img id="main" src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind[]" value="fast"><img id="main" src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="hansik" checked="checked"><img id="main" src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="jungsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="ilsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="yangsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="bunsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/><br>
   					<br/>
   					<br/>
   					지역선택
