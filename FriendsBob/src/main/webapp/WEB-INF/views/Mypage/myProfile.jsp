@@ -38,10 +38,69 @@
 			}
 		</style>
 		
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/excite-bike/jquery-ui.css">
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
+ 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    	<script type="application/javascript">
+    	
+	    	 $(function() {
+	    		    $( "#drop" ).dialog({
+	    		      autoOpen: false,
+	    		      show: { 
+	    		        effect: "blind",
+	    		        duration: 300
+	    		      },
+	    		      modal: true,
+	    		      hide: {
+	    		        effect: "blind",
+	    		        duration: 300
+	    		      }
+	    		    });
+	    		 
+	    		    $( "#dropBtn" ).click(function() {
+	    		      $( "#ld" ).dialog( "open" );
+	    		    });
+	    		    
+	    		    $( "#dropBtn" ).click(function() {
+		    		      $( "#drop" ).dialog( "open" );
+		    		    });
+
+	    		  });
+		</script>
+		
 	</head>
 	
 	<body>
-	
+	<div id="drop" title="회원탈퇴">
+		<hr/>
+		<form name="Form" id="Form" method="post" action="write">
+			<table>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+			
+				<tr>
+					<td>비밀번호 확인</td>
+					<td><input type="password" name="check"></td>
+				</tr>
+			
+				<tr>
+					<td>탈퇴 사유</td>
+					<td><input type="text" id="title" name="title"/></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<br/>
+						<input type="button" onclick="submitContents(this)" value="회원탈퇴"/>					
+					</td>
+				</tr>
+			</table>
+		</form>
+		</div>
+		
 		<table id="tb" align="center" border="2">
 			<tr>
 				<td>항목</td>
@@ -74,7 +133,7 @@
 		</table>
 		<div id="dd">
 		<div class="buttonGroup"><a href="update">프로필 수정</a></div>
-		<div class="buttonGroup"><a href="#">회원탈퇴</a></div>
+		<div class="buttonGroup" id = "dropBtn"><a href="#">회원탈퇴</a></div>
 		</div>
 	</body>
 </html>
