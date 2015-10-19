@@ -33,8 +33,4 @@ public class MatjibCommentService {
 		matjibCommentDao.delete(matjibCommentNo);
 	}
 	
-	public int getTotalMatjibCommentNo() {
-		int rows = matjibCommentDao.selectCount();
-		return rows;
-	}
 }

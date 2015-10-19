@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.myapp.dto.Matjib;
+import com.mycompany.myapp.dto.MatjibComment;
 import com.mycompany.myapp.dto.Member;
 import com.mycompany.myapp.service.MatjibService;
 
@@ -115,6 +116,9 @@ public class MatjibController {
 		matjibService.addHitcount(matjibNo);
 		Matjib matjib = matjibService.getMatjib(matjibNo);
 		model.addAttribute("matjib", matjib);
+		
+		model.addAttribute("commentList", commentList);
+		model.addAttribute("loginNick", member.getNick());
 		return "Matjib/matjibDetail";
 	}
 	
@@ -136,4 +140,28 @@ public class MatjibController {
 		matjibService.remove(matjibNo);
 		return "redirect:/Matjib/matjibList";
 	}
+	
+	@RequestMapping("/Matjib/matjibCommentWrite")
+	public String ComentWrite(Member member, MatjibComment matjibComment, HttpSession session){
+		member=(Member)session.getAttribute("member");
+		matjibCommentService.add(matjibComment, member);
+		
+		return "rediret:/Matjib/matjibDetail?matjibNo="+matjibComment.getNo();
+	}
+	
+	@RequestMapping("/Matjib/matjibCommentDelete")
+	public String CommentDelete(int reviewCommentNo) {
+		MatjibComment matjibComment=matjibCommentService.getPage(matjibCommentNo);
+		
+		int matjibNo=matjibNo.getNo();
+		System.out.println(matjibNo);
+		System.out.println(matjibComment.getId());
+		matjibCommentService.remove(reviewComment);
+		
+		return "redirect:/Matjib/matjibDetail?matjibNo="+matjibNo;
+	}
+	
+	
+	
+	
 }
