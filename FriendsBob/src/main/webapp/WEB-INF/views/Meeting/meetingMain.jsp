@@ -43,29 +43,28 @@
   					<br/>
   					지역선택
   					<br/>
-  						<select>
-		  						<option name = "address1" value="myAddress">${member.address1}</option>
-							    <option name = "address1" value="kangnam">강남구</option>
-							    <option name = "address1" value="seocho">서초구</option>
-							    <option name = "address1" value="seoul">강서구</option>
-							    <option name = "address1" value="kangbuk">강북구</option>
+  						<select name = "address1">
+		  						<option value="myAddress">${member.address1}</option>
+							    <option value="kangnam">강남구</option>
+							    <option value="seocho">서초구</option>
+							    <option value="seoul">강서구</option>
+							    <option value="kangbuk">강북구</option>
 						</select>
   					
-	  					<select>
-		  						<option name = "address2" value="myAddress">${member.address2}</option>
-							    <option name = "address2" value="jamwon">잠원동</option>
-							    <option name = "address2" value="majan">마장동</option>
-							    <option name = "address2" value="karak">가락동</option>
-							    <option name = "address2" value="songjeon">송정동</option>
+	  					<select name = "address2">
+		  						<option value="myAddress">${member.address2}</option>
+							    <option value="jamwon">잠원동</option>
+							    <option value="majan">마장동</option>
+							    <option value="karak">가락동</option>
+							    <option value="songjeon">송정동</option>
 						</select>
 						
 						<br/>
 						<br/>
 						  검색<br/>
-						 <input type="text" name="search" value="검색어를 입력하세요"><br/><br/>
+					<input type="text" name="search"><br/><br/>
   					<input type="submit" value="검색">
 					</form>
-					
 					
 				</div><br/><br/>
 			</div>

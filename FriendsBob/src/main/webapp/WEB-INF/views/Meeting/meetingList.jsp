@@ -221,7 +221,7 @@
 				<tr>
 					<td>${meeting.no}</td>
 					<td><a class="title" href="detail?boardNo=${meeting.no}">${meeting.title}</a></td>
-					<td>${nick}</td>
+					<td>${meeting.memberId}</td>
 					<td>${meeting.food}</td>
 					<td>${meeting.date}</td>
 					<td>${meeting.address1} ${meeting.address2}</td>
