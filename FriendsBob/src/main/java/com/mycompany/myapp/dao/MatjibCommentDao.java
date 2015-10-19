@@ -44,15 +44,16 @@ public class MatjibCommentDao {
 	}
 
 
-	public List<MatjibComment> selectByPage(int pageNo, int rowsPerPage) {
+	public List<MatjibComment> selectByMatjibNo(int matjibNo) {
 
 		String sql = " ";
-		sql += "select (matjibs_matjib_no, matjib_comment_no, matjib_comment_content, matjib_comment_date, members_member_id) ";
-		sql += "from final_matjib_comments";
+		sql += "select * ";
+		sql += "from final_matjib_comments ";
+		sql += "where matjibs_matjib_no = ? ";
 		sql += "order by matjib_comment_no dec ";
-		sql += "limit ?,? ";
+	
 
-		List<MatjibComment> list = jdbcTemplate.query(sql, new Object[] { (pageNo - 1) * rowsPerPage, rowsPerPage },
+		List<MatjibComment> list = jdbcTemplate.query(sql, new Object[] {matjibNo },
 				new RowMapper<MatjibComment>() {
 					@Override
 					public MatjibComment mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -68,22 +69,23 @@ public class MatjibCommentDao {
 				});
 		return list;
 	}
-
-	public Matjib selectByPk(int matjibNo) {
+	
+	public MatjibComment selectByPk(int matjibCommentNo) {
 		String sql = "select * from final_matjibs where matjib_no=?";
-		Matjib matjib = jdbcTemplate.queryForObject(sql, new Object[] { matjibNo }, new RowMapper<Matjib>() {
+		MatjibComment matjibComment = jdbcTemplate.queryForObject(sql, new Object[] { matjibCommentNo }, new RowMapper<MatjibComment>() {
 			@Override
-			public Matjib mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Matjib matjib = new Matjib();
-				matjib.setNo(rs.getInt("matjib_no"));
-				matjib.setName(rs.getString("matjib_name"));
-				matjib.setContent(rs.getString("matjib_content"));
-				matjib.setDate(rs.getDate("matjib_date"));
-				matjib.setId(rs.getString("members_member_id"));
-				return matjib;
+			public MatjibComment mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MatjibComment matjibComment = new MatjibComment();
+				matjibComment.setMatjibNo(rs.getInt("matjibs_matjib_no"));
+				matjibComment.setNo(rs.getInt("matjib_comment_no"));
+				//in comment function, content is needed to show in page
+				matjibComment.setContent(rs.getString("matjib_comment_content"));
+				matjibComment.setDate(rs.getDate("matjib_comment_date"));
+				matjibComment.setId(rs.getString("members_member_id"));
+				return matjibComment;
 			}
 		});
-		return matjib;
+		return matjibComment;
 	}
 	
 	

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.myapp.dto.Matjib;
 import com.mycompany.myapp.dto.MatjibComment;
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.ReviewComment;
+import com.mycompany.myapp.service.MatjibCommentService;
 import com.mycompany.myapp.service.MatjibService;
 
 @Controller
@@ -117,6 +119,7 @@ public class MatjibController {
 		Matjib matjib = matjibService.getMatjib(matjibNo);
 		model.addAttribute("matjib", matjib);
 		
+		List<MatjibComment> commentlist=MatjibCommentService.getPage(matjibNo);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("loginNick", member.getNick());
 		return "Matjib/matjibDetail";

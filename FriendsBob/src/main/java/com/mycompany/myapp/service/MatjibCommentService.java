@@ -9,6 +9,7 @@ import com.mycompany.myapp.dao.MatjibCommentDao;
 import com.mycompany.myapp.dto.Matjib;
 import com.mycompany.myapp.dto.MatjibComment;
 import com.mycompany.myapp.dto.Member;
+import com.mycompany.myapp.dto.ReviewComment;
 
 @Component
 public class MatjibCommentService {
@@ -20,8 +21,13 @@ public class MatjibCommentService {
 		matjibCommentDao.insert(matjibComment, matjib, member);
 	}
 	
-	public List<MatjibComment> getPage(int pageNo, int rowsPerPage) {
-		List <MatjibComment> list = matjibCommentDao.selectByPage(pageNo, rowsPerPage);
+	public MatjibComment getCommentByPk(int matjibCommentNo){
+		MatjibComment matjibComment=matjibCommentDao.selectByPk(matjibCommentNo);
+		return matjibComment;
+	}
+	
+	public List<MatjibComment> getComment(int matjibNo) {
+		List <MatjibComment> list = matjibCommentDao.selectByMatjibNo(matjibNo);
 		return list;
 	}
 	
