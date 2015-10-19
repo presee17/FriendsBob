@@ -29,4 +29,10 @@ public class MypageController {
 	public String myPageMain(){
 		return "Mypage/myPageMain";
 	}
+	
+	@RequestMapping("/Mypage/delete")
+	public String delete(Login login){
+		memberService.dropOut(login.getId());
+		return "redirect:/home";
+	}
 }
