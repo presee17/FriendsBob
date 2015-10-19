@@ -34,17 +34,18 @@
 					음식 분류<br/>
 					
 					<form action="meetingList" target ="meetingList" method ="POST">
-	  					<input type="checkbox" name="foodKind" value="hansik" checked="checked"><img id="main" src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind" value="jungsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind" value="ilsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind" value="yangsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/><br>
-	  					<input type="checkbox" name="foodKind" value="bunsik"><img id="main" src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="한식" checked="checked"><img id="main" src="${pageContext.request.contextPath}/resources/images/hansik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="중식"><img id="main" src="${pageContext.request.contextPath}/resources/images/jungsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="일식"><img id="main" src="${pageContext.request.contextPath}/resources/images/ilsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="양식"><img id="main" src="${pageContext.request.contextPath}/resources/images/yangsik.jpg"/><br>
+	  					<input type="checkbox" name="foodKind" value="분식"><img id="main" src="${pageContext.request.contextPath}/resources/images/bunsik.jpg"/><br>
   					<br/>
   					<br/>
   					지역선택
   					<br/>
   						<select name = "address1">
 		  						<option value="myAddress">${member.address1}</option>
+		  						<option value="전북">전북</option>
 							    <option value="kangnam">강남구</option>
 							    <option value="seocho">서초구</option>
 							    <option value="seoul">강서구</option>
@@ -53,6 +54,7 @@
   					
 	  					<select name = "address2">
 		  						<option value="myAddress">${member.address2}</option>
+		  						<option value="전주시">전주시</option>
 							    <option value="jamwon">잠원동</option>
 							    <option value="majan">마장동</option>
 							    <option value="karak">가락동</option>
