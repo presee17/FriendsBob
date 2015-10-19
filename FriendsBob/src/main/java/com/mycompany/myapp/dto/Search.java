@@ -1,10 +1,10 @@
 package com.mycompany.myapp.dto;
 
 public class Search {
-	String address1;
-	String address2;
-	String foodKind[] = new String[5];
-	String search;
+	private String address1;
+	private String address2;
+	private String foodKind[] = new String[5];
+	private String search;
 
 	public String getAddress1() {
 		return address1;

@@ -53,7 +53,7 @@ public class PartnerController {
 		return "redirect:/Partner/partnerList?kind=all";
 	}
 	
-	@RequestMapping("Partner/partnerList")
+	@RequestMapping("/Partner/partnerList")
 	public String list(
 			String kind,
 			@RequestParam(value="pageNo",defaultValue="0") int pageNo, 
