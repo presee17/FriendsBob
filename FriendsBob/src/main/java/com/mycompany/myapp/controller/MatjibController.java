@@ -29,6 +29,7 @@ public class MatjibController {
 
 	@Autowired
 	private MatjibService matjibService;
+	private MatjibService matjibCommentService;
 
 	@RequestMapping(value = "/Matjib/matjibWrite", method = RequestMethod.GET)
 	public String writeForm() {
@@ -119,7 +120,7 @@ public class MatjibController {
 		Matjib matjib = matjibService.getMatjib(matjibNo);
 		model.addAttribute("matjib", matjib);
 		
-		List<MatjibComment> commentlist=MatjibCommentService.getPage(matjibNo);
+		List<MatjibComment> commentlist=MatjibCommentService.getComment(matjibNo);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("loginNick", member.getNick());
 		return "Matjib/matjibDetail";
