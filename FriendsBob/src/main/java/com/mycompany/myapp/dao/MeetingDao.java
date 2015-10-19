@@ -133,11 +133,11 @@ public class MeetingDao {
 		String sql = "";
 		sql += "select meeting_no, meeting_title, meeting_food, members_member_id ";
 		sql += "from final_meetings ";
-		sql += "where meeting_address1=? and meeting_address2=? and meeting_title like '%?%' ";
+		sql += "where meeting_address1=? and meeting_address2=? and meeting_title like %?% ";
 		sql += "order by meeting_no desc ";
 		sql += "limit ?,?";
 		System.out.println(search);
-		List<Meeting> list = jdbcTemplate.query(sql, new Object[] {address1, address2, search, (pageNo - 1) * rowsPerPage, rowsPerPage},
+		List<Meeting> list = jdbcTemplate.query(sql, new Object[] {address1, address2, (pageNo - 1) * rowsPerPage, rowsPerPage},
 				new RowMapper<Meeting>() {
 					@Override
 					public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
