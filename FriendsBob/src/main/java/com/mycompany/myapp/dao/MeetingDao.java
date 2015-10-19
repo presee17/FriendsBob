@@ -129,6 +129,31 @@ public class MeetingDao {
 		return list;
 	}
 
+	public List<Meeting> selectByAddressForPage(int pageNo, int rowsPerPage, String address1, String address2, String search) {
+		String sql = "";
+		sql += "select meeting_no, meeting_title, meeting_food, members_member_id ";
+		sql += "from final_meetings ";
+		sql += "where meeting_address1=? and meeting_address2=? and meeting_title like ? ";
+		sql += "order by meeting_no desc ";
+		sql += "limit ?,?";
+		System.out.println(search);
+		List<Meeting> list = jdbcTemplate.query(sql, new Object[] {address1, address2, "%"+search+"%", (pageNo - 1) * rowsPerPage, rowsPerPage},
+				new RowMapper<Meeting>() {
+					@Override
+					public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Meeting meeting = new Meeting();
+						meeting.setNo(rs.getInt("meeting_no"));
+						meeting.setTitle(rs.getString("meeting_title"));
+						meeting.setFood(rs.getString("meeting_food"));
+						meeting.setMemberId(rs.getString("members_member_id"));
+						meeting.setAddress1(address1);
+						meeting.setAddress2(address2);
+						return meeting;
+					}
+				});
+		return list;
+	}
+	
 	public Meeting selectByPk(int meetingNo) {
 		String sql = "select * from final_meetings where meeting_no=?";
 		Meeting meeting = jdbcTemplate.queryForObject(sql, new Object[] { meetingNo }, new RowMapper<Meeting>() {

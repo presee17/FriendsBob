@@ -48,6 +48,11 @@ public class MemberService {
 		return num;
 	}
 
+	public Member selectById(String id) {
+		Member member = memberDao.selectById(id);
+		return member;
+	}
+	
 	public String login(Login login) {// 회원 로그인
 		String state = "";
 		if (memberDao.selectById(login.getId()) == null) {

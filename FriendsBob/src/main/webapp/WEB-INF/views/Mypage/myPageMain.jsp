@@ -32,7 +32,7 @@
 					<a href="myProfile" style="text-decoration:none;" target="myPage"><button class="btn">관리자 페이지</button></a><br/>
 				</div><br/>
 			</div>
-			<iframe id="frame" name="myPage" width="100%">
+			<iframe id="frame" name="myPage" width="100%" src="myProfile">
 			</iframe>
 		</div>
 	</body>
